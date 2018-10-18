@@ -9,7 +9,7 @@
 import UIKit
 
 protocol StateControllerProtocol {
-    var userJourneyController: UserJourneyControllerProtocol {get}
+    var userJourneyController: UserJourneyControllerProtocol {get set}
     
     init(userController: UserJourneyControllerProtocol)
 }

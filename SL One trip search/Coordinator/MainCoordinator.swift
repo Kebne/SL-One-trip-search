@@ -31,6 +31,7 @@ class MainCoordinator {
         if stateController.userJourneyController.userJourney == nil {
             let settingsViewController = viewControllerFactory.settingsViewController
             settingsViewController.stateController = self.stateController
+            settingsViewController.delegate = self
             rootNavigationController.pushViewController(settingsViewController, animated: false)
         }
         
@@ -38,5 +39,29 @@ class MainCoordinator {
         window.makeKeyAndVisible()
         
     }
+    
+    fileprivate func showSearchViewController(stationJourneyType: StationJourneyType) {
+        let stationSearchVC = viewControllerFactory.searchViewController
+        stationSearchVC.stationJourneyType = stationJourneyType
+        stationSearchVC.stateController = stateController
+        stationSearchVC.delegate = self
+        rootNavigationController.pushViewController(stationSearchVC, animated: true)
+    }
 
+}
+
+extension MainCoordinator : SettingsViewControllerDelegate {
+    func didTapStartTextField() {
+        showSearchViewController(stationJourneyType: .start)
+    }
+    
+    func didTapDestinationTextField() {
+        showSearchViewController(stationJourneyType: .destination)
+    }
+}
+
+extension MainCoordinator : SearchViewControllerDelegate {
+    func didSelectStation() {
+        rootNavigationController.popViewController(animated: true)
+    }
 }

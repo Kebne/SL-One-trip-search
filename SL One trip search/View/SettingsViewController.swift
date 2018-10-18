@@ -8,6 +8,11 @@
 
 import UIKit
 
+protocol SettingsViewControllerDelegate : AnyObject {
+    func didTapStartTextField()
+    func didTapDestinationTextField()
+}
+
 class SettingsViewController: UIViewController, StoryboardInstantiable {
     
     
@@ -16,7 +21,10 @@ class SettingsViewController: UIViewController, StoryboardInstantiable {
     @IBOutlet weak var timeFromNowLabel: UILabel!
     @IBOutlet weak var timeSlider: UISlider!
     @IBOutlet weak var monitorSwitch: UISwitch!
+    
+    weak var delegate: SettingsViewControllerDelegate?
     var stateController: StateControllerProtocol!
+    
     var viewModel = ViewModel() {
         didSet {
             originTextField.text = viewModel.originText
@@ -24,6 +32,8 @@ class SettingsViewController: UIViewController, StoryboardInstantiable {
             timeFromNowLabel.text = "\(Int(viewModel.searchTimeFromNow))"
             timeSlider.value = viewModel.searchTimeFromNow
             monitorSwitch.isOn = viewModel.monitorLocation
+            monitorSwitch.isEnabled = viewModel.monitorLocationEnabled
+            timeSlider.isEnabled = viewModel.timeSliderEnabled
         }
     }
 
@@ -39,13 +49,16 @@ class SettingsViewController: UIViewController, StoryboardInstantiable {
     }
     
     private func render() {
-        viewModel = ViewModel(userJourney: stateController.userJourneyController.userJourney)
+        viewModel = ViewModel(userJourney: stateController.userJourneyController.userJourney,
+                              tempStart: stateController.userJourneyController.start,
+                              tempDestination: stateController.userJourneyController.destination)
     }
     
     //MARK: Action
     
     @IBAction func sliderDidChangeValue(_ sender: UISlider) {
-        
+        stateController.userJourneyController.timeFromNowUntilSearch = Int(sender.value)
+        render()
         
     }
     
@@ -57,7 +70,11 @@ class SettingsViewController: UIViewController, StoryboardInstantiable {
 
 extension SettingsViewController : UITextFieldDelegate {
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
-        // Show search view
+        if textField == originTextField {
+            delegate?.didTapStartTextField()
+        } else if textField == destinationTextField {
+            delegate?.didTapDestinationTextField()
+        }
         return false
     }
 }
@@ -68,19 +85,26 @@ extension SettingsViewController {
         let destinationText: String
         let searchTimeFromNow: Float
         let monitorLocation: Bool
+        let monitorLocationEnabled: Bool
+        let timeSliderEnabled: Bool
         
         init() {
             originText = ""
             destinationText = ""
             searchTimeFromNow = 0.0
             monitorLocation = false
+            monitorLocationEnabled = false
+            timeSliderEnabled = false
         }
         
-        init(userJourney: UserJourney?) {
-            originText = userJourney?.start.name ?? ""
-            destinationText = userJourney?.destination.name ?? ""
+        init(userJourney: UserJourney?, tempStart: Station?, tempDestination: Station?) {
+            originText = tempStart?.name ?? userJourney?.start.name ?? ""
+            destinationText = tempDestination?.name ?? userJourney?.destination.name ?? ""
             searchTimeFromNow = Float(userJourney?.minutesUntilSearch ?? 0)
             monitorLocation = Bool(userJourney?.monitorStationProximity ?? false)
+            timeSliderEnabled = userJourney == nil ? false : true
+            monitorLocationEnabled = userJourney == nil ? false : true
+            
         }
     }
 }
