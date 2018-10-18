@@ -8,9 +8,9 @@
 
 import Foundation
 
-struct User {
-    var start: Station?
-    var destination: Station?
-    var timeFromNowToSearchForJourney: TimeInterval
-    var monitorPosition: Bool = false
+struct UserJourney {
+    let start: Station
+    let destination: Station
+    let minutesUntilSearch: Int
+    let monitorStationProximity: Bool
 }

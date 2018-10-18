@@ -9,9 +9,13 @@
 import Foundation
 import UIKit
 
-extension UIViewController {
-    static var viewControllerName: String {
-        return String(describing: self)
+protocol StoryboardInstantiable {
+    static var storyboardIdentifier: String {get}
+}
+
+extension StoryboardInstantiable where Self: UIViewController {
+    static var storyboardIdentifier : String {
+        return String(describing: Self.self)
     }
 }
 
@@ -57,15 +61,15 @@ class ViewControllerFactoryClass : ViewControllerFactory {
     /// IMPORTANT!!!
     /// When a view controller is added in the Storyboard, it needs to have an identifier that is the same as the class name.
     var journeyViewController: JourneyViewController {
-        return storyboard.instantiateViewController(withIdentifier: JourneyViewController.viewControllerName) as! JourneyViewController
+        return storyboard.instantiateViewController(withIdentifier: JourneyViewController.storyboardIdentifier) as! JourneyViewController
     }
     
     var settingsViewController: SettingsViewController {
-        return storyboard.instantiateViewController(withIdentifier: SettingsViewController.viewControllerName) as! SettingsViewController
+        return storyboard.instantiateViewController(withIdentifier: SettingsViewController.storyboardIdentifier) as! SettingsViewController
     }
     
     var searchViewController: SearchViewController {
-        return storyboard.instantiateViewController(withIdentifier: SearchViewController.viewControllerName) as! SearchViewController
+        return storyboard.instantiateViewController(withIdentifier: SearchViewController.storyboardIdentifier) as! SearchViewController
     }
 }
 

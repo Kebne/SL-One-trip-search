@@ -8,7 +8,7 @@
 
 import UIKit
 
-class JourneyViewController: UIViewController {
+class JourneyViewController: UIViewController, StoryboardInstantiable {
 
     override func viewDidLoad() {
         super.viewDidLoad()

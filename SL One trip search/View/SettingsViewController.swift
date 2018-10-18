@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SettingsViewController: UIViewController {
+class SettingsViewController: UIViewController, StoryboardInstantiable {
     
     
     @IBOutlet weak var originTextField: UITextField!
@@ -39,7 +39,7 @@ class SettingsViewController: UIViewController {
     }
     
     private func render() {
-        viewModel = ViewModel(user: stateController.userController.user)
+        viewModel = ViewModel(userJourney: stateController.userJourneyController.userJourney)
     }
     
     //MARK: Action
@@ -76,11 +76,11 @@ extension SettingsViewController {
             monitorLocation = false
         }
         
-        init(user: User?) {
-            originText = user?.start?.name ?? ""
-            destinationText = user?.destination?.name ?? ""
-            searchTimeFromNow = Float(user?.timeFromNowToSearchForJourney ?? 0.0)
-            monitorLocation = Bool(user?.monitorPosition ?? false)
+        init(userJourney: UserJourney?) {
+            originText = userJourney?.start.name ?? ""
+            destinationText = userJourney?.destination.name ?? ""
+            searchTimeFromNow = Float(userJourney?.minutesUntilSearch ?? 0)
+            monitorLocation = Bool(userJourney?.monitorStationProximity ?? false)
         }
     }
 }

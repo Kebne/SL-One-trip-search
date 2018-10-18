@@ -25,9 +25,10 @@ class MainCoordinator {
     func start() {
         
         let journeyViewController = viewControllerFactory.journeyViewController
+        // Later on we will set a state controller on this
         rootNavigationController.pushViewController(viewControllerFactory.journeyViewController, animated: false)
         
-        if stateController.userController.user == nil {
+        if stateController.userJourneyController.userJourney == nil {
             let settingsViewController = viewControllerFactory.settingsViewController
             settingsViewController.stateController = self.stateController
             rootNavigationController.pushViewController(settingsViewController, animated: false)

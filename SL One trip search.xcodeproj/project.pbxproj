@@ -17,11 +17,12 @@
 		5135EF7B217774110016AAD6 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5135EF7A217774110016AAD6 /* SettingsViewController.swift */; };
 		5135EF7D217774200016AAD6 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5135EF7C217774200016AAD6 /* SearchViewController.swift */; };
 		5135EF842177747F0016AAD6 /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5135EF832177747F0016AAD6 /* MainCoordinator.swift */; };
-		5135EF8621777D420016AAD6 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5135EF8521777D420016AAD6 /* User.swift */; };
+		5135EF8621777D420016AAD6 /* UserJourney.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5135EF8521777D420016AAD6 /* UserJourney.swift */; };
 		5135EF8821777D820016AAD6 /* Station.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5135EF8721777D820016AAD6 /* Station.swift */; };
 		5135EF8A21777E6B0016AAD6 /* StateController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5135EF8921777E6B0016AAD6 /* StateController.swift */; };
-		5135EF8C21777E790016AAD6 /* UserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5135EF8B21777E790016AAD6 /* UserController.swift */; };
+		5135EF8C21777E790016AAD6 /* UserJourneyController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5135EF8B21777E790016AAD6 /* UserJourneyController.swift */; };
 		5135EF8E217780050016AAD6 /* ViewControllerFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5135EF8D217780050016AAD6 /* ViewControllerFactory.swift */; };
+		5135EF90217887510016AAD6 /* UserJourneyControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5135EF8F217887510016AAD6 /* UserJourneyControllerTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,11 +59,12 @@
 		5135EF7A217774110016AAD6 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		5135EF7C217774200016AAD6 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		5135EF832177747F0016AAD6 /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
-		5135EF8521777D420016AAD6 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		5135EF8521777D420016AAD6 /* UserJourney.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserJourney.swift; sourceTree = "<group>"; };
 		5135EF8721777D820016AAD6 /* Station.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Station.swift; sourceTree = "<group>"; };
 		5135EF8921777E6B0016AAD6 /* StateController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateController.swift; sourceTree = "<group>"; };
-		5135EF8B21777E790016AAD6 /* UserController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserController.swift; sourceTree = "<group>"; };
+		5135EF8B21777E790016AAD6 /* UserJourneyController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserJourneyController.swift; sourceTree = "<group>"; };
 		5135EF8D217780050016AAD6 /* ViewControllerFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerFactory.swift; sourceTree = "<group>"; };
+		5135EF8F217887510016AAD6 /* UserJourneyControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserJourneyControllerTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -132,6 +134,7 @@
 			children = (
 				5135EF6121776AB50016AAD6 /* SL_One_trip_searchTests.swift */,
 				5135EF6321776AB50016AAD6 /* Info.plist */,
+				5135EF8F217887510016AAD6 /* UserJourneyControllerTests.swift */,
 			);
 			path = "SL One trip searchTests";
 			sourceTree = "<group>";
@@ -158,7 +161,7 @@
 		5135EF7F2177743B0016AAD6 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				5135EF8521777D420016AAD6 /* User.swift */,
+				5135EF8521777D420016AAD6 /* UserJourney.swift */,
 				5135EF8721777D820016AAD6 /* Station.swift */,
 			);
 			path = Model;
@@ -168,7 +171,7 @@
 			isa = PBXGroup;
 			children = (
 				5135EF8921777E6B0016AAD6 /* StateController.swift */,
-				5135EF8B21777E790016AAD6 /* UserController.swift */,
+				5135EF8B21777E790016AAD6 /* UserJourneyController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -320,11 +323,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5135EF8C21777E790016AAD6 /* UserController.swift in Sources */,
+				5135EF8C21777E790016AAD6 /* UserJourneyController.swift in Sources */,
 				5135EF8E217780050016AAD6 /* ViewControllerFactory.swift in Sources */,
 				5135EF4F21776AB30016AAD6 /* JourneyViewController.swift in Sources */,
 				5135EF4D21776AB30016AAD6 /* AppDelegate.swift in Sources */,
-				5135EF8621777D420016AAD6 /* User.swift in Sources */,
+				5135EF8621777D420016AAD6 /* UserJourney.swift in Sources */,
 				5135EF7D217774200016AAD6 /* SearchViewController.swift in Sources */,
 				5135EF842177747F0016AAD6 /* MainCoordinator.swift in Sources */,
 				5135EF8A21777E6B0016AAD6 /* StateController.swift in Sources */,
@@ -337,6 +340,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5135EF90217887510016AAD6 /* UserJourneyControllerTests.swift in Sources */,
 				5135EF6221776AB50016AAD6 /* SL_One_trip_searchTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

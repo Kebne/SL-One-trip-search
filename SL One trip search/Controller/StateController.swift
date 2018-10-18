@@ -9,16 +9,16 @@
 import UIKit
 
 protocol StateControllerProtocol {
-    var userController: UserControllerProtocol {get}
+    var userJourneyController: UserJourneyControllerProtocol {get}
     
-    init(userController: UserControllerProtocol)
+    init(userController: UserJourneyControllerProtocol)
 }
 
 class StateController: StateControllerProtocol {
-    var userController: UserControllerProtocol
+    var userJourneyController: UserJourneyControllerProtocol
     
-    required init(userController: UserControllerProtocol) {
-        self.userController = userController
+    required init(userController: UserJourneyControllerProtocol) {
+        self.userJourneyController = userController
     }
     
 
