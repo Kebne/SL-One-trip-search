@@ -19,7 +19,13 @@
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
-                    <navigationItem key="navigationItem" id="RqS-9d-dGy"/>
+                    <navigationItem key="navigationItem" id="RqS-9d-dGy">
+                        <barButtonItem key="rightBarButtonItem" systemItem="search" id="ahB-WM-CoO">
+                            <connections>
+                                <action selector="didPressSettingsButton:" destination="BYZ-38-t0r" id="hno-2Y-1PF"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>

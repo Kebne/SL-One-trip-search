@@ -30,6 +30,9 @@
 		5135EF9C2178D5D20016AAD6 /* SettingsViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5135EF9B2178D5D20016AAD6 /* SettingsViewModelTests.swift */; };
 		5135EF9E2178D9560016AAD6 /* SearchRequestTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5135EF9D2178D9560016AAD6 /* SearchRequestTest.swift */; };
 		5135EFA02178E04F0016AAD6 /* SLSearchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5135EF9F2178E04F0016AAD6 /* SLSearchTests.swift */; };
+		5135EFA22179FC830016AAD6 /* PersistService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5135EFA12179FC830016AAD6 /* PersistService.swift */; };
+		5135EFA4217A166B0016AAD6 /* StationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5135EFA3217A166B0016AAD6 /* StationTests.swift */; };
+		5135EFA6217A19250016AAD6 /* PersistServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5135EFA5217A19250016AAD6 /* PersistServiceTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -79,6 +82,9 @@
 		5135EF9B2178D5D20016AAD6 /* SettingsViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModelTests.swift; sourceTree = "<group>"; };
 		5135EF9D2178D9560016AAD6 /* SearchRequestTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRequestTest.swift; sourceTree = "<group>"; };
 		5135EF9F2178E04F0016AAD6 /* SLSearchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SLSearchTests.swift; sourceTree = "<group>"; };
+		5135EFA12179FC830016AAD6 /* PersistService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistService.swift; sourceTree = "<group>"; };
+		5135EFA3217A166B0016AAD6 /* StationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationTests.swift; sourceTree = "<group>"; };
+		5135EFA5217A19250016AAD6 /* PersistServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistServiceTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -153,6 +159,8 @@
 				5135EF9B2178D5D20016AAD6 /* SettingsViewModelTests.swift */,
 				5135EF9D2178D9560016AAD6 /* SearchRequestTest.swift */,
 				5135EF9F2178E04F0016AAD6 /* SLSearchTests.swift */,
+				5135EFA3217A166B0016AAD6 /* StationTests.swift */,
+				5135EFA5217A19250016AAD6 /* PersistServiceTests.swift */,
 			);
 			path = "SL One trip searchTests";
 			sourceTree = "<group>";
@@ -200,6 +208,7 @@
 			children = (
 				5135EF932178C8440016AAD6 /* SLSearch.swift */,
 				5135EF952178C8830016AAD6 /* SearchRequest.swift */,
+				5135EFA12179FC830016AAD6 /* PersistService.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -350,6 +359,7 @@
 				5135EF982178CBBE0016AAD6 /* Environment.swift in Sources */,
 				5135EF922178BD8F0016AAD6 /* StationTableViewCell.swift in Sources */,
 				5135EF962178C8840016AAD6 /* SearchRequest.swift in Sources */,
+				5135EFA22179FC830016AAD6 /* PersistService.swift in Sources */,
 				5135EF4D21776AB30016AAD6 /* AppDelegate.swift in Sources */,
 				5135EF8621777D420016AAD6 /* UserJourney.swift in Sources */,
 				5135EF7D217774200016AAD6 /* SearchViewController.swift in Sources */,
@@ -368,7 +378,9 @@
 				5135EFA02178E04F0016AAD6 /* SLSearchTests.swift in Sources */,
 				5135EF90217887510016AAD6 /* UserJourneyControllerTests.swift in Sources */,
 				5135EF9E2178D9560016AAD6 /* SearchRequestTest.swift in Sources */,
+				5135EFA6217A19250016AAD6 /* PersistServiceTests.swift in Sources */,
 				5135EF6221776AB50016AAD6 /* SL_One_trip_searchTests.swift in Sources */,
+				5135EFA4217A166B0016AAD6 /* StationTests.swift in Sources */,
 				5135EF9C2178D5D20016AAD6 /* SettingsViewModelTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

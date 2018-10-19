@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct UserJourney {
+struct UserJourney : Codable {
     let start: Station
     let destination: Station
     let minutesUntilSearch: Int

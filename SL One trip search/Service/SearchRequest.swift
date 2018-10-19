@@ -38,3 +38,5 @@ struct StationSearchRequest : SearchRequest {
         self.url = url
     }
 }
+
+

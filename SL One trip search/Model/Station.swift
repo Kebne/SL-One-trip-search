@@ -16,7 +16,8 @@ enum StationDecodingError : Error {
     case errorCreatingCoordinates
 }
 
-struct Station {
+
+struct Station : Codable {
     let name: String
     let area: String
     let id: String
@@ -24,38 +25,29 @@ struct Station {
     let long: Double
 }
 
-struct StationSearchResult : Decodable {
-    let values: [Station]
-    enum StationCodingResultKey : String, CodingKey {
-        case values = "ResponseData"
+struct SLStation {
+    let name: String
+    let id: String
+    let x: String
+    let y: String
+    var station: Station {
+        return constructStation()
     }
     
-    init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: StationCodingResultKey.self)
-        values = try container.decode([Station].self, forKey: .values)
-    }
-}
-
-extension Station : Decodable {
-    enum StationKey : String, CodingKey {
-        case name = "Name"
-        case id = "SiteId"
-        case X, Y
-    }
-    
-    init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: StationKey.self)
-        var tempName = try container.decode(String.self, forKey: .name)
-        id = try container.decode(String.self, forKey: .id)
-        var longString = try container.decode(String.self, forKey: .X)
-        var latString = try container.decode(String.self, forKey: .Y)
+    private func constructStation() ->Station {
+        var longString = x
+        var latString = y
+        var latitude = 0.0
+        var longitude = 0.0
+        var tempName = name
+        var area = ""
         longString.insert(".", at: longString.index(longString.startIndex, offsetBy: 2))
         latString.insert(".", at: longString.index(longString.startIndex, offsetBy: 2))
-        guard let long = Double(longString), let lat = Double(latString) else {
-            throw StationDecodingError.errorCreatingCoordinates
+        
+        if let long = Double(longString), let lat = Double(latString) {
+            latitude = lat
+            longitude = long
         }
-        self.lat = lat
-        self.long = long
         if let areaParentheseStartIndex = tempName.firstIndex(of: "("),
             let areaParentheseEndIndex = tempName.firstIndex(of: ")") {
             let textStartIndex = tempName.index(areaParentheseStartIndex, offsetBy: 1)
@@ -67,7 +59,38 @@ extension Station : Decodable {
             area = ""
         }
         
-        name = tempName
+        return Station(name: tempName, area: area, id: id, lat: latitude, long: longitude)
+    }
+}
+
+struct StationSearchResult : Decodable {
+    let values: [SLStation]
+    enum StationCodingResultKey : String, CodingKey {
+        case values = "ResponseData"
+    
+    }
+    
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: StationCodingResultKey.self)
+        values = try container.decode([SLStation].self, forKey: .values)
+        
+    }
+}
+
+extension SLStation : Decodable {
+    enum StationKey : String, CodingKey {
+        case name = "Name"
+        case id = "SiteId"
+        case x = "X"
+        case y = "Y"
+    }
+    
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: StationKey.self)
+        name = try container.decode(String.self, forKey: .name)
+        id = try container.decode(String.self, forKey: .id)
+        x = try container.decode(String.self, forKey: .x)
+        y = try container.decode(String.self, forKey: .y)
     }
 }
 

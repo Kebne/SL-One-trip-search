@@ -12,13 +12,22 @@ import XCTest
 class UserJourneyControllerTests: XCTestCase {
     
     var sut: UserJourneyController!
+    var mockedPersistService: MockPersistService!
 
     override func setUp() {
-        sut = UserJourneyController()
+        mockedPersistService = MockPersistService(UserDefaults.standard)
+        sut = UserJourneyController(persistService: mockedPersistService)
     }
 
     override func tearDown() {
         sut = nil
+    }
+    
+    func test_callsRetreive_onPersistService() {
+        mockedPersistService.didCallRetreive = false
+        sut.attemptToRetreiveStoredJourney()
+        
+        XCTAssertTrue(mockedPersistService.didCallRetreive)
     }
 
     func test_noUserCreated_withoutAllStations() {
@@ -96,3 +105,25 @@ class UserJourneyControllerTests: XCTestCase {
     }
 
 }
+
+class MockPersistService : PersistServiceProtocol {
+    
+    var didCallRetreive = false
+    
+    func persist<T>(value: T, forKey key: String) where T : Encodable {
+        
+    }
+    
+    func retreive<T>(_ type: T.Type, valueForKey key: String) -> T? where T : Decodable {
+        didCallRetreive = true
+        return nil
+    }
+    
+    required init(_ userDefaults: UserDefaultProtocol) {
+        
+    }
+    
+    
+}
+
+

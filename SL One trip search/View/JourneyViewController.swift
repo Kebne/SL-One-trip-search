@@ -8,11 +8,21 @@
 
 import UIKit
 
-class JourneyViewController: UIViewController, StoryboardInstantiable {
+protocol JourneyViewControllerDelegate : AnyObject {
+    func didPressSettings()
+}
 
+class JourneyViewController: UIViewController, StoryboardInstantiable {
+    
+    weak var delegate: JourneyViewControllerDelegate?
+    
+    @IBAction func didPressSettingsButton(_ sender: UIBarButtonItem) {
+        delegate?.didPressSettings()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        
     }
 
 

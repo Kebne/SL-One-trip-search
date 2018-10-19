@@ -65,14 +65,13 @@ extension SearchViewController: UISearchResultsUpdating {
             guard let self = self else {return}
             switch result {
             case .success(let stationSearchResult):
-                self.dataSource.stations = stationSearchResult.values
+                self.dataSource.stations = stationSearchResult.values.map({$0.station})
             case .failure(_):
                 self.dataSource.stations = [Station]()
             }
             DispatchQueue.main.async {
                 self.searchTableView.reloadData()
             }
-            
         }
     }
 

@@ -9,6 +9,7 @@
 import UIKit
 
 protocol UserJourneyControllerProtocol {
+    func attemptToRetreiveStoredJourney()
     var userJourney: UserJourney? {get}
     var start: Station? {get set}
     var destination: Station? {get set}
@@ -18,6 +19,16 @@ protocol UserJourneyControllerProtocol {
 class UserJourneyController: UserJourneyControllerProtocol {
     
     var userJourney: UserJourney?
+    private let persistService: PersistServiceProtocol
+    private let userJourneyPersistKey = "userJourneyPersistKey"
+    
+    init(persistService: PersistServiceProtocol) {
+        self.persistService = persistService
+    }
+    
+    func attemptToRetreiveStoredJourney() {
+        userJourney = persistService.retreive(UserJourney.self, valueForKey: userJourneyPersistKey)
+    }
     
     var start: Station? {
         didSet {
@@ -71,6 +82,7 @@ class UserJourneyController: UserJourneyControllerProtocol {
     
     private func createUserJourney(start: Station, destination: Station, timeUntilSearch: Int, monitorStationProximity: Bool) {
         userJourney = UserJourney(start: start, destination: destination, minutesUntilSearch: timeUntilSearch, monitorStationProximity: monitorStationProximity)
+        persistService.persist(value: userJourney!, forKey: userJourneyPersistKey)
     }
     
     

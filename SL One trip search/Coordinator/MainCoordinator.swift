@@ -25,14 +25,11 @@ class MainCoordinator {
     func start() {
         
         let journeyViewController = viewControllerFactory.journeyViewController
-        // Later on we will set a state controller on this
-        rootNavigationController.pushViewController(viewControllerFactory.journeyViewController, animated: false)
-        
+        journeyViewController.delegate = self
+        rootNavigationController.pushViewController(journeyViewController, animated: false)
+
         if stateController.userJourneyController.userJourney == nil {
-            let settingsViewController = viewControllerFactory.settingsViewController
-            settingsViewController.stateController = self.stateController
-            settingsViewController.delegate = self
-            rootNavigationController.pushViewController(settingsViewController, animated: false)
+            showSettings(animated: false)
         }
         
         window.rootViewController = rootNavigationController
@@ -46,6 +43,13 @@ class MainCoordinator {
         stationSearchVC.stateController = stateController
         stationSearchVC.delegate = self
         rootNavigationController.pushViewController(stationSearchVC, animated: true)
+    }
+    
+    fileprivate func showSettings(animated: Bool = true) {
+        let settingsViewController = viewControllerFactory.settingsViewController
+        settingsViewController.stateController = self.stateController
+        settingsViewController.delegate = self
+        rootNavigationController.pushViewController(settingsViewController, animated: animated)
     }
 
 }
@@ -63,5 +67,11 @@ extension MainCoordinator : SettingsViewControllerDelegate {
 extension MainCoordinator : SearchViewControllerDelegate {
     func didSelectStation() {
         rootNavigationController.popViewController(animated: true)
+    }
+}
+
+extension MainCoordinator : JourneyViewControllerDelegate {
+    func didPressSettings() {
+        showSettings()
     }
 }

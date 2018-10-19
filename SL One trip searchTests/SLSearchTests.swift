@@ -48,6 +48,81 @@ class SLSearchTests: XCTestCase {
         }
         XCTAssertNotNil(response)
     }
+    
+    func test_handlesCorruptJSON_callbackWith_StationResult() {
+        
+        mockURLSession.correctJson = false
+        mockURLSession.error = nil
+        mockURLSession.response200 = true
+        
+        var response: StationSearchResult? = nil
+        var error: Error?
+        
+        guard let searchRequest = StationSearchRequest(searchString: "searchString") else {
+            XCTFail("Couldn't create search request.")
+            return
+        }
+        sut.searchWith(request: searchRequest) {result in
+            
+            switch result {
+            case .success(let stationRes): response = stationRes
+            case.failure(let requestError): error = requestError
+            }
+            
+        }
+        XCTAssertNotNil(error)
+        XCTAssertNil(response)
+    }
+    
+    func test_errorCallback_httpStatusCode_not200() {
+        
+        mockURLSession.correctJson = false
+        mockURLSession.error = nil
+        mockURLSession.response200 = false
+        
+        var response: StationSearchResult? = nil
+        var error: Error?
+        
+        guard let searchRequest = StationSearchRequest(searchString: "searchString") else {
+            XCTFail("Couldn't create search request.")
+            return
+        }
+        sut.searchWith(request: searchRequest) {result in
+            
+            switch result {
+            case .success(let stationRes): response = stationRes
+            case.failure(let requestError): error = requestError
+            }
+            
+        }
+        XCTAssertNotNil(error)
+        XCTAssertNil(response)
+    }
+    
+    func test_errorCallback_onCompletionError() {
+        
+        mockURLSession.correctJson = false
+        mockURLSession.error = EndpointError.corruptUrlError
+        mockURLSession.response200 = true
+        
+        var response: StationSearchResult? = nil
+        var error: Error?
+        
+        guard let searchRequest = StationSearchRequest(searchString: "searchString") else {
+            XCTFail("Couldn't create search request.")
+            return
+        }
+        sut.searchWith(request: searchRequest) {result in
+            
+            switch result {
+            case .success(let stationRes): response = stationRes
+            case.failure(let requestError): error = requestError
+            }
+            
+        }
+        XCTAssertNotNil(error)
+        XCTAssertNil(response)
+    }
 
 }
 
