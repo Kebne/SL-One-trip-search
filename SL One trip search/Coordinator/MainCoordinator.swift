@@ -26,6 +26,7 @@ class MainCoordinator {
         
         let journeyViewController = viewControllerFactory.journeyViewController
         journeyViewController.delegate = self
+        journeyViewController.viewModel = JourneyViewModel(stateController: stateController)
         rootNavigationController.pushViewController(journeyViewController, animated: false)
 
         if stateController.userJourneyController.userJourney == nil {
@@ -73,5 +74,13 @@ extension MainCoordinator : SearchViewControllerDelegate {
 extension MainCoordinator : JourneyViewControllerDelegate {
     func didPressSettings() {
         showSettings()
+    }
+    
+    func didPressEndStationButton() {
+        showSearchViewController(stationJourneyType: .destination)
+    }
+    
+    func didPressStartStationButton() {
+        showSearchViewController(stationJourneyType: .start)
     }
 }

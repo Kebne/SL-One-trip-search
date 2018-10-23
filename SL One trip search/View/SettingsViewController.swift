@@ -21,6 +21,7 @@ class SettingsViewController: UIViewController, StoryboardInstantiable {
     @IBOutlet weak var timeFromNowLabel: UILabel!
     @IBOutlet weak var timeSlider: UISlider!
     @IBOutlet weak var monitorSwitch: UISwitch!
+    @IBOutlet weak var timeUnitLabel: UILabel!
     
     weak var delegate: SettingsViewControllerDelegate?
     var stateController: StateControllerProtocol!
@@ -34,6 +35,7 @@ class SettingsViewController: UIViewController, StoryboardInstantiable {
             monitorSwitch.isOn = viewModel.monitorLocation
             monitorSwitch.isEnabled = viewModel.monitorLocationEnabled
             timeSlider.isEnabled = viewModel.timeSliderEnabled
+            timeUnitLabel.text = viewModel.timeUnit
         }
     }
 
@@ -87,6 +89,7 @@ extension SettingsViewController {
         let monitorLocation: Bool
         let monitorLocationEnabled: Bool
         let timeSliderEnabled: Bool
+        let timeUnit: String
         
         init() {
             originText = ""
@@ -95,6 +98,7 @@ extension SettingsViewController {
             monitorLocation = false
             monitorLocationEnabled = false
             timeSliderEnabled = false
+            timeUnit = "minuter."
         }
         
         init(userJourney: UserJourney?, tempStart: Station?, tempDestination: Station?) {
@@ -104,6 +108,7 @@ extension SettingsViewController {
             monitorLocation = Bool(userJourney?.monitorStationProximity ?? false)
             timeSliderEnabled = userJourney == nil ? false : true
             monitorLocationEnabled = userJourney == nil ? false : true
+            timeUnit = searchTimeFromNow == 1.0 ? "minut." : "minuter."
             
         }
     }

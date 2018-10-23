@@ -14,6 +14,7 @@ protocol UserJourneyControllerProtocol {
     var start: Station? {get set}
     var destination: Station? {get set}
     var timeFromNowUntilSearch: Int {get set}
+    func swapStations()
 }
 
 class UserJourneyController: UserJourneyControllerProtocol {
@@ -85,5 +86,13 @@ class UserJourneyController: UserJourneyControllerProtocol {
         persistService.persist(value: userJourney!, forKey: userJourneyPersistKey)
     }
     
+    
+    //MARK: Public
+    
+    func swapStations() {
+        if let current = userJourney {
+            createUserJourney(start: current.destination, destination: current.start, timeUntilSearch: current.minutesUntilSearch, monitorStationProximity: current.monitorStationProximity)
+        }
+    }
     
 }

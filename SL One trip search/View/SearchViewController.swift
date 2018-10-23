@@ -29,11 +29,19 @@ class SearchViewController: UIViewController {
         searchTableView.tableFooterView = UIView(frame: CGRect.zero)
         
         searchController.searchResultsUpdater = self
+        searchController.delegate = self
         searchController.obscuresBackgroundDuringPresentation = false
         searchController.searchBar.placeholder = "Sök station"
-        navigationItem.hidesSearchBarWhenScrolling = false
+        
+        //navigationItem.hidesSearchBarWhenScrolling = false
         navigationItem.searchController = searchController
         definesPresentationContext = true
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        searchController.isActive = true
+        
     }
 
 }
@@ -55,6 +63,21 @@ extension SearchViewController: UITableViewDelegate {
     }
 }
 
+extension SearchViewController : UISearchControllerDelegate {
+    func didPresentSearchController(_ searchController: UISearchController) {
+        searchController.searchBar.becomeFirstResponder()
+        if let journey = stateController.userJourneyController.userJourney {
+            switch stationJourneyType! {
+            case .start: searchController.searchBar.text = journey.start.name
+            case .destination: searchController.searchBar.text = journey.destination.name
+            }
+            
+        }
+    }
+    
+    
+}
+
 extension SearchViewController: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
         guard let searchText = searchController.searchBar.text, searchText.count > 0, let searchRequest = StationSearchRequest(searchString: searchText) else {
@@ -74,6 +97,8 @@ extension SearchViewController: UISearchResultsUpdating {
             }
         }
     }
+    
+    
 
 }
 
@@ -82,7 +107,12 @@ class SearchResultTableViewDataSource : NSObject, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let searchResultCell = tableView.dequeueReusableCell(withIdentifier: StationTableViewCell.reuseIdentifier, for: indexPath) as! StationTableViewCell
-        searchResultCell.viewModel = viewModels[indexPath.row]
+        if indexPath.row < viewModels.count {
+           searchResultCell.viewModel = viewModels[indexPath.row]
+        } else {
+            searchResultCell.viewModel = StationTableViewCell.ViewModel()
+        }
+        
         
         return searchResultCell
     }

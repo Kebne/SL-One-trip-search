@@ -19,7 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let persistService = PersistService()
         let userController = UserJourneyController(persistService: persistService)
         userController.attemptToRetreiveStoredJourney()
-        let stateController = StateController(userController: userController)
+        let stateController = StateController(userController: userController, journeyPlannerService: SearchService<SLJourneyPlanAPIResponse>())
         window = UIWindow(frame: UIScreen.main.bounds)
         let rootNavController = UINavigationController()
         let viewControllerFactory = ViewControllerFactoryClass(storyboard: UIStoryboard.main)

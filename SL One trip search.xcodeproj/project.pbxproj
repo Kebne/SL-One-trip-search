@@ -33,6 +33,16 @@
 		5135EFA22179FC830016AAD6 /* PersistService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5135EFA12179FC830016AAD6 /* PersistService.swift */; };
 		5135EFA4217A166B0016AAD6 /* StationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5135EFA3217A166B0016AAD6 /* StationTests.swift */; };
 		5135EFA6217A19250016AAD6 /* PersistServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5135EFA5217A19250016AAD6 /* PersistServiceTests.swift */; };
+		51C86CFE217DC62F000F5851 /* JourneyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51C86CFD217DC62F000F5851 /* JourneyTableViewCell.swift */; };
+		51C86D00217DD3A9000F5851 /* Trip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51C86CFF217DD3A9000F5851 /* Trip.swift */; };
+		51C86D02217DD3B3000F5851 /* Leg.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51C86D01217DD3B3000F5851 /* Leg.swift */; };
+		51C86D04217DD3BF000F5851 /* Origin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51C86D03217DD3BF000F5851 /* Origin.swift */; };
+		51C86D06217DD3C9000F5851 /* Destination.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51C86D05217DD3C9000F5851 /* Destination.swift */; };
+		51C86D08217DD3D9000F5851 /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51C86D07217DD3D9000F5851 /* Product.swift */; };
+		51C86D0A217DD543000F5851 /* SLJourneyPlanAPIResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51C86D09217DD543000F5851 /* SLJourneyPlanAPIResponse.swift */; };
+		51C86D0D217DD91F000F5851 /* ProductCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51C86D0C217DD91F000F5851 /* ProductCategory.swift */; };
+		51C86D0F217DF0F7000F5851 /* JourneyError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51C86D0E217DF0F7000F5851 /* JourneyError.swift */; };
+		51C86D11217F1319000F5851 /* JourneyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51C86D10217F1319000F5851 /* JourneyViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -85,6 +95,16 @@
 		5135EFA12179FC830016AAD6 /* PersistService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistService.swift; sourceTree = "<group>"; };
 		5135EFA3217A166B0016AAD6 /* StationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationTests.swift; sourceTree = "<group>"; };
 		5135EFA5217A19250016AAD6 /* PersistServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistServiceTests.swift; sourceTree = "<group>"; };
+		51C86CFD217DC62F000F5851 /* JourneyTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JourneyTableViewCell.swift; sourceTree = "<group>"; };
+		51C86CFF217DD3A9000F5851 /* Trip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Trip.swift; sourceTree = "<group>"; };
+		51C86D01217DD3B3000F5851 /* Leg.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Leg.swift; sourceTree = "<group>"; };
+		51C86D03217DD3BF000F5851 /* Origin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Origin.swift; sourceTree = "<group>"; };
+		51C86D05217DD3C9000F5851 /* Destination.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Destination.swift; sourceTree = "<group>"; };
+		51C86D07217DD3D9000F5851 /* Product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
+		51C86D09217DD543000F5851 /* SLJourneyPlanAPIResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SLJourneyPlanAPIResponse.swift; sourceTree = "<group>"; };
+		51C86D0C217DD91F000F5851 /* ProductCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductCategory.swift; sourceTree = "<group>"; };
+		51C86D0E217DF0F7000F5851 /* JourneyError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JourneyError.swift; sourceTree = "<group>"; };
+		51C86D10217F1319000F5851 /* JourneyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JourneyViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -177,7 +197,7 @@
 		5135EF7E217774330016AAD6 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				5135EF4E21776AB30016AAD6 /* JourneyViewController.swift */,
+				51C86D12217F1323000F5851 /* JourneyView */,
 				5135EF7C217774200016AAD6 /* SearchViewController.swift */,
 				5135EF7A217774110016AAD6 /* SettingsViewController.swift */,
 				5135EF912178BD8F0016AAD6 /* StationTableViewCell.swift */,
@@ -188,6 +208,7 @@
 		5135EF7F2177743B0016AAD6 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				51C86D0B217DD57F000F5851 /* Journey */,
 				5135EF8521777D420016AAD6 /* UserJourney.swift */,
 				5135EF8721777D820016AAD6 /* Station.swift */,
 			);
@@ -220,6 +241,31 @@
 				5135EF8D217780050016AAD6 /* ViewControllerFactory.swift */,
 			);
 			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		51C86D0B217DD57F000F5851 /* Journey */ = {
+			isa = PBXGroup;
+			children = (
+				51C86D01217DD3B3000F5851 /* Leg.swift */,
+				51C86D05217DD3C9000F5851 /* Destination.swift */,
+				51C86D03217DD3BF000F5851 /* Origin.swift */,
+				51C86D07217DD3D9000F5851 /* Product.swift */,
+				51C86D09217DD543000F5851 /* SLJourneyPlanAPIResponse.swift */,
+				51C86CFF217DD3A9000F5851 /* Trip.swift */,
+				51C86D0C217DD91F000F5851 /* ProductCategory.swift */,
+				51C86D0E217DF0F7000F5851 /* JourneyError.swift */,
+			);
+			path = Journey;
+			sourceTree = "<group>";
+		};
+		51C86D12217F1323000F5851 /* JourneyView */ = {
+			isa = PBXGroup;
+			children = (
+				51C86D10217F1319000F5851 /* JourneyViewModel.swift */,
+				51C86CFD217DC62F000F5851 /* JourneyTableViewCell.swift */,
+				5135EF4E21776AB30016AAD6 /* JourneyViewController.swift */,
+			);
+			path = JourneyView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -353,10 +399,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				51C86D02217DD3B3000F5851 /* Leg.swift in Sources */,
 				5135EF8C21777E790016AAD6 /* UserJourneyController.swift in Sources */,
+				51C86D06217DD3C9000F5851 /* Destination.swift in Sources */,
 				5135EF8E217780050016AAD6 /* ViewControllerFactory.swift in Sources */,
+				51C86D04217DD3BF000F5851 /* Origin.swift in Sources */,
 				5135EF4F21776AB30016AAD6 /* JourneyViewController.swift in Sources */,
 				5135EF982178CBBE0016AAD6 /* Environment.swift in Sources */,
+				51C86D11217F1319000F5851 /* JourneyViewModel.swift in Sources */,
+				51C86CFE217DC62F000F5851 /* JourneyTableViewCell.swift in Sources */,
+				51C86D0A217DD543000F5851 /* SLJourneyPlanAPIResponse.swift in Sources */,
 				5135EF922178BD8F0016AAD6 /* StationTableViewCell.swift in Sources */,
 				5135EF962178C8840016AAD6 /* SearchRequest.swift in Sources */,
 				5135EFA22179FC830016AAD6 /* PersistService.swift in Sources */,
@@ -366,8 +418,12 @@
 				5135EF842177747F0016AAD6 /* MainCoordinator.swift in Sources */,
 				5135EF8A21777E6B0016AAD6 /* StateController.swift in Sources */,
 				5135EF7B217774110016AAD6 /* SettingsViewController.swift in Sources */,
+				51C86D0D217DD91F000F5851 /* ProductCategory.swift in Sources */,
+				51C86D0F217DF0F7000F5851 /* JourneyError.swift in Sources */,
 				5135EF942178C8440016AAD6 /* SLSearch.swift in Sources */,
+				51C86D00217DD3A9000F5851 /* Trip.swift in Sources */,
 				5135EF8821777D820016AAD6 /* Station.swift in Sources */,
+				51C86D08217DD3D9000F5851 /* Product.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
