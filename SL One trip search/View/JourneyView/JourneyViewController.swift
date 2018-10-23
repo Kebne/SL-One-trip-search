@@ -27,6 +27,8 @@ class JourneyViewController: UIViewController, StoryboardInstantiable {
     @IBOutlet weak var timeunitLabel: UILabel!
     @IBOutlet weak var journeyTableView: UITableView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    private let refreshControl = UIRefreshControl()
+
 
     var stateController: StateControllerProtocol!
     var viewModel: JourneyViewModel!
@@ -40,6 +42,8 @@ class JourneyViewController: UIViewController, StoryboardInstantiable {
         journeyTableView.dataSource = self
         journeyTableView.delegate = self
         journeyTableView.tableFooterView = UIView(frame: CGRect.zero)
+        journeyTableView.refreshControl = refreshControl
+        refreshControl.addTarget(viewModel, action: #selector(viewModel.refreshControlDidRefresh), for: .valueChanged)
         viewModel.newJourneyClosure = {[weak self] in
             guard let self = self else {return}
             self.render()
@@ -57,8 +61,15 @@ class JourneyViewController: UIViewController, StoryboardInstantiable {
         destinationStationButton.setTitle(viewModel.destination, for: .normal)
         selectedTimeLabel.text = viewModel.time
         timeunitLabel.text = viewModel.timeUnit
-        activityIndicator.isHidden = !viewModel.showActivityIndicator
-        viewModel.showActivityIndicator ? activityIndicator.startAnimating() : activityIndicator.stopAnimating()
+        if !refreshControl.isRefreshing {
+            activityIndicator.isHidden = !viewModel.showActivityIndicator
+            viewModel.showActivityIndicator ? activityIndicator.startAnimating() : activityIndicator.stopAnimating()
+        }
+        if !viewModel.showActivityIndicator {
+            refreshControl.endRefreshing()
+        }
+
+        
         journeyTableView.reloadData()
         
     }

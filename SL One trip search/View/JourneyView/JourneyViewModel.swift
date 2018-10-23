@@ -64,20 +64,27 @@ class JourneyViewModel {
     
     //MARK: Action
     
+    @objc func refreshControlDidRefresh() {
+        fetchJourneyData()
+    }
+    
     func didPressSwapButton() {
         stateController.userJourneyController.swapStations()
         fetchJourneyData()
     }
     
-    //MARK: Fetch journey data
-    
     func viewWillAppear() {
-        categories.removeAll()
-        journeyViewModels.removeAll()
+        
         fetchJourneyData()
     }
     
+    //MARK: Fetch journey data
+    
+    
+    
     private func fetchJourneyData() {
+        categories.removeAll()
+        journeyViewModels.removeAll()
         showActivityIndicator = true
         notifyCallback()
         stateController.fetchTrips() {[weak self] result in
