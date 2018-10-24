@@ -41,6 +41,7 @@ class JourneyViewController: UIViewController, StoryboardInstantiable {
         journeyTableView.delegate = self
         journeyTableView.tableFooterView = UIView(frame: CGRect.zero)
         journeyTableView.refreshControl = refreshControl
+        journeyTableView.register(UINib.init(nibName: "JourneyTableViewCellView", bundle: nil), forCellReuseIdentifier: JourneyTableViewCell.reuseIdentifier)
         refreshControl.addTarget(self, action: #selector(refreshControllerDidRefresh), for: .valueChanged)
         viewModel.newJourneyClosure = {[weak self] in
             guard let self = self else {return}

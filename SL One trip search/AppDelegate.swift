@@ -16,7 +16,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        let persistService = PersistService()
+        let userDefaults = UserDefaults(suiteName: "group.container.kebne.slonetripsearch")!
+        let persistService = PersistService(userDefaults)
         let userController = UserJourneyController(persistService: persistService)
         userController.attemptToRetreiveStoredJourney()
         let stateController = StateController(userController: userController, journeyPlannerService: SearchService<SLJourneyPlanAPIResponse>())

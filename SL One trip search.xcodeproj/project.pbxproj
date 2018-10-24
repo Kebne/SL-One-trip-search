@@ -47,6 +47,31 @@
 		51C86D16217F6B9B000F5851 /* JourneyViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51C86D15217F6B9B000F5851 /* JourneyViewModelTests.swift */; };
 		51C86D1B21804CDB000F5851 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 51C86D1D21804CDB000F5851 /* Localizable.strings */; };
 		51C86D202180980E000F5851 /* JourneyViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51C86D1F2180980E000F5851 /* JourneyViewControllerTests.swift */; };
+		51C86D282180A128000F5851 /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 51C86D272180A128000F5851 /* NotificationCenter.framework */; };
+		51C86D2B2180A128000F5851 /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51C86D2A2180A128000F5851 /* TodayViewController.swift */; };
+		51C86D2E2180A128000F5851 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 51C86D2C2180A128000F5851 /* MainInterface.storyboard */; };
+		51C86D322180A128000F5851 /* NextDeparture.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 51C86D252180A128000F5851 /* NextDeparture.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		51C86D3E2180A884000F5851 /* JourneyTableViewCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 51C86D3D2180A884000F5851 /* JourneyTableViewCellView.xib */; };
+		51C86D3F2180A884000F5851 /* JourneyTableViewCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 51C86D3D2180A884000F5851 /* JourneyTableViewCellView.xib */; };
+		51C86D402180AEC6000F5851 /* PersistService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5135EFA12179FC830016AAD6 /* PersistService.swift */; };
+		51C86D412180AECA000F5851 /* StateController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5135EF8921777E6B0016AAD6 /* StateController.swift */; };
+		51C86D422180AECD000F5851 /* UserJourneyController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5135EF8B21777E790016AAD6 /* UserJourneyController.swift */; };
+		51C86D432180AED4000F5851 /* Leg.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51C86D01217DD3B3000F5851 /* Leg.swift */; };
+		51C86D442180AED9000F5851 /* Destination.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51C86D05217DD3C9000F5851 /* Destination.swift */; };
+		51C86D452180AEDF000F5851 /* Origin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51C86D03217DD3BF000F5851 /* Origin.swift */; };
+		51C86D462180AEE2000F5851 /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51C86D07217DD3D9000F5851 /* Product.swift */; };
+		51C86D472180AEE6000F5851 /* SLJourneyPlanAPIResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51C86D09217DD543000F5851 /* SLJourneyPlanAPIResponse.swift */; };
+		51C86D482180AEEC000F5851 /* Trip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51C86CFF217DD3A9000F5851 /* Trip.swift */; };
+		51C86D492180AEEF000F5851 /* ProductCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51C86D0C217DD91F000F5851 /* ProductCategory.swift */; };
+		51C86D4A2180AEF3000F5851 /* JourneyError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51C86D0E217DF0F7000F5851 /* JourneyError.swift */; };
+		51C86D4B2180AEF8000F5851 /* UserJourney.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5135EF8521777D420016AAD6 /* UserJourney.swift */; };
+		51C86D4C2180AEFC000F5851 /* Station.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5135EF8721777D820016AAD6 /* Station.swift */; };
+		51C86D4D2180AF01000F5851 /* SLSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5135EF932178C8440016AAD6 /* SLSearch.swift */; };
+		51C86D4E2180AF05000F5851 /* SearchRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5135EF952178C8830016AAD6 /* SearchRequest.swift */; };
+		51C86D4F2180AF13000F5851 /* JourneyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51C86CFD217DC62F000F5851 /* JourneyTableViewCell.swift */; };
+		51C86D502180AF64000F5851 /* JourneyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51C86D10217F1319000F5851 /* JourneyViewModel.swift */; };
+		51C86D512180B018000F5851 /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5135EF972178CBBE0016AAD6 /* Environment.swift */; };
+		51C86D542180B391000F5851 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 51C86D2C2180A128000F5851 /* MainInterface.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,7 +89,28 @@
 			remoteGlobalIDString = 5135EF4821776AB30016AAD6;
 			remoteInfo = "SL One trip search";
 		};
+		51C86D302180A128000F5851 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5135EF4121776AB30016AAD6 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 51C86D242180A128000F5851;
+			remoteInfo = NextDeparture;
+		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		51C86D362180A128000F5851 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				51C86D322180A128000F5851 /* NextDeparture.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		5135EF4921776AB30016AAD6 /* SL One trip search.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SL One trip search.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -116,6 +162,14 @@
 		51C86D1C21804CDB000F5851 /* sv */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sv; path = sv.lproj/Localizable.strings; sourceTree = "<group>"; };
 		51C86D1E2180547A000F5851 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		51C86D1F2180980E000F5851 /* JourneyViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JourneyViewControllerTests.swift; sourceTree = "<group>"; };
+		51C86D252180A128000F5851 /* NextDeparture.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = NextDeparture.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		51C86D272180A128000F5851 /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
+		51C86D2A2180A128000F5851 /* TodayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewController.swift; sourceTree = "<group>"; };
+		51C86D2D2180A128000F5851 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
+		51C86D2F2180A128000F5851 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		51C86D3D2180A884000F5851 /* JourneyTableViewCellView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = JourneyTableViewCellView.xib; sourceTree = "<group>"; };
+		51C86D522180B083000F5851 /* SL One trip search.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "SL One trip search.entitlements"; sourceTree = "<group>"; };
+		51C86D532180B0CA000F5851 /* NextDeparture.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = NextDeparture.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -140,6 +194,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		51C86D222180A128000F5851 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				51C86D282180A128000F5851 /* NotificationCenter.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -150,6 +212,8 @@
 				5135EF4B21776AB30016AAD6 /* SL One trip search */,
 				5135EF6021776AB50016AAD6 /* SL One trip searchTests */,
 				5135EF6B21776AB60016AAD6 /* SL One trip searchUITests */,
+				51C86D292180A128000F5851 /* NextDeparture */,
+				51C86D262180A128000F5851 /* Frameworks */,
 				5135EF4A21776AB30016AAD6 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -160,6 +224,7 @@
 				5135EF4921776AB30016AAD6 /* SL One trip search.app */,
 				5135EF5D21776AB50016AAD6 /* SL One trip searchTests.xctest */,
 				5135EF6821776AB60016AAD6 /* SL One trip searchUITests.xctest */,
+				51C86D252180A128000F5851 /* NextDeparture.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -167,6 +232,7 @@
 		5135EF4B21776AB30016AAD6 /* SL One trip search */ = {
 			isa = PBXGroup;
 			children = (
+				51C86D522180B083000F5851 /* SL One trip search.entitlements */,
 				5135EF82217774610016AAD6 /* Coordinator */,
 				5135EF81217774540016AAD6 /* Service */,
 				5135EF802177744D0016AAD6 /* Controller */,
@@ -279,8 +345,28 @@
 				51C86D10217F1319000F5851 /* JourneyViewModel.swift */,
 				51C86CFD217DC62F000F5851 /* JourneyTableViewCell.swift */,
 				5135EF4E21776AB30016AAD6 /* JourneyViewController.swift */,
+				51C86D3D2180A884000F5851 /* JourneyTableViewCellView.xib */,
 			);
 			path = JourneyView;
+			sourceTree = "<group>";
+		};
+		51C86D262180A128000F5851 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				51C86D272180A128000F5851 /* NotificationCenter.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		51C86D292180A128000F5851 /* NextDeparture */ = {
+			isa = PBXGroup;
+			children = (
+				51C86D532180B0CA000F5851 /* NextDeparture.entitlements */,
+				51C86D2A2180A128000F5851 /* TodayViewController.swift */,
+				51C86D2C2180A128000F5851 /* MainInterface.storyboard */,
+				51C86D2F2180A128000F5851 /* Info.plist */,
+			);
+			path = NextDeparture;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -293,10 +379,12 @@
 				5135EF4521776AB30016AAD6 /* Sources */,
 				5135EF4621776AB30016AAD6 /* Frameworks */,
 				5135EF4721776AB30016AAD6 /* Resources */,
+				51C86D362180A128000F5851 /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				51C86D312180A128000F5851 /* PBXTargetDependency */,
 			);
 			name = "SL One trip search";
 			productName = "SL One trip search";
@@ -339,6 +427,23 @@
 			productReference = 5135EF6821776AB60016AAD6 /* SL One trip searchUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
+		51C86D242180A128000F5851 /* NextDeparture */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 51C86D352180A128000F5851 /* Build configuration list for PBXNativeTarget "NextDeparture" */;
+			buildPhases = (
+				51C86D212180A128000F5851 /* Sources */,
+				51C86D222180A128000F5851 /* Frameworks */,
+				51C86D232180A128000F5851 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = NextDeparture;
+			productName = NextDeparture;
+			productReference = 51C86D252180A128000F5851 /* NextDeparture.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -351,6 +456,11 @@
 				TargetAttributes = {
 					5135EF4821776AB30016AAD6 = {
 						CreatedOnToolsVersion = 10.0;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+						};
 					};
 					5135EF5C21776AB50016AAD6 = {
 						CreatedOnToolsVersion = 10.0;
@@ -359,6 +469,14 @@
 					5135EF6721776AB60016AAD6 = {
 						CreatedOnToolsVersion = 10.0;
 						TestTargetID = 5135EF4821776AB30016AAD6;
+					};
+					51C86D242180A128000F5851 = {
+						CreatedOnToolsVersion = 10.0;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -378,6 +496,7 @@
 				5135EF4821776AB30016AAD6 /* SL One trip search */,
 				5135EF5C21776AB50016AAD6 /* SL One trip searchTests */,
 				5135EF6721776AB60016AAD6 /* SL One trip searchUITests */,
+				51C86D242180A128000F5851 /* NextDeparture */,
 			);
 		};
 /* End PBXProject section */
@@ -388,7 +507,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				5135EF5721776AB50016AAD6 /* LaunchScreen.storyboard in Resources */,
+				51C86D542180B391000F5851 /* MainInterface.storyboard in Resources */,
 				51C86D1B21804CDB000F5851 /* Localizable.strings in Resources */,
+				51C86D3E2180A884000F5851 /* JourneyTableViewCellView.xib in Resources */,
 				5135EF5421776AB50016AAD6 /* Assets.xcassets in Resources */,
 				5135EF5221776AB30016AAD6 /* Main.storyboard in Resources */,
 			);
@@ -405,6 +526,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		51C86D232180A128000F5851 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				51C86D2E2180A128000F5851 /* MainInterface.storyboard in Resources */,
+				51C86D3F2180A884000F5851 /* JourneyTableViewCellView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -468,6 +598,32 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		51C86D212180A128000F5851 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				51C86D482180AEEC000F5851 /* Trip.swift in Sources */,
+				51C86D4D2180AF01000F5851 /* SLSearch.swift in Sources */,
+				51C86D402180AEC6000F5851 /* PersistService.swift in Sources */,
+				51C86D462180AEE2000F5851 /* Product.swift in Sources */,
+				51C86D422180AECD000F5851 /* UserJourneyController.swift in Sources */,
+				51C86D442180AED9000F5851 /* Destination.swift in Sources */,
+				51C86D412180AECA000F5851 /* StateController.swift in Sources */,
+				51C86D4C2180AEFC000F5851 /* Station.swift in Sources */,
+				51C86D432180AED4000F5851 /* Leg.swift in Sources */,
+				51C86D4A2180AEF3000F5851 /* JourneyError.swift in Sources */,
+				51C86D2B2180A128000F5851 /* TodayViewController.swift in Sources */,
+				51C86D492180AEEF000F5851 /* ProductCategory.swift in Sources */,
+				51C86D4F2180AF13000F5851 /* JourneyTableViewCell.swift in Sources */,
+				51C86D502180AF64000F5851 /* JourneyViewModel.swift in Sources */,
+				51C86D472180AEE6000F5851 /* SLJourneyPlanAPIResponse.swift in Sources */,
+				51C86D512180B018000F5851 /* Environment.swift in Sources */,
+				51C86D4E2180AF05000F5851 /* SearchRequest.swift in Sources */,
+				51C86D452180AEDF000F5851 /* Origin.swift in Sources */,
+				51C86D4B2180AEF8000F5851 /* UserJourney.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -480,6 +636,11 @@
 			isa = PBXTargetDependency;
 			target = 5135EF4821776AB30016AAD6 /* SL One trip search */;
 			targetProxy = 5135EF6921776AB60016AAD6 /* PBXContainerItemProxy */;
+		};
+		51C86D312180A128000F5851 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 51C86D242180A128000F5851 /* NextDeparture */;
+			targetProxy = 51C86D302180A128000F5851 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -509,6 +670,14 @@
 				51C86D1E2180547A000F5851 /* en */,
 			);
 			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+		51C86D2C2180A128000F5851 /* MainInterface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				51C86D2D2180A128000F5851 /* Base */,
+			);
+			name = MainInterface.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -635,7 +804,9 @@
 		5135EF7221776AB60016AAD6 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "SL One trip search/SL One trip search.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2TLM57CUQ3;
 				INFOPLIST_FILE = "SL One trip search/Info.plist";
@@ -653,7 +824,9 @@
 		5135EF7321776AB60016AAD6 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "SL One trip search/SL One trip search.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2TLM57CUQ3;
 				INFOPLIST_FILE = "SL One trip search/Info.plist";
@@ -750,6 +923,46 @@
 			};
 			name = Release;
 		};
+		51C86D332180A128000F5851 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = NextDeparture/NextDeparture.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 2TLM57CUQ3;
+				INFOPLIST_FILE = NextDeparture/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.kebne.SL-One-trip-search.NextDeparture";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		51C86D342180A128000F5851 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = NextDeparture/NextDeparture.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 2TLM57CUQ3;
+				INFOPLIST_FILE = NextDeparture/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.kebne.SL-One-trip-search.NextDeparture";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -785,6 +998,15 @@
 			buildConfigurations = (
 				5135EF7821776AB60016AAD6 /* Debug */,
 				5135EF7921776AB60016AAD6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		51C86D352180A128000F5851 /* Build configuration list for PBXNativeTarget "NextDeparture" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				51C86D332180A128000F5851 /* Debug */,
+				51C86D342180A128000F5851 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
