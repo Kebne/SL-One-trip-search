@@ -136,6 +136,13 @@ class JourneyViewModelTests: XCTestCase {
         XCTAssertEqual(expectedNrOfRowsSection1, nrOFRowsSection1)
     }
     
+    func test_swapStation_delegatesCall() {
+        mockUserJourneyController.didCallSwapStations = false
+        sut.didPressSwapButton()
+        
+        XCTAssertTrue(mockUserJourneyController.didCallSwapStations)
+    }
+    
     
     func test_journeyViewModel_correctPropertiesFrom_trip() {
         let directionName = "Direction"
@@ -185,6 +192,8 @@ class MockStateController : StateControllerProtocol {
 }
 
 class MockUserJourneyController : UserJourneyControllerProtocol {
+    var didCallSwapStations = false
+    
     func attemptToRetreiveStoredJourney() {
         
     }
@@ -198,7 +207,7 @@ class MockUserJourneyController : UserJourneyControllerProtocol {
     var timeFromNowUntilSearch: Int = 0
     
     func swapStations() {
-        
+        didCallSwapStations = true
     }
     
     

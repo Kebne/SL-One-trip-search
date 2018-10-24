@@ -8,7 +8,22 @@
 
 import Foundation
 
-class JourneyViewModel {
+protocol JourneyPresentable {
+    var start: String {get}
+    var destination: String {get}
+    var timeString: String {get}
+    var showActivityIndicator: Bool {get}
+    var newJourneyClosure: (()->Void)? {get set}
+    var nrOfSections: Int {get}
+    func cellModelFor(indexPath: IndexPath) ->JourneyTableViewCell.ViewModel
+    func nrOfRowsIn(section: Int) ->Int
+    func titleFor(section: Int) ->String?
+    func refreshControlDidRefresh()
+    func didPressSwapButton()
+    func viewWillAppear()
+}
+
+class JourneyViewModel : JourneyPresentable {
     var start: String {
         return stateController.userJourneyController.userJourney?.start.name ?? ""
     }
@@ -67,7 +82,7 @@ class JourneyViewModel {
     
     //MARK: Action
     
-    @objc func refreshControlDidRefresh() {
+    func refreshControlDidRefresh() {
         fetchJourneyData()
     }
     
@@ -77,14 +92,11 @@ class JourneyViewModel {
     }
     
     func viewWillAppear() {
-        
         fetchJourneyData()
     }
     
     //MARK: Fetch journey data
-    
-    
-    
+
     private func fetchJourneyData() {
         categories.removeAll()
         journeyViewModels.removeAll()
@@ -93,7 +105,7 @@ class JourneyViewModel {
         stateController.fetchTrips() {[weak self] result in
             guard let self = self else {return}
             switch result {
-            case .success(let response): self.handleAPI(response: response)
+            case .success(let response): self.createTableViewDataFrom(response: response)
             case .failure(let error): print("Error fetching trips: \(error)")
             }
             self.showActivityIndicator = false
@@ -101,7 +113,7 @@ class JourneyViewModel {
         }
     }
     
-    private func handleAPI(response: SLJourneyPlanAPIResponse) {
+    private func createTableViewDataFrom(response: SLJourneyPlanAPIResponse) {
         let firstLegs = response.trips.sorted(by: {$0.duration < $1.duration}).reduce([Leg]()) {legs, nextTrip in
             if let nextLeg = nextTrip.legList.first(where: {$0.id == 0}), nextLeg.direction.count > 0 && nextLeg.product.line.count > 0 {
                 return legs + [nextLeg]

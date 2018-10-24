@@ -38,12 +38,10 @@ class JourneyTableViewCell: UITableViewCell {
     
     var viewModel: ViewModel = ViewModel() {
         didSet {
-      
             lineNumberText.text = viewModel.lineNumber
             destinationLabel.text = viewModel.destination
             trackLabel.text = viewModel.track
             timeLabel.text = viewModel.time
-            //lineNumberText.textContainerInset = UIEdgeInsets.init(top: 3.0, left: 3.0, bottom: 3.0, right: 3.0)
             trackLabel.isHidden = !viewModel.showTrack
             lineNumberText.backgroundColor = viewModel.categoryColor
             journeyStatsLabel.text = viewModel.journeyStats
@@ -87,21 +85,24 @@ extension JourneyTableViewCell {
         }
         
         init(trip: Trip) {
-            if let firstLeg = trip.legList.first(where: {$0.id == 0}) {
-                self.init(leg: firstLeg)
-                let nrOfSwitches = trip.legList.filter({$0.product.category != .unknown}).count - 1
-                var switchesString = ""
-                switch nrOfSwitches {
-                case 0: switchesString = Strings.noChanges
-                case 1: switchesString = Strings.oneChange
-                default: switchesString = String(format: Strings.multipleChanges, "\(nrOfSwitches)")
-                }
-                let timeString = String(format: Strings.timeString, "\(Int(trip.duration / 60.0))")
-                self.journeyStats = timeString + ", " + switchesString
-            } else {
+            guard let firstLeg = trip.legList.first(where: {$0.id == 0}) else {
                 self.init()
+                return
             }
-            
+            self.init(leg: firstLeg)
+            let nrOfTripChanges = trip.legList.filter({$0.product.category != .unknown}).count - 1
+            self.journeyStats = statsStringFrom(nrOfTripChanges: nrOfTripChanges, duration: trip.duration)
+        }
+        
+        private func statsStringFrom(nrOfTripChanges: Int, duration: TimeInterval) ->String {
+            var tripChangesString = ""
+            switch nrOfTripChanges {
+            case 0: tripChangesString = Strings.noChanges
+            case 1: tripChangesString = Strings.oneChange
+            default: tripChangesString = String(format: Strings.multipleChanges, "\(nrOfTripChanges)")
+            }
+            let durationString = String(format: Strings.durationString, "\(Int(duration / 60.0))")
+            return durationString + ", " + tripChangesString
         }
     }
 }
@@ -111,6 +112,6 @@ extension JourneyTableViewCell.ViewModel {
         static let noChanges = NSLocalizedString("journeyView.journeyStats.noChanges", comment: "")
         static let oneChange = NSLocalizedString("journeyView.journeyStats.oneChange", comment: "")
         static let multipleChanges = NSLocalizedString("journeyView.journeyStats.multipleChanges", comment: "")
-        static let timeString = NSLocalizedString("journeyView.journeyStats.travelTime", comment: "")
+        static let durationString = NSLocalizedString("journeyView.journeyStats.travelTime", comment: "")
     }
 }

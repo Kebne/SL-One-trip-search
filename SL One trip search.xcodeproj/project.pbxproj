@@ -46,6 +46,7 @@
 		51C86D14217F52A0000F5851 /* JourneySearchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51C86D13217F52A0000F5851 /* JourneySearchTests.swift */; };
 		51C86D16217F6B9B000F5851 /* JourneyViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51C86D15217F6B9B000F5851 /* JourneyViewModelTests.swift */; };
 		51C86D1B21804CDB000F5851 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 51C86D1D21804CDB000F5851 /* Localizable.strings */; };
+		51C86D202180980E000F5851 /* JourneyViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51C86D1F2180980E000F5851 /* JourneyViewControllerTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -114,6 +115,7 @@
 		51C86D1821804C34000F5851 /* sv */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sv; path = sv.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		51C86D1C21804CDB000F5851 /* sv */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sv; path = sv.lproj/Localizable.strings; sourceTree = "<group>"; };
 		51C86D1E2180547A000F5851 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		51C86D1F2180980E000F5851 /* JourneyViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JourneyViewControllerTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -193,6 +195,7 @@
 				5135EFA5217A19250016AAD6 /* PersistServiceTests.swift */,
 				51C86D13217F52A0000F5851 /* JourneySearchTests.swift */,
 				51C86D15217F6B9B000F5851 /* JourneyViewModelTests.swift */,
+				51C86D1F2180980E000F5851 /* JourneyViewControllerTests.swift */,
 			);
 			path = "SL One trip searchTests";
 			sourceTree = "<group>";
@@ -448,6 +451,7 @@
 				5135EFA02178E04F0016AAD6 /* SLSearchTests.swift in Sources */,
 				5135EF90217887510016AAD6 /* UserJourneyControllerTests.swift in Sources */,
 				51C86D16217F6B9B000F5851 /* JourneyViewModelTests.swift in Sources */,
+				51C86D202180980E000F5851 /* JourneyViewControllerTests.swift in Sources */,
 				5135EF9E2178D9560016AAD6 /* SearchRequestTest.swift in Sources */,
 				5135EFA6217A19250016AAD6 /* PersistServiceTests.swift in Sources */,
 				5135EF6221776AB50016AAD6 /* SL_One_trip_searchTests.swift in Sources */,

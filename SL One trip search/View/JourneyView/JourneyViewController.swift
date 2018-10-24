@@ -14,8 +14,6 @@ protocol JourneyViewControllerDelegate : AnyObject {
     func didPressEndStationButton()
 }
 
-
-
 class JourneyViewController: UIViewController, StoryboardInstantiable {
     
     weak var delegate: JourneyViewControllerDelegate?
@@ -31,7 +29,7 @@ class JourneyViewController: UIViewController, StoryboardInstantiable {
 
 
     var stateController: StateControllerProtocol!
-    var viewModel: JourneyViewModel!
+    var viewModel: JourneyPresentable!
     
     @IBAction func didPressSettingsButton(_ sender: UIBarButtonItem) {
         delegate?.didPressSettings()
@@ -43,7 +41,7 @@ class JourneyViewController: UIViewController, StoryboardInstantiable {
         journeyTableView.delegate = self
         journeyTableView.tableFooterView = UIView(frame: CGRect.zero)
         journeyTableView.refreshControl = refreshControl
-        refreshControl.addTarget(viewModel, action: #selector(viewModel.refreshControlDidRefresh), for: .valueChanged)
+        refreshControl.addTarget(self, action: #selector(refreshControllerDidRefresh), for: .valueChanged)
         viewModel.newJourneyClosure = {[weak self] in
             guard let self = self else {return}
             self.render()
@@ -67,13 +65,15 @@ class JourneyViewController: UIViewController, StoryboardInstantiable {
         if !viewModel.showActivityIndicator {
             refreshControl.endRefreshing()
         }
-
-        
+  
         journeyTableView.reloadData()
-        
     }
     
     //MARK: Action
+    
+    @objc private func refreshControllerDidRefresh() {
+        viewModel.refreshControlDidRefresh()
+    }
     
     @IBAction func didTapStartStationButton() {
         delegate?.didPressStartStationButton()
