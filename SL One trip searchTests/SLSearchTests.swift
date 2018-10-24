@@ -27,7 +27,7 @@ class SLSearchTests: XCTestCase {
     
     func test_handlesCorrectJSON_callbackWith_StationResult() {
         
-        mockURLSession.correctJson = true
+        mockURLSession.jsonString = StubGenerator.correctStationJSONString
         mockURLSession.error = nil
         mockURLSession.response200 = true
         
@@ -51,7 +51,7 @@ class SLSearchTests: XCTestCase {
     
     func test_handlesCorruptJSON_callbackWith_StationResult() {
         
-        mockURLSession.correctJson = false
+        mockURLSession.jsonString = StubGenerator.brokenStationJSONString
         mockURLSession.error = nil
         mockURLSession.response200 = true
         
@@ -76,7 +76,7 @@ class SLSearchTests: XCTestCase {
     
     func test_errorCallback_httpStatusCode_not200() {
         
-        mockURLSession.correctJson = false
+        mockURLSession.jsonString = nil
         mockURLSession.error = nil
         mockURLSession.response200 = false
         
@@ -101,7 +101,7 @@ class SLSearchTests: XCTestCase {
     
     func test_errorCallback_onCompletionError() {
         
-        mockURLSession.correctJson = false
+        mockURLSession.jsonString = StubGenerator.brokenStationJSONString
         mockURLSession.error = EndpointError.corruptUrlError
         mockURLSession.response200 = true
         
@@ -128,18 +128,19 @@ class SLSearchTests: XCTestCase {
 
 class MockURLSession : URLSessionProtocol {
 
-    var correctJson: Bool = true
     var response200: Bool = true
     var error: Error?
+    var jsonString: String?
 
     func dataTask(with request: URLRequest, completion: @escaping (Data?, URLResponse?, Error?) -> Void) -> URLSessionDataTaskProtocol {
         let statusCode = response200 ? 200 : 400
         let urlResponse = HTTPURLResponse(url: request.url!, statusCode: statusCode, httpVersion: nil, headerFields: nil)
         
-        let jsonData = correctJson ? StubGenerator.correctStationJSONString.data(using: .utf8) : StubGenerator.brokenStationJSONString.data(using: .utf8)
+        var jsonData: Data? = nil
+        if let jsonString = jsonString {
+            jsonData = jsonString.data(using: .utf8)
+        }
         completion(jsonData, urlResponse, error)
-        
-        
         return MockURLSessionDataTask()
     }
 }

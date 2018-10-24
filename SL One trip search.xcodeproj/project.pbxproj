@@ -43,6 +43,9 @@
 		51C86D0D217DD91F000F5851 /* ProductCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51C86D0C217DD91F000F5851 /* ProductCategory.swift */; };
 		51C86D0F217DF0F7000F5851 /* JourneyError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51C86D0E217DF0F7000F5851 /* JourneyError.swift */; };
 		51C86D11217F1319000F5851 /* JourneyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51C86D10217F1319000F5851 /* JourneyViewModel.swift */; };
+		51C86D14217F52A0000F5851 /* JourneySearchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51C86D13217F52A0000F5851 /* JourneySearchTests.swift */; };
+		51C86D16217F6B9B000F5851 /* JourneyViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51C86D15217F6B9B000F5851 /* JourneyViewModelTests.swift */; };
+		51C86D1B21804CDB000F5851 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 51C86D1D21804CDB000F5851 /* Localizable.strings */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -105,6 +108,12 @@
 		51C86D0C217DD91F000F5851 /* ProductCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductCategory.swift; sourceTree = "<group>"; };
 		51C86D0E217DF0F7000F5851 /* JourneyError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JourneyError.swift; sourceTree = "<group>"; };
 		51C86D10217F1319000F5851 /* JourneyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JourneyViewModel.swift; sourceTree = "<group>"; };
+		51C86D13217F52A0000F5851 /* JourneySearchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JourneySearchTests.swift; sourceTree = "<group>"; };
+		51C86D15217F6B9B000F5851 /* JourneyViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JourneyViewModelTests.swift; sourceTree = "<group>"; };
+		51C86D1721804C34000F5851 /* sv */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sv; path = sv.lproj/Main.strings; sourceTree = "<group>"; };
+		51C86D1821804C34000F5851 /* sv */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sv; path = sv.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		51C86D1C21804CDB000F5851 /* sv */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sv; path = sv.lproj/Localizable.strings; sourceTree = "<group>"; };
+		51C86D1E2180547A000F5851 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -166,6 +175,7 @@
 				5135EF5321776AB50016AAD6 /* Assets.xcassets */,
 				5135EF5521776AB50016AAD6 /* LaunchScreen.storyboard */,
 				5135EF5821776AB50016AAD6 /* Info.plist */,
+				51C86D1D21804CDB000F5851 /* Localizable.strings */,
 			);
 			path = "SL One trip search";
 			sourceTree = "<group>";
@@ -181,6 +191,8 @@
 				5135EF9F2178E04F0016AAD6 /* SLSearchTests.swift */,
 				5135EFA3217A166B0016AAD6 /* StationTests.swift */,
 				5135EFA5217A19250016AAD6 /* PersistServiceTests.swift */,
+				51C86D13217F52A0000F5851 /* JourneySearchTests.swift */,
+				51C86D15217F6B9B000F5851 /* JourneyViewModelTests.swift */,
 			);
 			path = "SL One trip searchTests";
 			sourceTree = "<group>";
@@ -373,6 +385,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5135EF5721776AB50016AAD6 /* LaunchScreen.storyboard in Resources */,
+				51C86D1B21804CDB000F5851 /* Localizable.strings in Resources */,
 				5135EF5421776AB50016AAD6 /* Assets.xcassets in Resources */,
 				5135EF5221776AB30016AAD6 /* Main.storyboard in Resources */,
 			);
@@ -431,8 +444,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				51C86D14217F52A0000F5851 /* JourneySearchTests.swift in Sources */,
 				5135EFA02178E04F0016AAD6 /* SLSearchTests.swift in Sources */,
 				5135EF90217887510016AAD6 /* UserJourneyControllerTests.swift in Sources */,
+				51C86D16217F6B9B000F5851 /* JourneyViewModelTests.swift in Sources */,
 				5135EF9E2178D9560016AAD6 /* SearchRequestTest.swift in Sources */,
 				5135EFA6217A19250016AAD6 /* PersistServiceTests.swift in Sources */,
 				5135EF6221776AB50016AAD6 /* SL_One_trip_searchTests.swift in Sources */,
@@ -469,6 +484,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				5135EF5121776AB30016AAD6 /* Base */,
+				51C86D1721804C34000F5851 /* sv */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -477,8 +493,18 @@
 			isa = PBXVariantGroup;
 			children = (
 				5135EF5621776AB50016AAD6 /* Base */,
+				51C86D1821804C34000F5851 /* sv */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		51C86D1D21804CDB000F5851 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				51C86D1C21804CDB000F5851 /* sv */,
+				51C86D1E2180547A000F5851 /* en */,
+			);
+			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -488,6 +514,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -549,6 +576,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";

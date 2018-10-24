@@ -77,13 +77,13 @@ enum ProductCategory : String {
 extension ProductCategory : CustomStringConvertible {
     var description : String {
         switch self {
-        case .bus: return "Buss"
-        case .metro: return "Tunnelbana"
-        case .ferry: return "Färja"
-        case .ship: return "Båt"
-        case .train: return "Pendeltåg"
-        case .tram: return "Spårvagn/lokalbana"
-        case .unknown: return "Okänt färdessätt"
+        case .bus: return NSLocalizedString("product.bus.categoryName", comment: "")
+        case .metro: return NSLocalizedString("product.metro.categoryName", comment: "")
+        case .ferry: return NSLocalizedString("product.ferry.categoryName", comment: "")
+        case .ship: return NSLocalizedString("product.ship.categoryName", comment: "")
+        case .train: return NSLocalizedString("product.train.categoryName", comment: "")
+        case .tram: return NSLocalizedString("product.tram.categoryName", comment: "")
+        case .unknown: return NSLocalizedString("product.unknown.categoryName", comment: "")
         }
     }
 }

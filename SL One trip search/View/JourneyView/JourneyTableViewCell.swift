@@ -16,10 +16,10 @@ extension Date {
             dateFormatter.dateFormat = "HH:mm"
             return dateFormatter.string(from: self)
         } else if abs(self.timeIntervalSinceNow) <= 60 {
-            return "nu"
+            return NSLocalizedString("nu", comment: "")
         }
         
-        return "\(Int(abs(self.timeIntervalSinceNow) / 60.0)) min"
+        return "\(Int(abs(self.timeIntervalSinceNow) / 60.0)) " + NSLocalizedString("min", comment: "")
         
     }
 }
@@ -92,15 +92,25 @@ extension JourneyTableViewCell {
                 let nrOfSwitches = trip.legList.filter({$0.product.category != .unknown}).count - 1
                 var switchesString = ""
                 switch nrOfSwitches {
-                case 0: switchesString = "inga byten."
-                case 1: switchesString = "1 byte"
-                default: switchesString = "\(nrOfSwitches) byten."
+                case 0: switchesString = Strings.noChanges
+                case 1: switchesString = Strings.oneChange
+                default: switchesString = String(format: Strings.multipleChanges, "\(nrOfSwitches)")
                 }
-                self.journeyStats = "Restid: \(Int(trip.duration / 60.0)) min, " + switchesString
+                let timeString = String(format: Strings.timeString, "\(Int(trip.duration / 60.0))")
+                self.journeyStats = timeString + ", " + switchesString
             } else {
                 self.init()
             }
             
         }
+    }
+}
+
+extension JourneyTableViewCell.ViewModel {
+    enum Strings {
+        static let noChanges = NSLocalizedString("journeyView.journeyStats.noChanges", comment: "")
+        static let oneChange = NSLocalizedString("journeyView.journeyStats.oneChange", comment: "")
+        static let multipleChanges = NSLocalizedString("journeyView.journeyStats.multipleChanges", comment: "")
+        static let timeString = NSLocalizedString("journeyView.journeyStats.travelTime", comment: "")
     }
 }

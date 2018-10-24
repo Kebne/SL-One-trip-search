@@ -1,0 +1,72 @@
+
+/* Class = "UILabel"; text = "Visar resor tidigast om"; ObjectID = "4to-wh-gCG"; */
+"4to-wh-gCG.text" = "Visar resor tidigast om";
+
+/* Class = "UILabel"; text = "Restid 10 min, inga byten"; ObjectID = "5A5-SD-71t"; */
+"5A5-SD-71t.text" = "Restid 10 min, inga byten";
+
+/* Class = "UIButton"; normalTitle = "Start"; ObjectID = "8Yx-UF-482"; */
+"8Yx-UF-482.normalTitle" = "Start";
+
+/* Class = "UILabel"; text = "Från:"; ObjectID = "8bu-AC-unZ"; */
+"8bu-AC-unZ.text" = "Från:";
+
+/* Class = "UILabel"; text = "H"; ObjectID = "9kh-1g-VfS"; */
+"9kh-1g-VfS.text" = "H";
+
+/* Class = "UITextView"; text = "4"; ObjectID = "Hg4-Kw-hpC"; */
+"Hg4-Kw-hpC.text" = "4";
+
+/* Class = "UIButton"; normalTitle = "Byt"; ObjectID = "KVd-8t-5E7"; */
+"KVd-8t-5E7.normalTitle" = "Byt";
+
+/* Class = "UILabel"; text = "Min resa"; ObjectID = "PoI-z5-rgl"; */
+"PoI-z5-rgl.text" = "Min resa";
+
+/* Class = "UILabel"; text = "Inställningar"; ObjectID = "UUF-uf-yjk"; */
+"UUF-uf-yjk.text" = "Inställningar";
+
+/* Class = "UILabel"; text = "Till:"; ObjectID = "aZH-9D-1Z8"; */
+"aZH-9D-1Z8.text" = "Till:";
+
+/* Class = "UILabel"; text = "Area"; ObjectID = "bLj-6B-fJ3"; */
+"bLj-6B-fJ3.text" = "Area";
+
+/* Class = "UILabel"; text = "minuter."; ObjectID = "bY9-P5-ltF"; */
+"bY9-P5-ltF.text" = "minuter.";
+
+/* Class = "UITextField"; placeholder = "Till"; ObjectID = "bvM-Qq-Bjz"; */
+"bvM-Qq-Bjz.placeholder" = "Till";
+
+/* Class = "UILabel"; text = "Min resa:"; ObjectID = "cjB-5Y-cwR"; */
+"cjB-5Y-cwR.text" = "Min resa:";
+
+/* Class = "UILabel"; text = "Jarlaberg via Nacka Strand"; ObjectID = "iL7-ax-TgH"; */
+"iL7-ax-TgH.text" = "Jarlaberg via Nacka Strand";
+
+/* Class = "UILabel"; text = "Appen kommer att övervaka din plats i bakgrunden, göra en sökning när du närmar dig din angivna startstation och notifiera dig resultatet."; ObjectID = "j1b-ez-bvK"; */
+"j1b-ez-bvK.text" = "Appen kommer att övervaka din plats i bakgrunden, göra en sökning när du närmar dig din angivna startstation och notifiera dig resultatet.";
+
+/* Class = "UITextField"; placeholder = "Från"; ObjectID = "kUh-8q-yNd"; */
+"kUh-8q-yNd.placeholder" = "Från";
+
+/* Class = "UILabel"; text = "5"; ObjectID = "mqH-cw-HmF"; */
+"mqH-cw-HmF.text" = "5";
+
+/* Class = "UIButton"; normalTitle = "Byt"; ObjectID = "pf6-sS-IWs"; */
+"pf6-sS-IWs.normalTitle" = "Byt";
+
+/* Class = "UILabel"; text = "Sök resa när jag närmar mig start:"; ObjectID = "qU8-NY-Kb8"; */
+"qU8-NY-Kb8.text" = "Sök resa när jag närmar mig start:";
+
+/* Class = "UILabel"; text = "Sök nästa resa tidigast om"; ObjectID = "tyX-sK-uUc"; */
+"tyX-sK-uUc.text" = "Sök nästa resa tidigast om";
+
+/* Class = "UIButton"; normalTitle = "End"; ObjectID = "w1R-oF-tAw"; */
+"w1R-oF-tAw.normalTitle" = "End";
+
+/* Class = "UILabel"; text = "Name"; ObjectID = "xmT-pP-NPb"; */
+"xmT-pP-NPb.text" = "Name";
+
+/* Class = "UILabel"; text = "22:55"; ObjectID = "yZh-pW-xbS"; */
+"yZh-pW-xbS.text" = "22:55";

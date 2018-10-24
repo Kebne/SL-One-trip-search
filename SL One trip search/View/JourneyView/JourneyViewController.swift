@@ -23,8 +23,8 @@ class JourneyViewController: UIViewController, StoryboardInstantiable {
     @IBOutlet weak var startStationButton: UIButton!
     @IBOutlet weak var destinationStationButton: UIButton!
     
-    @IBOutlet weak var selectedTimeLabel: UILabel!
-    @IBOutlet weak var timeunitLabel: UILabel!
+    
+    @IBOutlet weak var timeInfoLabel: UILabel!
     @IBOutlet weak var journeyTableView: UITableView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     private let refreshControl = UIRefreshControl()
@@ -59,8 +59,7 @@ class JourneyViewController: UIViewController, StoryboardInstantiable {
     func render() {
         startStationButton.setTitle(viewModel.start, for: .normal)
         destinationStationButton.setTitle(viewModel.destination, for: .normal)
-        selectedTimeLabel.text = viewModel.time
-        timeunitLabel.text = viewModel.timeUnit
+        timeInfoLabel.text = viewModel.timeString
         if !refreshControl.isRefreshing {
             activityIndicator.isHidden = !viewModel.showActivityIndicator
             viewModel.showActivityIndicator ? activityIndicator.startAnimating() : activityIndicator.stopAnimating()

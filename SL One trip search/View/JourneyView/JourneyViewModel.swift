@@ -15,16 +15,19 @@ class JourneyViewModel {
     var destination: String {
         return stateController.userJourneyController.userJourney?.destination.name ?? ""
     }
-    var time: String {
-        if let minutes = stateController.userJourneyController.userJourney?.minutesUntilSearch {
-            return "\(minutes)"
-        } else {return ""}
-    }
     
-    var timeUnit: String {
-        if let minutes = stateController.userJourneyController.userJourney?.minutesUntilSearch, minutes == 1 {
-            return "minut."
-        } else {return "minuter."}
+    var timeString: String {
+        guard let minutes = stateController.userJourneyController.userJourney?.minutesUntilSearch else {
+            return ""
+        }
+        
+        if minutes == 0 {
+            return Strings.timeLabel0Minutes
+        } else if minutes == 1 {
+            return Strings.timeLabel1Minute
+        }
+        
+        return String(format: NSLocalizedString("journeyView.timeInfoLabel.moreThanOneMinute", comment: ""), "\(minutes)")
     }
     
     var showActivityIndicator: Bool = false
@@ -57,7 +60,7 @@ class JourneyViewModel {
     
     func titleFor(section: Int) ->String? {
         if section < categories.count {
-            return categories[section].description
+            return categories[section].description + " " + Strings.towards
         }
         return nil
     }
@@ -122,5 +125,13 @@ class JourneyViewModel {
             }
         }
         
+    }
+}
+
+extension JourneyViewModel {
+    enum Strings {
+        static let timeLabel0Minutes = NSLocalizedString("journeyView.timeInfoLabel.zeroMinutes", comment: "")
+        static let timeLabel1Minute = NSLocalizedString("journeyView.timeInfoLabel.oneMinute", comment: "")
+        static let towards = NSLocalizedString("towards", comment: "")
     }
 }

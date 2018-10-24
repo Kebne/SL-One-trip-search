@@ -98,22 +98,10 @@
                                         </constraints>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="mzD-I7-9nt">
-                                        <rect key="frame" x="0.0" y="77" width="254.33333333333334" height="37.666666666666657"/>
+                                        <rect key="frame" x="0.0" y="77" width="172" height="37.666666666666657"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Visar resor tidigast om" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4to-wh-gCG">
                                                 <rect key="frame" x="0.0" y="0.0" width="172" height="37.666666666666664"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hf5-iq-VXi">
-                                                <rect key="frame" x="177" y="0.0" width="10.333333333333343" height="37.666666666666664"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="minuter." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2dU-9a-QtM">
-                                                <rect key="frame" x="192.33333333333334" y="0.0" width="62" height="37.666666666666664"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -248,9 +236,8 @@
                         <outlet property="activityIndicator" destination="MKi-Nj-TUf" id="D0T-U9-baA"/>
                         <outlet property="destinationStationButton" destination="w1R-oF-tAw" id="xq5-yq-4tG"/>
                         <outlet property="journeyTableView" destination="mbs-P1-Vao" id="Emt-1e-qx0"/>
-                        <outlet property="selectedTimeLabel" destination="hf5-iq-VXi" id="Xcj-dH-SBO"/>
                         <outlet property="startStationButton" destination="8Yx-UF-482" id="vib-Sx-dhf"/>
-                        <outlet property="timeunitLabel" destination="2dU-9a-QtM" id="0w2-ef-s6o"/>
+                        <outlet property="timeInfoLabel" destination="4to-wh-gCG" id="V0L-2M-zZH"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -459,7 +446,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="downarrow" width="45" height="53"/>
-        <image name="uparrow" width="45" height="53"/>
+        <image name="downarrow" width="22" height="26"/>
+        <image name="uparrow" width="22" height="27"/>
     </resources>
 </document>

@@ -66,6 +66,19 @@ class UserJourneyControllerTests: XCTestCase {
         
     }
     
+    func test_Swap_StartAndDestination() {
+        
+        let startUserJourney = UserJourney(start: UserJourneyControllerTests.mockStart,
+                                           destination: UserJourneyControllerTests.mockEnd, minutesUntilSearch: 0, monitorStationProximity: false)
+        sut.userJourney = startUserJourney
+        sut.swapStations()
+        
+        XCTAssertEqual(startUserJourney.start.id, sut.userJourney!.destination.id)
+        XCTAssertEqual(startUserJourney.destination.id, sut.userJourney!.start.id)
+        XCTAssertEqual(startUserJourney.minutesUntilSearch, sut.userJourney!.minutesUntilSearch)
+        XCTAssertEqual(startUserJourney.monitorStationProximity, sut.userJourney!.monitorStationProximity)
+    }
+    
     func test_TimeValue_isSet() {
         sut.userJourney = nil
         sut.start = UserJourneyControllerTests.mockStart

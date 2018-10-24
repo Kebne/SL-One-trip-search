@@ -1,0 +1,40 @@
+/* 
+  Localizable.strings
+  SL One trip search
+
+  Created by Emil Lundgren on 2018-10-24.
+  Copyright © 2018 Kebne. All rights reserved.
+*/
+
+
+"journeyView.timeInfoLabel.zeroMinutes" = "Visar resor från och med nu.";
+"journeyView.timeInfoLabel.oneMinute" = "Visar resor tidigast om 1 minut.";
+"journeyView.timeInfoLabel.moreThanOneMinute" = "Visar resor tidigast om %@ minuter.";
+"towards" = "mot";
+
+"product.bus.categoryName" = "Buss";
+"product.metro.categoryName" = "Tunnelbana";
+"product.ferry.categoryName" = "Färja";
+"product.ship.categoryName" = "Båt";
+"product.train.categoryName" = "Pendeltåg";
+"product.tram.categoryName" = "Spårvagn/lokalbana";
+"product.unknown.categoryName" = "Annat färdsätt";
+
+"journeyView.journeyStats.noChanges" = "inga byten";
+"journeyView.journeyStats.oneChange" = "1 byte";
+"journeyView.journeyStats.multipleChanges" = "%@ byten";
+"journeyView.journeyStats.travelTime" = "Restid: %@ min";
+
+"now" = "nu";
+"minutes" = "min";
+
+
+/*
+ case .bus: return "Buss"
+ case .metro: return "Tunnelbana"
+ case .ferry: return "Färja"
+ case .ship: return "Båt"
+ case .train: return "Pendeltåg"
+ case .tram: return "Spårvagn/lokalbana"
+ case .unknown: return "Okänt färdessätt"
+ */

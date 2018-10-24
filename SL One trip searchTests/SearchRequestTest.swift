@@ -22,5 +22,24 @@ class SearchRequestTest: XCTestCase {
         
         XCTAssertEqual(expectedResult, request.url.absoluteString)
     }
+    
+    func test_journeySearch_buildsCorrectURL() {
+        
+        let originId = "1000"
+        let destinationId = "2000"
+        let minutesFromNow = 5
+        let expectedDate = Date().dateByAdding(minutesFromNow)
+        let expectedDateString = expectedDate.slRequestDateString
+        let expectedTimeString = expectedDate.slRequestTimeString
+        let expectedResultURLString = "http://api.sl.se/api2/TravelplannerV3/trip.json?key=" + Environment.journeyPlanAPIKey + "&originId=" + originId + "&destId=" + destinationId + "&date=" + expectedDateString + "&time=" + expectedTimeString
+        
+        guard let request = JourneySearchRequest(originId: originId, destinationId: destinationId, minutesFromNow: minutesFromNow) else {
+            XCTFail("Unable to construct journey search request")
+            return
+        }
+        
+        XCTAssertEqual(expectedResultURLString, request.url.absoluteString)
+        
+    }
 
 }
