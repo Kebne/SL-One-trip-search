@@ -15,6 +15,7 @@ protocol JourneyPresentable {
     var showActivityIndicator: Bool {get}
     var newJourneyClosure: (()->Void)? {get set}
     var nrOfSections: Int {get}
+    var latestSearchString: String {get}
     func cellModelFor(indexPath: IndexPath) ->JourneyTableViewCell.ViewModel
     func nrOfRowsIn(section: Int) ->Int
     func titleFor(section: Int) ->String?
@@ -23,6 +24,7 @@ protocol JourneyPresentable {
     func viewWillAppear()
 }
 
+
 class JourneyViewModel : JourneyPresentable {
     var start: String {
         return stateController.userJourneyController.userJourney?.start.name ?? ""
@@ -30,6 +32,8 @@ class JourneyViewModel : JourneyPresentable {
     var destination: String {
         return stateController.userJourneyController.userJourney?.destination.name ?? ""
     }
+    
+    private var latestSearchDate: Date?
     
     var timeString: String {
         guard let minutes = stateController.userJourneyController.userJourney?.minutesUntilSearch else {
@@ -43,6 +47,13 @@ class JourneyViewModel : JourneyPresentable {
         }
         
         return String(format: NSLocalizedString("journeyView.timeInfoLabel.moreThanOneMinute", comment: ""), "\(minutes)")
+    }
+    
+    var latestSearchString: String {
+        guard let latestSearchDate = latestSearchDate else {return Strings.searching}
+        let timeFormatter = DateFormatter()
+        timeFormatter.dateFormat = "HH:mm"
+        return Strings.latestSearch + ": " + timeFormatter.string(from: latestSearchDate)
     }
     
     var showActivityIndicator: Bool = false
@@ -70,6 +81,7 @@ class JourneyViewModel : JourneyPresentable {
     }
     
     func nrOfRowsIn(section: Int) ->Int {
+        guard section < categories.count else {return 0}
         return journeyViewModels[categories[section].rawValue]?.count ?? 0
     }
     
@@ -101,6 +113,7 @@ class JourneyViewModel : JourneyPresentable {
         categories.removeAll()
         journeyViewModels.removeAll()
         showActivityIndicator = true
+        latestSearchDate = nil
         notifyCallback()
         stateController.fetchTrips() {[weak self] result in
             guard let self = self else {return}
@@ -109,6 +122,7 @@ class JourneyViewModel : JourneyPresentable {
             case .failure(let error): print("Error fetching trips: \(error)")
             }
             self.showActivityIndicator = false
+            self.latestSearchDate = Date()
             self.notifyCallback()
         }
     }
@@ -145,5 +159,7 @@ extension JourneyViewModel {
         static let timeLabel0Minutes = NSLocalizedString("journeyView.timeInfoLabel.zeroMinutes", comment: "")
         static let timeLabel1Minute = NSLocalizedString("journeyView.timeInfoLabel.oneMinute", comment: "")
         static let towards = NSLocalizedString("towards", comment: "")
+        static let latestSearch = NSLocalizedString("journeyView.latestSearch", comment: "")
+        static let searching = NSLocalizedString("journeyView.latestSearch.searching", comment: "")
     }
 }

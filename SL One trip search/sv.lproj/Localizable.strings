@@ -25,6 +25,9 @@
 "journeyView.journeyStats.multipleChanges" = "%@ byten";
 "journeyView.journeyStats.travelTime" = "Restid: %@ min";
 
+"journeyView.latestSearch" = "Senaste sökning";
+"journeyView.latestSearch.searching" = "Söker...";
+
 "now" = "nu";
 "minutes" = "min";
 

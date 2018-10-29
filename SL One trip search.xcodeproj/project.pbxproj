@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		51104C5921833A6D0027C374 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 51C86D1D21804CDB000F5851 /* Localizable.strings */; };
 		5135EF4D21776AB30016AAD6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5135EF4C21776AB30016AAD6 /* AppDelegate.swift */; };
 		5135EF4F21776AB30016AAD6 /* JourneyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5135EF4E21776AB30016AAD6 /* JourneyViewController.swift */; };
 		5135EF5221776AB30016AAD6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5135EF5021776AB30016AAD6 /* Main.storyboard */; };
@@ -33,6 +34,11 @@
 		5135EFA22179FC830016AAD6 /* PersistService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5135EFA12179FC830016AAD6 /* PersistService.swift */; };
 		5135EFA4217A166B0016AAD6 /* StationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5135EFA3217A166B0016AAD6 /* StationTests.swift */; };
 		5135EFA6217A19250016AAD6 /* PersistServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5135EFA5217A19250016AAD6 /* PersistServiceTests.swift */; };
+		51583DC92187173A00AFDE38 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5135EF5321776AB50016AAD6 /* Assets.xcassets */; };
+		51583DD32187331400AFDE38 /* TableViewHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51583DD22187331400AFDE38 /* TableViewHeaderView.swift */; };
+		51583DD42187331400AFDE38 /* TableViewHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51583DD22187331400AFDE38 /* TableViewHeaderView.swift */; };
+		51583DD62187332600AFDE38 /* TableViewHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 51583DD52187332600AFDE38 /* TableViewHeaderView.xib */; };
+		51583DD72187332600AFDE38 /* TableViewHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 51583DD52187332600AFDE38 /* TableViewHeaderView.xib */; };
 		51C86CFE217DC62F000F5851 /* JourneyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51C86CFD217DC62F000F5851 /* JourneyTableViewCell.swift */; };
 		51C86D00217DD3A9000F5851 /* Trip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51C86CFF217DD3A9000F5851 /* Trip.swift */; };
 		51C86D02217DD3B3000F5851 /* Leg.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51C86D01217DD3B3000F5851 /* Leg.swift */; };
@@ -145,6 +151,8 @@
 		5135EFA12179FC830016AAD6 /* PersistService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistService.swift; sourceTree = "<group>"; };
 		5135EFA3217A166B0016AAD6 /* StationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationTests.swift; sourceTree = "<group>"; };
 		5135EFA5217A19250016AAD6 /* PersistServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistServiceTests.swift; sourceTree = "<group>"; };
+		51583DD22187331400AFDE38 /* TableViewHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewHeaderView.swift; sourceTree = "<group>"; };
+		51583DD52187332600AFDE38 /* TableViewHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TableViewHeaderView.xib; sourceTree = "<group>"; };
 		51C86CFD217DC62F000F5851 /* JourneyTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JourneyTableViewCell.swift; sourceTree = "<group>"; };
 		51C86CFF217DD3A9000F5851 /* Trip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Trip.swift; sourceTree = "<group>"; };
 		51C86D01217DD3B3000F5851 /* Leg.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Leg.swift; sourceTree = "<group>"; };
@@ -346,6 +354,8 @@
 				51C86CFD217DC62F000F5851 /* JourneyTableViewCell.swift */,
 				5135EF4E21776AB30016AAD6 /* JourneyViewController.swift */,
 				51C86D3D2180A884000F5851 /* JourneyTableViewCellView.xib */,
+				51583DD22187331400AFDE38 /* TableViewHeaderView.swift */,
+				51583DD52187332600AFDE38 /* TableViewHeaderView.xib */,
 			);
 			path = JourneyView;
 			sourceTree = "<group>";
@@ -508,6 +518,7 @@
 			files = (
 				5135EF5721776AB50016AAD6 /* LaunchScreen.storyboard in Resources */,
 				51C86D542180B391000F5851 /* MainInterface.storyboard in Resources */,
+				51583DD62187332600AFDE38 /* TableViewHeaderView.xib in Resources */,
 				51C86D1B21804CDB000F5851 /* Localizable.strings in Resources */,
 				51C86D3E2180A884000F5851 /* JourneyTableViewCellView.xib in Resources */,
 				5135EF5421776AB50016AAD6 /* Assets.xcassets in Resources */,
@@ -534,7 +545,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				51C86D2E2180A128000F5851 /* MainInterface.storyboard in Resources */,
+				51104C5921833A6D0027C374 /* Localizable.strings in Resources */,
+				51583DC92187173A00AFDE38 /* Assets.xcassets in Resources */,
 				51C86D3F2180A884000F5851 /* JourneyTableViewCellView.xib in Resources */,
+				51583DD72187332600AFDE38 /* TableViewHeaderView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -550,6 +564,7 @@
 				51C86D06217DD3C9000F5851 /* Destination.swift in Sources */,
 				5135EF8E217780050016AAD6 /* ViewControllerFactory.swift in Sources */,
 				51C86D04217DD3BF000F5851 /* Origin.swift in Sources */,
+				51583DD32187331400AFDE38 /* TableViewHeaderView.swift in Sources */,
 				5135EF4F21776AB30016AAD6 /* JourneyViewController.swift in Sources */,
 				5135EF982178CBBE0016AAD6 /* Environment.swift in Sources */,
 				51C86D11217F1319000F5851 /* JourneyViewModel.swift in Sources */,
@@ -613,6 +628,7 @@
 				51C86D432180AED4000F5851 /* Leg.swift in Sources */,
 				51C86D4A2180AEF3000F5851 /* JourneyError.swift in Sources */,
 				51C86D2B2180A128000F5851 /* TodayViewController.swift in Sources */,
+				51583DD42187331400AFDE38 /* TableViewHeaderView.swift in Sources */,
 				51C86D492180AEEF000F5851 /* ProductCategory.swift in Sources */,
 				51C86D4F2180AF13000F5851 /* JourneyTableViewCell.swift in Sources */,
 				51C86D502180AF64000F5851 /* JourneyViewModel.swift in Sources */,

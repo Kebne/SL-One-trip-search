@@ -70,9 +70,6 @@ class SearchService<T: Decodable> : SLSearch {
             }
             
             do {
-                if let jsonString = String(data: data, encoding: .utf8) {
-                    print(jsonString)
-                }
                 let result = try JSONDecoder().decode(T.self, from: data)
                 callback(Result.success(result))
             } catch let e {

@@ -24,8 +24,27 @@ extension Date {
     }
 }
 
+protocol ReusableTableViewClass : AnyObject {
+    static var reuseId: String {get}
+}
 
-class JourneyTableViewCell: UITableViewCell {
+extension ReusableTableViewClass {
+    static var reuseId: String {
+        return String(describing: Self.self)
+    }
+}
+
+extension UITableView {
+    func dequeueReusableCellAt<T: ReusableTableViewClass>(indexPath: IndexPath) ->T {
+        guard let cell = dequeueReusableCell(withIdentifier: T.reuseId, for: indexPath) as? T else {
+            fatalError("Unable to dequeue or cast UITableViewCell to correct type: \(T.self). Make sure that the storyboard reuse identifier is the name of the class.")
+        }
+        return cell
+    }
+}
+
+
+class JourneyTableViewCell: UITableViewCell, ReusableTableViewClass {
     @IBOutlet weak var lineNumberText: UITextView!
     @IBOutlet weak var destinationLabel: UILabel!
     @IBOutlet weak var trackLabel: UILabel!
@@ -50,6 +69,7 @@ class JourneyTableViewCell: UITableViewCell {
     }
 
 }
+
 
 extension JourneyTableViewCell {
     struct ViewModel {

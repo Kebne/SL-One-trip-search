@@ -14,6 +14,9 @@ protocol JourneyViewControllerDelegate : AnyObject {
     func didPressEndStationButton()
 }
 
+
+
+
 class JourneyViewController: UIViewController, StoryboardInstantiable {
     
     weak var delegate: JourneyViewControllerDelegate?
@@ -21,6 +24,7 @@ class JourneyViewController: UIViewController, StoryboardInstantiable {
     @IBOutlet weak var startStationButton: UIButton!
     @IBOutlet weak var destinationStationButton: UIButton!
     
+    @IBOutlet weak var latestSearchLabel: UILabel!
     
     @IBOutlet weak var timeInfoLabel: UILabel!
     @IBOutlet weak var journeyTableView: UITableView!
@@ -42,6 +46,7 @@ class JourneyViewController: UIViewController, StoryboardInstantiable {
         journeyTableView.tableFooterView = UIView(frame: CGRect.zero)
         journeyTableView.refreshControl = refreshControl
         journeyTableView.register(UINib.init(nibName: "JourneyTableViewCellView", bundle: nil), forCellReuseIdentifier: JourneyTableViewCell.reuseIdentifier)
+        journeyTableView.register(UINib.init(nibName: "TableViewHeaderView", bundle: nil), forHeaderFooterViewReuseIdentifier: TableViewHeaderView.reuseId)
         refreshControl.addTarget(self, action: #selector(refreshControllerDidRefresh), for: .valueChanged)
         viewModel.newJourneyClosure = {[weak self] in
             guard let self = self else {return}
@@ -59,6 +64,7 @@ class JourneyViewController: UIViewController, StoryboardInstantiable {
         startStationButton.setTitle(viewModel.start, for: .normal)
         destinationStationButton.setTitle(viewModel.destination, for: .normal)
         timeInfoLabel.text = viewModel.timeString
+        latestSearchLabel.text = viewModel.latestSearchString
         if !refreshControl.isRefreshing {
             activityIndicator.isHidden = !viewModel.showActivityIndicator
             viewModel.showActivityIndicator ? activityIndicator.startAnimating() : activityIndicator.stopAnimating()
@@ -100,10 +106,6 @@ extension JourneyViewController : UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return JourneyTableViewCell.rowHeight
     }
-    
-    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return viewModel.titleFor(section: section)
-    }
 }
 
 extension JourneyViewController : UITableViewDataSource {
@@ -112,13 +114,19 @@ extension JourneyViewController : UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: JourneyTableViewCell.reuseIdentifier, for: indexPath) as! JourneyTableViewCell
+        let cell: JourneyTableViewCell = tableView.dequeueReusableCellAt(indexPath: indexPath)
         cell.viewModel = viewModel.cellModelFor(indexPath: indexPath)
         return cell
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return viewModel.nrOfSections
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let headerView: TableViewHeaderView = tableView.dequeueReusableHeaderFooterView()
+        headerView.titleLabel.text = viewModel.titleFor(section: section)
+        return headerView
     }
 }
 
