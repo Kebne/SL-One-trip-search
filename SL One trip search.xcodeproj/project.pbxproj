@@ -43,6 +43,7 @@
 		518D465C21875D1A00789960 /* SharedAppConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 518D465A21875D1A00789960 /* SharedAppConstant.swift */; };
 		518D465E2187680F00789960 /* MainCoordinatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 518D465D2187680F00789960 /* MainCoordinatorTests.swift */; };
 		518D465F2188812900789960 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5135EF5021776AB30016AAD6 /* Main.storyboard */; };
+		518D46622188C02F00789960 /* LocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 518D46612188C02F00789960 /* LocationService.swift */; };
 		51C86CFE217DC62F000F5851 /* JourneyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51C86CFD217DC62F000F5851 /* JourneyTableViewCell.swift */; };
 		51C86D00217DD3A9000F5851 /* Trip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51C86CFF217DD3A9000F5851 /* Trip.swift */; };
 		51C86D02217DD3B3000F5851 /* Leg.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51C86D01217DD3B3000F5851 /* Leg.swift */; };
@@ -159,6 +160,7 @@
 		51583DD52187332600AFDE38 /* TableViewHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TableViewHeaderView.xib; sourceTree = "<group>"; };
 		518D465A21875D1A00789960 /* SharedAppConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedAppConstant.swift; sourceTree = "<group>"; };
 		518D465D2187680F00789960 /* MainCoordinatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinatorTests.swift; sourceTree = "<group>"; };
+		518D46612188C02F00789960 /* LocationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationService.swift; sourceTree = "<group>"; };
 		51C86CFD217DC62F000F5851 /* JourneyTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JourneyTableViewCell.swift; sourceTree = "<group>"; };
 		51C86CFF217DD3A9000F5851 /* Trip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Trip.swift; sourceTree = "<group>"; };
 		51C86D01217DD3B3000F5851 /* Leg.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Leg.swift; sourceTree = "<group>"; };
@@ -247,6 +249,7 @@
 		5135EF4B21776AB30016AAD6 /* SL One trip search */ = {
 			isa = PBXGroup;
 			children = (
+				518D4660218898F400789960 /* Location */,
 				51C86D522180B083000F5851 /* SL One trip search.entitlements */,
 				5135EF82217774610016AAD6 /* Coordinator */,
 				5135EF81217774540016AAD6 /* Service */,
@@ -338,6 +341,14 @@
 				5135EF8D217780050016AAD6 /* ViewControllerFactory.swift */,
 			);
 			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		518D4660218898F400789960 /* Location */ = {
+			isa = PBXGroup;
+			children = (
+				518D46612188C02F00789960 /* LocationService.swift */,
+			);
+			path = Location;
 			sourceTree = "<group>";
 		};
 		51C86D0B217DD57F000F5851 /* Journey */ = {
@@ -582,6 +593,7 @@
 				51C86D0A217DD543000F5851 /* SLJourneyPlanAPIResponse.swift in Sources */,
 				5135EF922178BD8F0016AAD6 /* StationTableViewCell.swift in Sources */,
 				5135EF962178C8840016AAD6 /* SearchRequest.swift in Sources */,
+				518D46622188C02F00789960 /* LocationService.swift in Sources */,
 				5135EFA22179FC830016AAD6 /* PersistService.swift in Sources */,
 				5135EF4D21776AB30016AAD6 /* AppDelegate.swift in Sources */,
 				5135EF8621777D420016AAD6 /* UserJourney.swift in Sources */,
