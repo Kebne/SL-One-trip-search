@@ -23,7 +23,7 @@
 "journeyView.journeyStats.noChanges" = "inga byten";
 "journeyView.journeyStats.oneChange" = "1 byte";
 "journeyView.journeyStats.multipleChanges" = "%@ byten";
-"journeyView.journeyStats.travelTime" = "Restid: %@ min";
+"journeyView.journeyStats.travelTime" = "Framme kl %@, restid: %@ min";
 
 "journeyView.latestSearch" = "Senaste sökning";
 "journeyView.latestSearch.searching" = "Söker...";

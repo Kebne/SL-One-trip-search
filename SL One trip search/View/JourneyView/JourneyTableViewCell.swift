@@ -22,6 +22,12 @@ extension Date {
         return "\(Int(abs(self.timeIntervalSinceNow) / 60.0)) " + NSLocalizedString("min", comment: "")
         
     }
+    
+    var hourMinuteTimeString: String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "HH:mm"
+        return dateFormatter.string(from: self)
+    }
 }
 
 protocol ReusableTableViewClass : AnyObject {
@@ -111,17 +117,17 @@ extension JourneyTableViewCell {
             }
             self.init(leg: firstLeg)
             let nrOfTripChanges = trip.legList.filter({$0.product.category != .unknown}).count - 1
-            self.journeyStats = statsStringFrom(nrOfTripChanges: nrOfTripChanges, duration: trip.duration)
+            self.journeyStats = statsStringFrom(nrOfTripChanges: nrOfTripChanges, duration: trip.duration, arrivalDate: trip.arrivalDate)
         }
         
-        private func statsStringFrom(nrOfTripChanges: Int, duration: TimeInterval) ->String {
+        private func statsStringFrom(nrOfTripChanges: Int, duration: TimeInterval, arrivalDate: Date) ->String {
             var tripChangesString = ""
             switch nrOfTripChanges {
             case 0: tripChangesString = Strings.noChanges
             case 1: tripChangesString = Strings.oneChange
             default: tripChangesString = String(format: Strings.multipleChanges, "\(nrOfTripChanges)")
             }
-            let durationString = String(format: Strings.durationString, "\(Int(duration / 60.0))")
+            let durationString = String(format: Strings.durationString, arrivalDate.hourMinuteTimeString, "\(Int(duration / 60.0))")
             return durationString + ", " + tripChangesString
         }
     }

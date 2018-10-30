@@ -17,6 +17,14 @@ struct Trip  {
         guard let firstLeg = sortedLegs.first, let lastLeg = sortedLegs.last else {return -1}
         return abs(firstLeg.origin.time.timeIntervalSince(lastLeg.destination.time))
     }
+    
+    var arrivalDate : Date {
+        let sortedLegs = legList.sorted(by: {$0.id < $1.id})
+        guard let finalLeg = sortedLegs.last else {
+            return Date()
+        }
+        return finalLeg.destination.time
+    }
 }
 
 extension Trip : Decodable {

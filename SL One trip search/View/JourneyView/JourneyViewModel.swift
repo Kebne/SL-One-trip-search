@@ -32,6 +32,7 @@ class JourneyViewModel : JourneyPresentable {
     var destination: String {
         return stateController.userJourneyController.userJourney?.destination.name ?? Strings.noStation
     }
+
     
     private var latestSearchDate: Date?
     
@@ -131,7 +132,7 @@ class JourneyViewModel : JourneyPresentable {
     }
     
     private func createTableViewDataFrom(response: SLJourneyPlanAPIResponse) {
-        let firstLegs = response.trips.sorted(by: {$0.duration < $1.duration}).reduce([Leg]()) {legs, nextTrip in
+        let firstLegs = response.trips.sorted(by: {$0.arrivalDate < $1.arrivalDate}).reduce([Leg]()) {legs, nextTrip in
             if let nextLeg = nextTrip.legList.first(where: {$0.id == 0}), nextLeg.direction.count > 0 && nextLeg.product.line.count > 0 {
                 return legs + [nextLeg]
             }
