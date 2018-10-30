@@ -24,6 +24,7 @@ class StateController: StateControllerProtocol {
     }
     
     func fetchTrips(completion: @escaping (Result<SLJourneyPlanAPIResponse>) -> Void) {
+        userJourneyController.attemptToRetreiveStoredJourney()
         guard let userJourney = userJourneyController.userJourney else {
             completion(Result.failure(JourneyError.noSettingsAvailable))
             return

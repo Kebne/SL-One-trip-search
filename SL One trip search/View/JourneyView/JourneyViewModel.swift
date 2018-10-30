@@ -27,10 +27,10 @@ protocol JourneyPresentable {
 
 class JourneyViewModel : JourneyPresentable {
     var start: String {
-        return stateController.userJourneyController.userJourney?.start.name ?? ""
+        return stateController.userJourneyController.userJourney?.start.name ?? Strings.noStation
     }
     var destination: String {
-        return stateController.userJourneyController.userJourney?.destination.name ?? ""
+        return stateController.userJourneyController.userJourney?.destination.name ?? Strings.noStation
     }
     
     private var latestSearchDate: Date?
@@ -50,6 +50,9 @@ class JourneyViewModel : JourneyPresentable {
     }
     
     var latestSearchString: String {
+        guard stateController.userJourneyController.userJourney != nil else {
+            return ""
+        }
         guard let latestSearchDate = latestSearchDate else {return Strings.searching}
         let timeFormatter = DateFormatter()
         timeFormatter.dateFormat = "HH:mm"
@@ -161,5 +164,6 @@ extension JourneyViewModel {
         static let towards = NSLocalizedString("towards", comment: "")
         static let latestSearch = NSLocalizedString("journeyView.latestSearch", comment: "")
         static let searching = NSLocalizedString("journeyView.latestSearch.searching", comment: "")
+        static let noStation = NSLocalizedString("journeyView.noStation", comment: "")
     }
 }

@@ -39,6 +39,10 @@
 		51583DD42187331400AFDE38 /* TableViewHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51583DD22187331400AFDE38 /* TableViewHeaderView.swift */; };
 		51583DD62187332600AFDE38 /* TableViewHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 51583DD52187332600AFDE38 /* TableViewHeaderView.xib */; };
 		51583DD72187332600AFDE38 /* TableViewHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 51583DD52187332600AFDE38 /* TableViewHeaderView.xib */; };
+		518D465B21875D1A00789960 /* SharedAppConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 518D465A21875D1A00789960 /* SharedAppConstant.swift */; };
+		518D465C21875D1A00789960 /* SharedAppConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 518D465A21875D1A00789960 /* SharedAppConstant.swift */; };
+		518D465E2187680F00789960 /* MainCoordinatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 518D465D2187680F00789960 /* MainCoordinatorTests.swift */; };
+		518D465F2188812900789960 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5135EF5021776AB30016AAD6 /* Main.storyboard */; };
 		51C86CFE217DC62F000F5851 /* JourneyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51C86CFD217DC62F000F5851 /* JourneyTableViewCell.swift */; };
 		51C86D00217DD3A9000F5851 /* Trip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51C86CFF217DD3A9000F5851 /* Trip.swift */; };
 		51C86D02217DD3B3000F5851 /* Leg.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51C86D01217DD3B3000F5851 /* Leg.swift */; };
@@ -153,6 +157,8 @@
 		5135EFA5217A19250016AAD6 /* PersistServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistServiceTests.swift; sourceTree = "<group>"; };
 		51583DD22187331400AFDE38 /* TableViewHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewHeaderView.swift; sourceTree = "<group>"; };
 		51583DD52187332600AFDE38 /* TableViewHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TableViewHeaderView.xib; sourceTree = "<group>"; };
+		518D465A21875D1A00789960 /* SharedAppConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedAppConstant.swift; sourceTree = "<group>"; };
+		518D465D2187680F00789960 /* MainCoordinatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinatorTests.swift; sourceTree = "<group>"; };
 		51C86CFD217DC62F000F5851 /* JourneyTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JourneyTableViewCell.swift; sourceTree = "<group>"; };
 		51C86CFF217DD3A9000F5851 /* Trip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Trip.swift; sourceTree = "<group>"; };
 		51C86D01217DD3B3000F5851 /* Leg.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Leg.swift; sourceTree = "<group>"; };
@@ -216,6 +222,7 @@
 		5135EF4021776AB30016AAD6 = {
 			isa = PBXGroup;
 			children = (
+				518D465A21875D1A00789960 /* SharedAppConstant.swift */,
 				5135EF972178CBBE0016AAD6 /* Environment.swift */,
 				5135EF4B21776AB30016AAD6 /* SL One trip search */,
 				5135EF6021776AB50016AAD6 /* SL One trip searchTests */,
@@ -270,6 +277,7 @@
 				51C86D13217F52A0000F5851 /* JourneySearchTests.swift */,
 				51C86D15217F6B9B000F5851 /* JourneyViewModelTests.swift */,
 				51C86D1F2180980E000F5851 /* JourneyViewControllerTests.swift */,
+				518D465D2187680F00789960 /* MainCoordinatorTests.swift */,
 			);
 			path = "SL One trip searchTests";
 			sourceTree = "<group>";
@@ -530,6 +538,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				518D465F2188812900789960 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -565,6 +574,7 @@
 				5135EF8E217780050016AAD6 /* ViewControllerFactory.swift in Sources */,
 				51C86D04217DD3BF000F5851 /* Origin.swift in Sources */,
 				51583DD32187331400AFDE38 /* TableViewHeaderView.swift in Sources */,
+				518D465B21875D1A00789960 /* SharedAppConstant.swift in Sources */,
 				5135EF4F21776AB30016AAD6 /* JourneyViewController.swift in Sources */,
 				5135EF982178CBBE0016AAD6 /* Environment.swift in Sources */,
 				51C86D11217F1319000F5851 /* JourneyViewModel.swift in Sources */,
@@ -593,6 +603,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				51C86D14217F52A0000F5851 /* JourneySearchTests.swift in Sources */,
+				518D465E2187680F00789960 /* MainCoordinatorTests.swift in Sources */,
 				5135EFA02178E04F0016AAD6 /* SLSearchTests.swift in Sources */,
 				5135EF90217887510016AAD6 /* UserJourneyControllerTests.swift in Sources */,
 				51C86D16217F6B9B000F5851 /* JourneyViewModelTests.swift in Sources */,
@@ -635,6 +646,7 @@
 				51C86D472180AEE6000F5851 /* SLJourneyPlanAPIResponse.swift in Sources */,
 				51C86D512180B018000F5851 /* Environment.swift in Sources */,
 				51C86D4E2180AF05000F5851 /* SearchRequest.swift in Sources */,
+				518D465C21875D1A00789960 /* SharedAppConstant.swift in Sources */,
 				51C86D452180AEDF000F5851 /* Origin.swift in Sources */,
 				51C86D4B2180AEF8000F5851 /* UserJourney.swift in Sources */,
 			);

@@ -28,16 +28,7 @@
 "journeyView.latestSearch" = "Senaste sökning";
 "journeyView.latestSearch.searching" = "Söker...";
 
+"journeyView.noStation" = "ej angiven";
+
 "now" = "nu";
 "minutes" = "min";
-
-
-/*
- case .bus: return "Buss"
- case .metro: return "Tunnelbana"
- case .ferry: return "Färja"
- case .ship: return "Båt"
- case .train: return "Pendeltåg"
- case .tram: return "Spårvagn/lokalbana"
- case .unknown: return "Okänt färdessätt"
- */

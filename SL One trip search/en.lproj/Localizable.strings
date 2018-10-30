@@ -29,5 +29,7 @@
 "journeyView.latestSearch" = "Senaste sökning";
 "journeyView.latestSearch.searching" = "söker...";
 
+"journeyView.noStation" = "Ej angiven";
+
 "now" = "nu";
 "minutes" = "min";

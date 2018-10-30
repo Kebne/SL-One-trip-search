@@ -21,9 +21,7 @@ extension StoryboardInstantiable where Self: UIViewController {
 
 protocol ViewControllerFactory {
     
-    var journeyViewController: JourneyViewController {get}
-    var settingsViewController: SettingsViewController {get}
-    var searchViewController: SearchViewController {get}
+    func instantiateViewController<T: StoryboardInstantiable>() ->T
     func createSimpleAlert(withTitle title: String, message: String) -> UIAlertController
     func createTextFieldAlert(withTitle title: String, message: String,okTitle: String, cancelTitle: String, placeholder: String, completionHandler: @escaping (String?)->()) ->UIAlertController
 }
@@ -57,19 +55,12 @@ class ViewControllerFactoryClass : ViewControllerFactory {
         self.storyboard = storyboard
     }
     
-    
-    /// IMPORTANT!!!
-    /// When a view controller is added in the Storyboard, it needs to have an identifier that is the same as the class name.
-    var journeyViewController: JourneyViewController {
-        return storyboard.instantiateViewController(withIdentifier: JourneyViewController.storyboardIdentifier) as! JourneyViewController
-    }
-    
-    var settingsViewController: SettingsViewController {
-        return storyboard.instantiateViewController(withIdentifier: SettingsViewController.storyboardIdentifier) as! SettingsViewController
-    }
-    
-    var searchViewController: SearchViewController {
-        return storyboard.instantiateViewController(withIdentifier: SearchViewController.storyboardIdentifier) as! SearchViewController
+    func instantiateViewController<T: StoryboardInstantiable>() ->T {
+        guard let viewController = storyboard.instantiateViewController(withIdentifier: T.storyboardIdentifier) as? T else {
+            fatalError("Unable to instantiate view controller. Make sure that the Storyboard identifier is equal to the class name")
+        }
+        
+        return viewController
     }
 }
 

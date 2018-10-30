@@ -14,7 +14,12 @@ protocol JourneyViewControllerDelegate : AnyObject {
     func didPressEndStationButton()
 }
 
+protocol NotificationCenterProtocol {
+    func addObserver(_ observer: Any, selector aSelector: Selector, name aName: NSNotification.Name?, object anObject: Any?)
+    func removeObserver(_ observer: Any, name aName: NSNotification.Name?, object anObject: Any?)
+}
 
+extension NotificationCenter : NotificationCenterProtocol {}
 
 
 class JourneyViewController: UIViewController, StoryboardInstantiable {
@@ -30,8 +35,9 @@ class JourneyViewController: UIViewController, StoryboardInstantiable {
     @IBOutlet weak var journeyTableView: UITableView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     private let refreshControl = UIRefreshControl()
+   
 
-
+    var notificationCenter: NotificationCenterProtocol! = NotificationCenter.default
     var stateController: StateControllerProtocol!
     var viewModel: JourneyPresentable!
     
@@ -56,8 +62,14 @@ class JourneyViewController: UIViewController, StoryboardInstantiable {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        registerAppBecomeActiveObserver(on: true)
         viewModel.viewWillAppear()
         render()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        registerAppBecomeActiveObserver(on: false)
     }
     
     func render() {
@@ -76,7 +88,27 @@ class JourneyViewController: UIViewController, StoryboardInstantiable {
         journeyTableView.reloadData()
     }
     
+    private func registerAppBecomeActiveObserver(on: Bool) {
+        
+        if on {
+            notificationCenter.addObserver(
+                self,
+                selector: #selector(didReceiceAppBecomeActiveNotification),
+                name: UIApplication.willEnterForegroundNotification,
+                object: nil
+            )
+        } else {
+            notificationCenter.removeObserver(self, name: UIApplication.willEnterForegroundNotification, object: nil)
+        }
+    }
+    
+    
+    
     //MARK: Action
+    
+    @objc private func didReceiceAppBecomeActiveNotification() {
+        viewModel.viewWillAppear()
+    }
     
     @objc private func refreshControllerDidRefresh() {
         viewModel.refreshControlDidRefresh()

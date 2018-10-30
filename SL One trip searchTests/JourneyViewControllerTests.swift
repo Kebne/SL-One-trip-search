@@ -13,16 +13,20 @@ class JourneyViewControllerTests: XCTestCase {
     
     var sut: JourneyViewController!
     var mockViewModel: MockJourneyViewModel!
+    var mockNotificationCenter: MockNotificationCenter!
 
     override func setUp() {
         mockViewModel = MockJourneyViewModel()
+        mockNotificationCenter = MockNotificationCenter()
         let vcFactory = ViewControllerFactoryClass(storyboard: UIStoryboard.main)
-        sut = vcFactory.journeyViewController
+        sut = vcFactory.instantiateViewController()
         sut.viewModel = mockViewModel
+        sut.notificationCenter = mockNotificationCenter
     }
 
     override func tearDown() {
         mockViewModel = nil
+        mockNotificationCenter = nil
         sut = nil
     }
 
@@ -34,10 +38,45 @@ class JourneyViewControllerTests: XCTestCase {
         XCTAssertTrue(mockViewModel.didCallSwap)
         
     }
+    
+    func test_registersObserver_appBecomeActive_onViewWillAppear() {
+        mockNotificationCenter.didCallRemove = false
+        mockNotificationCenter.didCallAdd = false
+        sut.loadView()
+        sut.viewWillAppear(true)
+        
+        XCTAssertTrue(mockNotificationCenter.didCallAdd)
+        XCTAssertFalse(mockNotificationCenter.didCallRemove)
+    }
+    
+    func test_removesObserver_appBecomeActive_onViewWillDisappear() {
+        mockNotificationCenter.didCallRemove = false
+        mockNotificationCenter.didCallAdd = false
+        sut.loadView()
+        sut.viewWillDisappear(true)
+        
+        XCTAssertFalse(mockNotificationCenter.didCallAdd)
+        XCTAssertTrue(mockNotificationCenter.didCallRemove)
+    }
 }
 
+class MockNotificationCenter : NotificationCenterProtocol {
+    var didCallAdd = false
+    var didCallRemove = false
+    func addObserver(_ observer: Any, selector aSelector: Selector, name aName: NSNotification.Name?, object anObject: Any?) {
+        didCallAdd = true
+    }
+    
+    func removeObserver(_ observer: Any, name aName: NSNotification.Name?, object anObject: Any?) {
+        didCallRemove = true
+    }
+    
+    
+}
 
 class MockJourneyViewModel : JourneyPresentable {
+    var latestSearchString: String = ""
+    
     var didCallSwap = false
     var didCallViewDidAppear = false
     var start: String = ""

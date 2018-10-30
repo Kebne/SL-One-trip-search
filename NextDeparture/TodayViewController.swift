@@ -15,15 +15,18 @@ class TodayViewController: UIViewController, NCWidgetProviding {
         static let nrOfInfoLabels = 3
     }
     
-    @IBOutlet weak var latestSearchLabel: UILabel!
-    @IBOutlet weak var startStationLabel: UILabel!
-    @IBOutlet weak var destinationLabel: UILabel!
+    @IBOutlet weak var searchButton: UIButton!
+    
+    @IBOutlet weak var searchFromTimeInfoLabel: UILabel!
+    @IBOutlet weak var destinationStationButton: UIButton!
+    @IBOutlet weak var startStationButton: UIButton!
     @IBOutlet weak var labelHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var tableViewTopConstraint: NSLayoutConstraint!
     @IBOutlet weak var topSpacingConstraint: NSLayoutConstraint!
     @IBOutlet weak var journeyTableView: UITableView!
     var stateController: StateControllerProtocol!
     var viewModel: JourneyViewModel!
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,24 +45,29 @@ class TodayViewController: UIViewController, NCWidgetProviding {
         journeyTableView.dataSource = self
         journeyTableView.delegate = self
         
-        startStationLabel.text = self.viewModel.start
-        destinationLabel.text = self.viewModel.destination
-        
-
+        searchButton.contentHorizontalAlignment = .left
+        destinationStationButton.contentHorizontalAlignment = .left
+        startStationButton.contentHorizontalAlignment = .left
+        render()
         
         viewModel.newJourneyClosure = {[weak self] in
             guard let self = self else {
                 return
             }
-            self.startStationLabel.text = self.viewModel.start
-            self.destinationLabel.text = self.viewModel.destination
-            self.latestSearchLabel.text = self.viewModel.latestSearchString
-            self.journeyTableView.reloadData()
-            
+            self.render()
         }
-        // Do any additional setup after loading the view from its nib.
     }
-        
+    
+    private func render() {
+        startStationButton.setTitle(viewModel.start, for: .normal)
+        destinationStationButton.setTitle(viewModel.destination, for: .normal)
+        searchButton.setTitle(viewModel.latestSearchString, for: .normal)
+        searchFromTimeInfoLabel.text = viewModel.timeString
+        updateContentSize()
+        journeyTableView.reloadData()
+    }
+
+    
     func widgetPerformUpdate(completionHandler: (@escaping (NCUpdateResult) -> Void)) {
         viewModel.viewWillAppear()
         completionHandler(NCUpdateResult.newData)
@@ -80,13 +88,17 @@ class TodayViewController: UIViewController, NCWidgetProviding {
     }
     
     func widgetActiveDisplayModeDidChange(_ activeDisplayMode: NCWidgetDisplayMode, withMaximumSize maxSize: CGSize) {
-        if activeDisplayMode == .expanded
-        {
+        if activeDisplayMode == .expanded {
             preferredContentSize = CGSize(width: 0.0, height: calculateHeight())
-        }
-        else
-        {
+        } else {
             preferredContentSize = maxSize
+        }
+    }
+    
+    private func updateContentSize() {
+        guard let extensionContext = extensionContext else {return}
+        if extensionContext.widgetActiveDisplayMode == .expanded {
+            preferredContentSize = CGSize(width: 0.0, height: calculateHeight())
         }
     }
     
@@ -94,11 +106,21 @@ class TodayViewController: UIViewController, NCWidgetProviding {
     
     //MARK: Action
     @IBAction func didPressSwapButton(_ sender: UIButton) {
-        
         viewModel.didPressSwapButton()
-        
     }
     
+    
+    @IBAction func didPressSearchButton() {
+        viewModel.refreshControlDidRefresh()
+    }
+    
+    @IBAction func didPressFromStationButton() {
+        extensionContext?.open(URL.fromStation, completionHandler: nil)
+    }
+    
+    @IBAction func didPressDestinationStationButton() {
+        extensionContext?.open(URL.destStation, completionHandler: nil)
+    }
 }
 
 
