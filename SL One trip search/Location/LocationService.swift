@@ -54,9 +54,11 @@ class LocationService: NSObject {
     }
     
     func requestAuthForLocationServices(callback: @escaping (Bool) -> (), alocationManager: LocationManager.Type = CLLocationManager.self) {
-        startMonitoringCallback = callback
         switch alocationManager.authorizationStatus() {
+        case .authorizedAlways:
+            callback(true)
         case .notDetermined:
+            startMonitoringCallback = callback
             locationManager.requestAlwaysAuthorization()
             return
         case .denied, .restricted, .authorizedWhenInUse:
@@ -72,12 +74,20 @@ class LocationService: NSObject {
         regions.forEach({locationManager.startMonitoring(for: $0)})
     }
     
+    func distanceBetween(firstLocation: CLLocationCoordinate2D, secondLocation: CLLocationCoordinate2D) ->Double {
+        return CLLocation(latitude: firstLocation.latitude, longitude: firstLocation.longitude).distance(from: CLLocation(latitude: secondLocation.latitude, longitude: secondLocation.longitude))
+    }
+    
     func stopMonitoring(regions: [CLCircularRegion]) {
         regions.forEach({locationManager.stopMonitoring(for: $0)})
     }
     
     func monitoringIsAvailable() ->Bool {
-        return CLLocationManager.isMonitoringAvailable(for: CLCircularRegion.classForCoder()) && CLLocationManager.authorizationStatus() == .authorizedAlways
+        return CLLocationManager.isMonitoringAvailable(for: CLCircularRegion.classForCoder())
+    }
+    
+    func locationServicesIsAuthorized() ->Bool {
+        return CLLocationManager.authorizationStatus() == .authorizedAlways
     }
     
     func isMonitoring(region: CLCircularRegion) ->Bool {
@@ -117,5 +127,11 @@ extension LocationService : CLLocationManagerDelegate {
         guard let observer = regionObserver,
             let circularRegion = region as? CLCircularRegion else {return}
         observer.didEnter(region: circularRegion)
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        if let locateUserCallback = locateUserCallback {
+            locateUserCallback(Result.failure(error))
+        }
     }
 }

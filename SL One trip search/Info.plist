@@ -56,6 +56,10 @@
 	<array>
 		<string>armv7</string>
 	</array>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>Appen använder din position för att kolla söka efter resor när du närmar dig någon av de angivna stationerna.</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Appen använder din position för att kolla söka efter resor när du närmar dig någon av de angivna stationerna.</string>
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>

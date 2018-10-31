@@ -21,7 +21,7 @@ class MainCoordinatorTests: XCTestCase {
         mockNavController = MockNavigationController()
         mockWindow = MockWindow()
         mockUserJourneyController = MockUserJourneyController()
-        mockStateController = MockStateController(userController: mockUserJourneyController, journeyPlannerService: SearchService<SLJourneyPlanAPIResponse>())
+        mockStateController = MockStateController(userController: mockUserJourneyController, journeyPlannerService: SearchService<SLJourneyPlanAPIResponse>(), locationService: LocationService(locationManager: MockLocationManager()))
         sut = MainCoordinator(stateController: mockStateController, window: mockWindow, viewControllerFactory: ViewControllerFactoryClass(storyboard: UIStoryboard.main),
                               rootNavigationController: mockNavController)
     }

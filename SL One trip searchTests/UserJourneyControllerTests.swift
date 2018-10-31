@@ -7,19 +7,27 @@
 //
 
 import XCTest
+import CoreLocation
 @testable import SL_One_trip_search
 
 class UserJourneyControllerTests: XCTestCase {
     
     var sut: UserJourneyController!
     var mockedPersistService: MockPersistService!
+    var mockLocationManager: MockLocationManager!
+    var mockLocationService: PartialMockLocationService!
 
     override func setUp() {
+        mockLocationManager = MockLocationManager()
+        mockLocationService = PartialMockLocationService(locationManager: mockLocationManager)
         mockedPersistService = MockPersistService(UserDefaults.standard)
-        sut = UserJourneyController(persistService: mockedPersistService)
+        sut = UserJourneyController(persistService: mockedPersistService, locationService: mockLocationService)
     }
 
     override func tearDown() {
+        mockLocationService = nil
+        mockLocationManager = nil
+        mockedPersistService = nil
         sut = nil
     }
     
@@ -109,6 +117,37 @@ class UserJourneyControllerTests: XCTestCase {
         XCTAssertEqual(journey.monitorStationProximity, monitor)
     }
     
+    func test_regionMonitoringStarts_changingStation() {
+        
+        let userJourney = UserJourney(start: UserJourneyControllerTests.mockStart, destination: UserJourneyControllerTests.mockEnd, minutesUntilSearch: 0, monitorStationProximity: true)
+        MockLocationManager.authStatus = .authorizedAlways
+        sut.userJourney = userJourney
+        
+        sut.timeFromNowUntilSearch = 1
+        
+        XCTAssertEqual(mockLocationManager.monitoredRegions.count, 2)
+        XCTAssertTrue(mockLocationManager.monitoredRegions.contains(where: {$0.identifier == UserJourneyControllerTests.mockStart.id}))
+        XCTAssertTrue(mockLocationManager.monitoredRegions.contains(where: {$0.identifier == UserJourneyControllerTests.mockEnd.id}))
+        
+    }
+    
+    func test_regionMonitoringCorrectRegions_changingStation() {
+        
+        let userJourney = UserJourney(start: UserJourneyControllerTests.mockStart, destination: UserJourneyControllerTests.mockEnd, minutesUntilSearch: 0, monitorStationProximity: true)
+        MockLocationManager.authStatus = .authorizedAlways
+        sut.userJourney = userJourney
+        
+        sut.timeFromNowUntilSearch = 1
+        
+        let updatedStation = Station(name: "Next", area: "area", id: "12", lat: 0.1, long: 0.1)
+        sut.destination = updatedStation
+        
+        XCTAssertEqual(mockLocationManager.monitoredRegions.count, 2)
+        XCTAssertTrue(mockLocationManager.monitoredRegions.contains(where: {$0.identifier == UserJourneyControllerTests.mockStart.id}))
+        XCTAssertTrue(mockLocationManager.monitoredRegions.contains(where: {$0.identifier == updatedStation.id}))
+        
+    }
+    
     static var mockStart : Station {
         return Station(name: "Start",area: "area", id: "10", lat: 0.0, long: 0.0)
     }
@@ -137,6 +176,16 @@ class MockPersistService : PersistServiceProtocol {
     }
     
     
+}
+
+class PartialMockLocationService : LocationService {
+    override func locationServicesIsAuthorized() -> Bool {
+        return MockLocationManager.authorizationStatus() == .authorizedAlways
+    }
+    
+    override func monitoringIsAvailable() -> Bool {
+        return MockLocationManager.isMonitoringAvailable(for: CLCircularRegion.classForCoder())
+    }
 }
 
 
