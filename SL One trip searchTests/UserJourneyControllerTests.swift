@@ -148,6 +148,18 @@ class UserJourneyControllerTests: XCTestCase {
         
     }
     
+    func test_noRegionsAreMonitored_regionMonitoringDisabled() {
+        let userJourney = UserJourney(start: UserJourneyControllerTests.mockStart, destination: UserJourneyControllerTests.mockEnd, minutesUntilSearch: 0, monitorStationProximity: true)
+        MockLocationManager.authStatus = .authorizedAlways
+        sut.userJourney = userJourney
+        
+        sut.timeFromNowUntilSearch = 1
+        
+        XCTAssertEqual(mockLocationManager.monitoredRegions.count, 2)
+        sut.monitorStationProximity = false
+        XCTAssertEqual(mockLocationManager.monitoredRegions.count, 0)
+    }
+    
     static var mockStart : Station {
         return Station(name: "Start",area: "area", id: "10", lat: 0.0, long: 0.0)
     }
@@ -179,6 +191,12 @@ class MockPersistService : PersistServiceProtocol {
 }
 
 class PartialMockLocationService : LocationService {
+    var didRegisterRegionObserver = false
+    override func registerRegion(observer: RegionObserver) {
+        didRegisterRegionObserver = true
+        super.registerRegion(observer: observer)
+    }
+    
     override func locationServicesIsAuthorized() -> Bool {
         return MockLocationManager.authorizationStatus() == .authorizedAlways
     }
