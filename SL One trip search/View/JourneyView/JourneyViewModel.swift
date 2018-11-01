@@ -119,7 +119,7 @@ class JourneyViewModel : JourneyPresentable {
         showActivityIndicator = true
         latestSearchDate = nil
         notifyCallback()
-        stateController.fetchTrips() {[weak self] result in
+        stateController.fetchTrips(completion:{[weak self] result in
             guard let self = self else {return}
             switch result {
             case .success(let response): self.createTableViewDataFrom(response: response)
@@ -128,7 +128,7 @@ class JourneyViewModel : JourneyPresentable {
             self.showActivityIndicator = false
             self.latestSearchDate = Date()
             self.notifyCallback()
-        }
+        }, usingLocation: false)
     }
     
     private func createTableViewDataFrom(response: SLJourneyPlanAPIResponse) {

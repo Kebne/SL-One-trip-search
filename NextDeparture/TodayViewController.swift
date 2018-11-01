@@ -8,11 +8,11 @@
 
 import UIKit
 import NotificationCenter
-
+import CoreLocation
 class TodayViewController: UIViewController, NCWidgetProviding {
     
     fileprivate struct Constant {
-        static let nrOfInfoLabels = 3
+        static let nrOfInfoLabels = 4
     }
     
     @IBOutlet weak var searchButton: UIButton!
@@ -34,9 +34,11 @@ class TodayViewController: UIViewController, NCWidgetProviding {
     
         let userDefaults = UserDefaults(suiteName: "group.container.kebne.slonetripsearch")!
         let persistService = PersistService(userDefaults)
-        let userController = UserJourneyController(persistService: persistService)
+        let locationService = LocationService(locationManager: CLLocationManager())
+        let userController = UserJourneyController(persistService: persistService, locationService: locationService)
         userController.attemptToRetreiveStoredJourney()
-        stateController = StateController(userController: userController, journeyPlannerService: SearchService<SLJourneyPlanAPIResponse>())
+        
+        stateController = StateController(userController: userController, journeyPlannerService: SearchService<SLJourneyPlanAPIResponse>(), locationService: locationService)
         viewModel = JourneyViewModel(stateController: stateController)
         
         journeyTableView.tableFooterView = UIView(frame: CGRect.zero)

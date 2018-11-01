@@ -13,18 +13,20 @@ class JourneyViewModelTests: XCTestCase {
     
     var mockStateController: MockStateController!
     var mockUserJourneyController: MockUserJourneyController!
+    var mockLocationManager: MockLocationManager!
     var sut: JourneyViewModel!
 
     override func setUp() {
+        mockLocationManager = MockLocationManager()
         mockUserJourneyController = MockUserJourneyController()
-        mockStateController = MockStateController(userController: mockUserJourneyController, journeyPlannerService: SearchService<SLJourneyPlanAPIResponse>())
+        mockStateController = MockStateController(userController: mockUserJourneyController, journeyPlannerService: SearchService<SLJourneyPlanAPIResponse>(), locationService: LocationService(locationManager: mockLocationManager))
         sut = JourneyViewModel(stateController: mockStateController)
-   
     }
 
     override func tearDown() {
         sut = nil
         mockStateController = nil
+        mockLocationManager = nil
         mockUserJourneyController = nil
     }
 
@@ -168,10 +170,19 @@ class JourneyViewModelTests: XCTestCase {
 }
 
 class MockStateController : StateControllerProtocol {
+    
+    func monitorStations(enable: Bool, completion: @escaping (Bool) -> Void) {
+        
+    }
+    
+    required init(userController: UserJourneyControllerProtocol, journeyPlannerService: SearchService<SLJourneyPlanAPIResponse>, locationService: LocationService) {
+        userJourneyController = userController
+    }
+    
     var userJourneyController: UserJourneyControllerProtocol
     var jsonString: String?
     
-    func fetchTrips(completion: @escaping (Result<SLJourneyPlanAPIResponse>) -> Void) {
+    func fetchTrips(completion: @escaping (Result<SLJourneyPlanAPIResponse>) -> Void, usingLocation: Bool) {
         if let string = jsonString,  let jsonData = string.data(using: .utf8) {
             do {
                 let result = try JSONDecoder().decode(SLJourneyPlanAPIResponse.self, from: jsonData)
@@ -182,16 +193,16 @@ class MockStateController : StateControllerProtocol {
         }
         
         completion(Result.failure(EndpointError.corruptData))
-    }
-    
-    required init(userController: UserJourneyControllerProtocol, journeyPlannerService: SearchService<SLJourneyPlanAPIResponse>) {
-        userJourneyController = userController
-    }
-    
-    
+    }    
 }
 
 class MockUserJourneyController : UserJourneyControllerProtocol {
+    func monitorStations(enable: Bool, completion: @escaping (Bool) -> Void) {
+        
+    }
+    
+    var monitorStationProximity: Bool = false
+    
     var didCallSwapStations = false
     
     func attemptToRetreiveStoredJourney() {

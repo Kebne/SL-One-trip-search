@@ -24,25 +24,15 @@ class SettingsViewController: UIViewController, StoryboardInstantiable {
     @IBOutlet weak var timeUnitLabel: UILabel!
     
     weak var delegate: SettingsViewControllerDelegate?
-    var stateController: StateControllerProtocol!
-    
-    var viewModel = ViewModel() {
-        didSet {
-            originTextField.text = viewModel.originText
-            destinationTextField.text = viewModel.destinationText
-            timeFromNowLabel.text = "\(Int(viewModel.searchTimeFromNow))"
-            timeSlider.value = viewModel.searchTimeFromNow
-            monitorSwitch.isOn = viewModel.monitorLocation
-            monitorSwitch.isEnabled = viewModel.monitorLocationEnabled
-            timeSlider.isEnabled = viewModel.timeSliderEnabled
-            timeUnitLabel.text = viewModel.timeUnit
-        }
-    }
+    var viewModel: ViewModel!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         originTextField.delegate = self
         destinationTextField.delegate = self
+        viewModel.renderCallback = {[weak self] in
+            self?.render()
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -51,21 +41,24 @@ class SettingsViewController: UIViewController, StoryboardInstantiable {
     }
     
     private func render() {
-        viewModel = ViewModel(userJourney: stateController.userJourneyController.userJourney,
-                              tempStart: stateController.userJourneyController.start,
-                              tempDestination: stateController.userJourneyController.destination)
+        originTextField.text = viewModel.originText
+        destinationTextField.text = viewModel.destinationText
+        timeFromNowLabel.text = "\(Int(viewModel.searchTimeFromNow))"
+        timeSlider.value = viewModel.searchTimeFromNow
+        monitorSwitch.isOn = viewModel.monitorLocation
+        monitorSwitch.isEnabled = viewModel.monitorLocationEnabled
+        timeSlider.isEnabled = viewModel.timeSliderEnabled
+        timeUnitLabel.text = viewModel.timeUnit
     }
     
     //MARK: Action
     
     @IBAction func sliderDidChangeValue(_ sender: UISlider) {
-        stateController.userJourneyController.timeFromNowUntilSearch = Int(sender.value)
-        render()
-        
+        viewModel.sliderValueChanged(to: sender.value)
     }
     
     @IBAction func didSwitchRegionSwitch(_ sender: UISwitch) {
-        
+        viewModel.didSwitchRegionSwitch(to: sender.isOn)
     }
     
 }
@@ -82,34 +75,47 @@ extension SettingsViewController : UITextFieldDelegate {
 }
 
 extension SettingsViewController {
-    struct ViewModel {
-        let originText: String
-        let destinationText: String
-        let searchTimeFromNow: Float
-        let monitorLocation: Bool
-        let monitorLocationEnabled: Bool
-        let timeSliderEnabled: Bool
-        let timeUnit: String
+    class ViewModel {
+        var originText: String {
+            return stateController.userJourneyController.start?.name ?? stateController.userJourneyController.userJourney?.start.name ?? ""
+        }
+        var destinationText: String {
+            return stateController.userJourneyController.destination?.name ?? stateController.userJourneyController.userJourney?.destination.name ?? ""
+        }
+        var searchTimeFromNow: Float {
+            return Float(stateController.userJourneyController.userJourney?.minutesUntilSearch ?? 0)
+        }
+        var monitorLocation: Bool {
+            guard let userJourney = stateController.userJourneyController.userJourney else {return false}
+            return userJourney.monitorStationProximity
+        }
+        var monitorLocationEnabled: Bool {
+            return stateController.userJourneyController.userJourney != nil
+        }
+        var timeSliderEnabled: Bool {
+            return stateController.userJourneyController.userJourney != nil
+        }
+        var timeUnit: String {
+            guard let userJourney = stateController.userJourneyController.userJourney else {return ""}
+            return userJourney.minutesUntilSearch == 1 ? "minut." : "minuter."
+        }
+        private var stateController: StateControllerProtocol
         
-        init() {
-            originText = ""
-            destinationText = ""
-            searchTimeFromNow = 0.0
-            monitorLocation = false
-            monitorLocationEnabled = false
-            timeSliderEnabled = false
-            timeUnit = "minuter."
+        var renderCallback: (()->Void)?
+        
+        init(stateController: StateControllerProtocol) {
+            self.stateController = stateController
         }
         
-        init(userJourney: UserJourney?, tempStart: Station?, tempDestination: Station?) {
-            originText = tempStart?.name ?? userJourney?.start.name ?? ""
-            destinationText = tempDestination?.name ?? userJourney?.destination.name ?? ""
-            searchTimeFromNow = Float(userJourney?.minutesUntilSearch ?? 0)
-            monitorLocation = Bool(userJourney?.monitorStationProximity ?? false)
-            timeSliderEnabled = userJourney == nil ? false : true
-            monitorLocationEnabled = userJourney == nil ? false : true
-            timeUnit = searchTimeFromNow == 1.0 ? "minut." : "minuter."
-            
+        func sliderValueChanged(to: Float) {
+            stateController.userJourneyController.timeFromNowUntilSearch = Int(to)
+            renderCallback?()
+        }
+        
+        func didSwitchRegionSwitch(to: Bool) {
+            stateController.userJourneyController.monitorStations(enable: to) {[weak self] success in
+                self?.renderCallback?()
+            }
         }
     }
 }

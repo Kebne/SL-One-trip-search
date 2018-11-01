@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreLocation
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -18,9 +19,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         let userDefaults = UserDefaults(suiteName: "group.container.kebne.slonetripsearch")!
         let persistService = PersistService(userDefaults)
-        let userController = UserJourneyController(persistService: persistService)
+        let locationService = LocationService(locationManager: CLLocationManager())
+        let userController = UserJourneyController(persistService: persistService, locationService: locationService)
         userController.attemptToRetreiveStoredJourney()
-        let stateController = StateController(userController: userController, journeyPlannerService: SearchService<SLJourneyPlanAPIResponse>())
+
+        let stateController = StateController(userController: userController, journeyPlannerService: SearchService<SLJourneyPlanAPIResponse>(), locationService: locationService)
         window = UIWindow(frame: UIScreen.main.bounds)
         let rootNavController = UINavigationController()
         let viewControllerFactory = ViewControllerFactoryClass(storyboard: UIStoryboard.main)

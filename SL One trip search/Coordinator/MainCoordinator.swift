@@ -79,7 +79,7 @@ class MainCoordinator {
             return
         }
         let settingsViewController: SettingsViewController = viewControllerFactory.instantiateViewController()
-        settingsViewController.stateController = self.stateController
+        settingsViewController.viewModel = SettingsViewController.ViewModel(stateController: stateController)
         settingsViewController.delegate = self
         rootNavigationController.pushViewController(settingsViewController, animated: animated)
     }
