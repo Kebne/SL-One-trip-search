@@ -19,7 +19,7 @@ class JourneyViewModelTests: XCTestCase {
     override func setUp() {
         mockLocationManager = MockLocationManager()
         mockUserJourneyController = MockUserJourneyController()
-        mockStateController = MockStateController(userController: mockUserJourneyController, journeyPlannerService: SearchService<SLJourneyPlanAPIResponse>(), locationService: LocationService(locationManager: mockLocationManager))
+        mockStateController = MockStateController(userController: mockUserJourneyController, journeyPlannerService: SearchService<SLJourneyPlanAPIResponse>(), locationService: LocationService(locationManager: mockLocationManager), notificationService: NotificationService())
         sut = JourneyViewModel(stateController: mockStateController)
     }
 
@@ -175,7 +175,7 @@ class MockStateController : StateControllerProtocol {
         
     }
     
-    required init(userController: UserJourneyControllerProtocol, journeyPlannerService: SearchService<SLJourneyPlanAPIResponse>, locationService: LocationService) {
+    required init(userController: UserJourneyControllerProtocol, journeyPlannerService: SearchService<SLJourneyPlanAPIResponse>, locationService: LocationService, notificationService: NotificationService) {
         userJourneyController = userController
     }
     

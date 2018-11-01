@@ -109,12 +109,22 @@ extension SettingsViewController {
         
         func sliderValueChanged(to: Float) {
             stateController.userJourneyController.timeFromNowUntilSearch = Int(to)
-            renderCallback?()
+            notifyRenderCallback()
         }
         
         func didSwitchRegionSwitch(to: Bool) {
-            stateController.userJourneyController.monitorStations(enable: to) {[weak self] success in
-                self?.renderCallback?()
+            stateController.monitorStations(enable: to) {[weak self] success in
+                self?.notifyRenderCallback()
+            }
+        }
+        
+        func notifyRenderCallback() {
+            if Thread.current == Thread.main {
+                renderCallback?()
+            } else {
+                DispatchQueue.main.async {[weak self] in
+                   self?.renderCallback?()
+                }
             }
         }
     }

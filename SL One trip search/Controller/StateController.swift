@@ -12,18 +12,23 @@ import CoreLocation
 protocol StateControllerProtocol {
     var userJourneyController: UserJourneyControllerProtocol {get set}
     func fetchTrips(completion: @escaping (Result<SLJourneyPlanAPIResponse>)->Void, usingLocation: Bool)
+    func monitorStations(enable: Bool, completion: @escaping (Bool)->Void)
     
-    init(userController: UserJourneyControllerProtocol, journeyPlannerService: SearchService<SLJourneyPlanAPIResponse>, locationService: LocationService)
+    init(userController: UserJourneyControllerProtocol, journeyPlannerService: SearchService<SLJourneyPlanAPIResponse>, locationService: LocationService,
+         notificationService: NotificationService)
 }
 
 class StateController: StateControllerProtocol {
     private let journeyPlannerService: SearchService<SLJourneyPlanAPIResponse>
     private let locationService: LocationService
+    private let notificationService: NotificationService
     
-    required init(userController: UserJourneyControllerProtocol, journeyPlannerService: SearchService<SLJourneyPlanAPIResponse>, locationService: LocationService) {
+    required init(userController: UserJourneyControllerProtocol, journeyPlannerService: SearchService<SLJourneyPlanAPIResponse>, locationService: LocationService,
+                  notificationService: NotificationService) {
         self.userJourneyController = userController
         self.journeyPlannerService = journeyPlannerService
         self.locationService = locationService
+        self.notificationService = notificationService
         locationService.registerRegion(observer: self)
     }
     
@@ -69,6 +74,23 @@ class StateController: StateControllerProtocol {
         }
         journeyPlannerService.searchWith(request: searchJourneyRequest, callback: completion)
         
+    }
+    
+    func monitorStations(enable: Bool, completion: @escaping (Bool) -> Void) {
+        userJourneyController.monitorStations(enable: enable) {[weak self] success in
+            if enable && success {
+                self?.requestAuthForNotification(with: completion)
+            } else {
+                completion(false)
+            }
+        }
+    }
+    
+    private func requestAuthForNotification(with completion: @escaping (Bool)->Void) {
+        notificationService.requestAuthForNotifications(completion: {[weak self] success in
+            self?.userJourneyController.monitorStationProximity = success
+            completion(success)
+        })
     }
 
     var userJourneyController: UserJourneyControllerProtocol

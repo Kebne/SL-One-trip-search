@@ -47,6 +47,9 @@
 		518D46622188C02F00789960 /* LocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 518D46612188C02F00789960 /* LocationService.swift */; };
 		51AF078F2189E28F004A942F /* LocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 518D46612188C02F00789960 /* LocationService.swift */; };
 		51AF0791218A0797004A942F /* StateControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51AF0790218A0797004A942F /* StateControllerTests.swift */; };
+		51AF0794218B0AA3004A942F /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51AF0793218B0AA3004A942F /* NotificationService.swift */; };
+		51AF0795218B0AA3004A942F /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51AF0793218B0AA3004A942F /* NotificationService.swift */; };
+		51AF0797218B0EAF004A942F /* NotificationServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51AF0796218B0EAF004A942F /* NotificationServiceTests.swift */; };
 		51C86CFE217DC62F000F5851 /* JourneyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51C86CFD217DC62F000F5851 /* JourneyTableViewCell.swift */; };
 		51C86D00217DD3A9000F5851 /* Trip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51C86CFF217DD3A9000F5851 /* Trip.swift */; };
 		51C86D02217DD3B3000F5851 /* Leg.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51C86D01217DD3B3000F5851 /* Leg.swift */; };
@@ -166,6 +169,8 @@
 		518D465D2187680F00789960 /* MainCoordinatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinatorTests.swift; sourceTree = "<group>"; };
 		518D46612188C02F00789960 /* LocationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationService.swift; sourceTree = "<group>"; };
 		51AF0790218A0797004A942F /* StateControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateControllerTests.swift; sourceTree = "<group>"; };
+		51AF0793218B0AA3004A942F /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
+		51AF0796218B0EAF004A942F /* NotificationServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationServiceTests.swift; sourceTree = "<group>"; };
 		51C86CFD217DC62F000F5851 /* JourneyTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JourneyTableViewCell.swift; sourceTree = "<group>"; };
 		51C86CFF217DD3A9000F5851 /* Trip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Trip.swift; sourceTree = "<group>"; };
 		51C86D01217DD3B3000F5851 /* Leg.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Leg.swift; sourceTree = "<group>"; };
@@ -254,6 +259,7 @@
 		5135EF4B21776AB30016AAD6 /* SL One trip search */ = {
 			isa = PBXGroup;
 			children = (
+				51AF0792218B0A82004A942F /* Notification */,
 				518D4660218898F400789960 /* Location */,
 				51C86D522180B083000F5851 /* SL One trip search.entitlements */,
 				5135EF82217774610016AAD6 /* Coordinator */,
@@ -288,6 +294,7 @@
 				518D465D2187680F00789960 /* MainCoordinatorTests.swift */,
 				51761C192189AE00007ECC6E /* LocationServiceTests.swift */,
 				51AF0790218A0797004A942F /* StateControllerTests.swift */,
+				51AF0796218B0EAF004A942F /* NotificationServiceTests.swift */,
 			);
 			path = "SL One trip searchTests";
 			sourceTree = "<group>";
@@ -356,6 +363,14 @@
 				518D46612188C02F00789960 /* LocationService.swift */,
 			);
 			path = Location;
+			sourceTree = "<group>";
+		};
+		51AF0792218B0A82004A942F /* Notification */ = {
+			isa = PBXGroup;
+			children = (
+				51AF0793218B0AA3004A942F /* NotificationService.swift */,
+			);
+			path = Notification;
 			sourceTree = "<group>";
 		};
 		51C86D0B217DD57F000F5851 /* Journey */ = {
@@ -611,6 +626,7 @@
 				51C86D0D217DD91F000F5851 /* ProductCategory.swift in Sources */,
 				51C86D0F217DF0F7000F5851 /* JourneyError.swift in Sources */,
 				5135EF942178C8440016AAD6 /* SLSearch.swift in Sources */,
+				51AF0794218B0AA3004A942F /* NotificationService.swift in Sources */,
 				51C86D00217DD3A9000F5851 /* Trip.swift in Sources */,
 				5135EF8821777D820016AAD6 /* Station.swift in Sources */,
 				51C86D08217DD3D9000F5851 /* Product.swift in Sources */,
@@ -621,6 +637,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				51AF0797218B0EAF004A942F /* NotificationServiceTests.swift in Sources */,
 				51C86D14217F52A0000F5851 /* JourneySearchTests.swift in Sources */,
 				518D465E2187680F00789960 /* MainCoordinatorTests.swift in Sources */,
 				51761C1A2189AE00007ECC6E /* LocationServiceTests.swift in Sources */,
@@ -668,6 +685,7 @@
 				51C86D472180AEE6000F5851 /* SLJourneyPlanAPIResponse.swift in Sources */,
 				51C86D512180B018000F5851 /* Environment.swift in Sources */,
 				51C86D4E2180AF05000F5851 /* SearchRequest.swift in Sources */,
+				51AF0795218B0AA3004A942F /* NotificationService.swift in Sources */,
 				518D465C21875D1A00789960 /* SharedAppConstant.swift in Sources */,
 				51C86D452180AEDF000F5851 /* Origin.swift in Sources */,
 				51C86D4B2180AEF8000F5851 /* UserJourney.swift in Sources */,

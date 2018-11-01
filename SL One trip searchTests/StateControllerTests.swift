@@ -22,7 +22,7 @@ class StateControllerTests: XCTestCase {
         mockSearchService = MockSearchService<SLJourneyPlanAPIResponse>()
         mockUserJourneyController = MockUserJourneyController()
         partialMockLocationService = PartialMockLocationService(locationManager: mockLocationManager)
-        sut = StateController(userController: mockUserJourneyController, journeyPlannerService: mockSearchService, locationService: partialMockLocationService)
+        sut = StateController(userController: mockUserJourneyController, journeyPlannerService: mockSearchService, locationService: partialMockLocationService, notificationService: NotificationService())
         
     }
 
