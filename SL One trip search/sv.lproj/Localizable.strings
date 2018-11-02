@@ -26,6 +26,10 @@
 "product.platformtype.train" = "spår";
 "product.platformtype.boat" = "läge";
 
+"notification.body.showInstructions" = "Dra ner / långtryck för att visa";
+"notification.title.tripsNow" = "Resor";
+"notification.title.tripsInMinutes" = "Resor om %@ min";
+"notification.title" = "%@ till %@ från %@";
 
 "journeyView.journeyStats.noChanges" = "inga byten";
 "journeyView.journeyStats.oneChange" = "1 byte";

@@ -35,6 +35,12 @@ extension UNUserNotificationCenter : UserNotificationCenter {
 }
 
 class NotificationService : NSObject{
+    enum Strings {
+        static let defaultBody = NSLocalizedString("notification.body.showInstructions", comment: "")
+        static let titleTripsNow = NSLocalizedString("notification.title.tripsNow", comment: "")
+        static let titleTripsInMinutes = NSLocalizedString("notification.title.tripsInMinutes", comment: "")
+        static let title = NSLocalizedString("notification.title", comment: "")
+    }
     private let notificationCategoryIdentifier = "journeyNotification"
     typealias AuthorizationCallback = (Bool)->Void
     private var authCallback: AuthorizationCallback?
@@ -51,7 +57,6 @@ class NotificationService : NSObject{
         var set = Set<UNNotificationCategory>()
         set.insert(category)
         notificationCenter.setNotificationCategories(set)
-        UNUserNotificationCenter.current().delegate = self
     }
     
     //MARK: Authorization
@@ -86,7 +91,7 @@ class NotificationService : NSObject{
         let content = UNMutableNotificationContent()
         content.categoryIdentifier = notificationCategoryIdentifier
         if #available(iOS 12.1, *) {
-            content.body = "Dra ner för att visa"
+            content.body = Strings.defaultBody
         } else if let bodyString = buildNotificationString(from: trips, userJourney: userJourney) {
             content.body = bodyString
         }
@@ -99,14 +104,7 @@ class NotificationService : NSObject{
     
     private func sendLocal(notification: UNMutableNotificationContent) {
         getNotificationSettings(with: {[weak self](settings) in
-            print("SEND NOTE IN 3 SEC!")
-            UNUserNotificationCenter.current().getNotificationCategories(completionHandler: {(categories) in
-                for cat in categories {
-                    print("Category: \(cat.identifier)")
-                    print("Notification content cat: \(notification.categoryIdentifier)")
-                    print("ID's are equal: \(cat.identifier == notification.categoryIdentifier)")
-                }
-            })
+
             guard let self = self else {return}
             guard settings.authorizationStatus == .authorized else {return}
             let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 3.0,
@@ -118,8 +116,8 @@ class NotificationService : NSObject{
     }
     
     private func notificationTitle(from userJourney: UserJourney) ->String {
-        let introString = userJourney.minutesUntilSearch == 0 ? "Resor" : "Resor om \(userJourney.minutesUntilSearch) min"
-        return "\(introString) till \(userJourney.destination.name) från \(userJourney.start.name)"
+        let introString = userJourney.minutesUntilSearch == 0 ? Strings.titleTripsNow : String(format: Strings.titleTripsInMinutes, userJourney.minutesUntilSearch)
+        return String(format: Strings.title, introString,userJourney.destination.name,userJourney.start.name)
     }
     private func buildNotificationString(from trips: [Trip], userJourney: UserJourney) ->String? {
         let sortedTrips = Trip.sortInCategories(trips: trips)
@@ -130,29 +128,14 @@ class NotificationService : NSObject{
             let tripsForCategory = sortedTrips.dictionary[category]!
             for trip in tripsForCategory {
                 guard let firstLeg = trip.legList.first else {continue}
-                
                 let platformString = firstLeg.origin.track.count > 0 ? " \(firstLeg.product.category.platformTypeString) \(firstLeg.origin.track)" : ""
-                string = string + "\n" + firstLeg.product.line + " mot " + firstLeg.direction + platformString + firstLeg.origin.track + " - " + firstLeg.origin.time.presentableTimeString
+                string = string + "\n" + firstLeg.product.line + " \(JourneyViewModel.Strings.towards) " + firstLeg.direction + platformString + firstLeg.origin.track + " - " + firstLeg.origin.time.presentableTimeString
             }
             
             string = string + "\n"
         }
         
         return string
-    }
-}
-
-extension NotificationService : UNUserNotificationCenterDelegate {
-    func userNotificationCenter(_ center: UNUserNotificationCenter, openSettingsFor notification: UNNotification?) {
-        
-    }
-    
-    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
-        
-    }
-    
-    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
-        completionHandler(UNNotificationPresentationOptions.alert)
     }
 }
 

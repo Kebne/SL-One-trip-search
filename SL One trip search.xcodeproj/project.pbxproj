@@ -70,6 +70,15 @@
 		51AF07E4218C7BF0004A942F /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 51C86D1D21804CDB000F5851 /* Localizable.strings */; };
 		51AF07E5218C7D70004A942F /* TableViewHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 51583DD52187332600AFDE38 /* TableViewHeaderView.xib */; };
 		51AF07E6218C7D79004A942F /* TableViewHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51583DD22187331400AFDE38 /* TableViewHeaderView.swift */; };
+		51AF07E7218C95EF004A942F /* JourneyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51C86D10217F1319000F5851 /* JourneyViewModel.swift */; };
+		51AF07E8218CA19D004A942F /* StateController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5135EF8921777E6B0016AAD6 /* StateController.swift */; };
+		51AF07E9218CA1C3004A942F /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51AF0793218B0AA3004A942F /* NotificationService.swift */; };
+		51AF07EA218CA1C6004A942F /* LocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 518D46612188C02F00789960 /* LocationService.swift */; };
+		51AF07EB218CA1CC004A942F /* SLSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5135EF932178C8440016AAD6 /* SLSearch.swift */; };
+		51AF07EC218CA1CE004A942F /* SearchRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5135EF952178C8830016AAD6 /* SearchRequest.swift */; };
+		51AF07ED218CA1D7004A942F /* UserJourneyController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5135EF8B21777E790016AAD6 /* UserJourneyController.swift */; };
+		51AF07EE218CA1E5004A942F /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5135EF972178CBBE0016AAD6 /* Environment.swift */; };
+		51AF07EF218CA1F4004A942F /* JourneyError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51C86D0E217DF0F7000F5851 /* JourneyError.swift */; };
 		51C86CFE217DC62F000F5851 /* JourneyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51C86CFD217DC62F000F5851 /* JourneyTableViewCell.swift */; };
 		51C86D00217DD3A9000F5851 /* Trip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51C86CFF217DD3A9000F5851 /* Trip.swift */; };
 		51C86D02217DD3B3000F5851 /* Leg.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51C86D01217DD3B3000F5851 /* Leg.swift */; };
@@ -764,17 +773,26 @@
 			buildActionMask = 2147483647;
 			files = (
 				51AF07D8218C6F9A004A942F /* Leg.swift in Sources */,
+				51AF07E7218C95EF004A942F /* JourneyViewModel.swift in Sources */,
+				51AF07EC218CA1CE004A942F /* SearchRequest.swift in Sources */,
 				51AF07DF218C6FB4004A942F /* UserJourney.swift in Sources */,
 				51AF07D7218C6F96004A942F /* PersistService.swift in Sources */,
+				51AF07E8218CA19D004A942F /* StateController.swift in Sources */,
 				51AF07DC218C6FA9004A942F /* SLJourneyPlanAPIResponse.swift in Sources */,
 				51AF07E2218C7987004A942F /* JourneyTableViewCell.swift in Sources */,
 				51AF07E6218C7D79004A942F /* TableViewHeaderView.swift in Sources */,
 				51AF07D9218C6F9E004A942F /* Destination.swift in Sources */,
+				51AF07EE218CA1E5004A942F /* Environment.swift in Sources */,
 				51AF07DE218C6FB0004A942F /* ProductCategory.swift in Sources */,
+				51AF07EB218CA1CC004A942F /* SLSearch.swift in Sources */,
 				51AF07DD218C6FAD004A942F /* Trip.swift in Sources */,
+				51AF07ED218CA1D7004A942F /* UserJourneyController.swift in Sources */,
 				51AF07CC218C5A35004A942F /* NotificationViewController.swift in Sources */,
+				51AF07E9218CA1C3004A942F /* NotificationService.swift in Sources */,
 				51AF07E0218C6FB8004A942F /* Station.swift in Sources */,
 				51AF07DA218C6FA2004A942F /* Origin.swift in Sources */,
+				51AF07EF218CA1F4004A942F /* JourneyError.swift in Sources */,
+				51AF07EA218CA1C6004A942F /* LocationService.swift in Sources */,
 				51AF07DB218C6FA6004A942F /* Product.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

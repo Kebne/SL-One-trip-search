@@ -43,8 +43,8 @@ class TodayViewController: UIViewController, NCWidgetProviding {
         viewModel = JourneyViewModel(stateController: stateController)
         
         journeyTableView.tableFooterView = UIView(frame: CGRect.zero)
-        journeyTableView.register(UINib.init(nibName: "JourneyTableViewCellView", bundle: nil), forCellReuseIdentifier: JourneyTableViewCell.reuseIdentifier)
-        journeyTableView.register(UINib.init(nibName: "TableViewHeaderView", bundle: nil), forHeaderFooterViewReuseIdentifier: TableViewHeaderView.reuseId)
+        journeyTableView.register(UINib.init(nibName: JourneyTableViewCell.nibName, bundle: nil), forCellReuseIdentifier: JourneyTableViewCell.reuseIdentifier)
+        journeyTableView.register(UINib.init(nibName: TableViewHeaderView.nibName, bundle: nil), forHeaderFooterViewReuseIdentifier: TableViewHeaderView.reuseId)
         journeyTableView.dataSource = self
         journeyTableView.delegate = self
         

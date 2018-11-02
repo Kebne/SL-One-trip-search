@@ -67,14 +67,14 @@ class StateController: StateControllerProtocol {
         return userJourneyController.userJourney!
     }
     
-    private func continueSearch(userJourney: UserJourney, completion: @escaping (Result<SLJourneyPlanAPIResponse>) -> Void) {
+    private func continueSearch(userJourney: UserJourney, completion: @escaping (Result<SLJourneyPlanAPIResponse>) -> Void, persistKey: String? = nil) {
         guard let searchJourneyRequest = JourneySearchRequest(originId: userJourney.start.id,
                                                               destinationId: userJourney.destination.id,
                                                               minutesFromNow: userJourney.minutesUntilSearch) else {
                                                                 completion(Result.failure(JourneyError.unableToConstructRequest))
                                                                 return
         }
-        journeyPlannerService.searchWith(request: searchJourneyRequest, callback: completion)
+        journeyPlannerService.searchWith(request: searchJourneyRequest, callback: completion, persistDataWithKey: persistKey)
     }
     
     func monitorStations(enable: Bool, completion: @escaping (Bool) -> Void) {
@@ -107,12 +107,12 @@ extension StateController : RegionObserver {
     func didEnter(region: CLCircularRegion) {
         guard let currentJourney = userJourneyController.userJourney else {return}
         let updatedUserJourney = updateUserJourneyStartNearest(position: region.center, currentJourney: currentJourney)
-        continueSearch(userJourney: updatedUserJourney) {[weak self] result in
+        continueSearch(userJourney: updatedUserJourney,completion: {[weak self] result in
             
             if case .success(let response) = result {
                 self?.notificationService.notify(trips: response.trips, userJourney: updatedUserJourney)
             }
-        }
+        }, persistKey: "Trips")
     }
 
 }

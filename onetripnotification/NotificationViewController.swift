@@ -25,8 +25,8 @@ class NotificationViewController: UIViewController, UNNotificationContentExtensi
         let persistService = PersistService(userDefaults)
         guard let trips = persistService.retreive(SLJourneyPlanAPIResponse.self, valueForKey: "Trips") else { return }
         viewModel = NotificationViewModel(apiResponse: trips)
-        tableView.register(UINib.init(nibName: "JourneyTableViewCellView", bundle: nil), forCellReuseIdentifier: JourneyTableViewCell.reuseIdentifier)
-        tableView.register(UINib.init(nibName: "TableViewHeaderView", bundle: nil), forHeaderFooterViewReuseIdentifier: TableViewHeaderView.reuseId)
+        tableView.register(UINib.init(nibName: JourneyTableViewCell.nibName, bundle: nil), forCellReuseIdentifier: JourneyTableViewCell.reuseIdentifier)
+        tableView.register(UINib.init(nibName: TableViewHeaderView.nibName, bundle: nil), forHeaderFooterViewReuseIdentifier: TableViewHeaderView.reuseId)
         tableView.dataSource = self
         tableView.delegate = self
         tableView.tableFooterView = UIView(frame: CGRect.zero)
@@ -120,7 +120,7 @@ class NotificationViewModel {
     func titleFor(section: Int) ->String? {
         
         if section < categories.count {
-            return categories[section].description + " mot"
+            return categories[section].description + " " + JourneyViewModel.Strings.towards
         }
         return nil
     }

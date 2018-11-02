@@ -22,5 +22,6 @@ extension UITableView {
 
 class TableViewHeaderView: UITableViewHeaderFooterView, ReusableTableViewClass {
     static let height: CGFloat = 25.0
+    static let nibName = "TableViewHeaderView"
     @IBOutlet weak var titleLabel: UILabel!
 }

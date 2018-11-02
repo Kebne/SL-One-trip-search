@@ -22,8 +22,8 @@ enum Result<T> {
 protocol SLSearch {
     associatedtype ResultType
     typealias SearchCallback = (Result<ResultType>)->Void
-    func searchWith(request: SearchRequest, callback: @escaping SearchCallback)
-    init(urlSession: URLSessionProtocol)
+    func searchWith(request: SearchRequest, callback: @escaping SearchCallback, persistDataWithKey key: String?)
+    init(urlSession: URLSessionProtocol, userDefaults: UserDefaultProtocol)
 }
 
 
@@ -42,18 +42,21 @@ extension URLSession : URLSessionProtocol {
 
 class SearchService<T: Decodable> : SLSearch {
     private let urlSession: URLSessionProtocol
+    private let userDefaults: UserDefaultProtocol
     
-    required init(urlSession: URLSessionProtocol = URLSession.shared) {
+    required init(urlSession: URLSessionProtocol = URLSession.shared, userDefaults: UserDefaultProtocol = UserDefaults(suiteName: "group.container.kebne.slonetripsearch") ?? UserDefaults.standard) {
         self.urlSession = urlSession
+        self.userDefaults = userDefaults
     }
     
     
-    func searchWith(request: SearchRequest, callback: @escaping (Result<T>) -> Void) {
-    
+    func searchWith(request: SearchRequest, callback: @escaping (Result<T>) -> Void, persistDataWithKey persistKey: String? = nil) {
+        
         var urlrequest = URLRequest(url: request.url)
         urlrequest.httpMethod = "GET"
         
-        let task = urlSession.dataTask(with: urlrequest) {data, response, error in
+        let task = urlSession.dataTask(with: urlrequest) {[weak self] data, response, error in
+            guard let self = self else { return }
             guard error == nil else {
                 callback(Result.failure(error!))
                 return
@@ -70,11 +73,8 @@ class SearchService<T: Decodable> : SLSearch {
             }
             
             do {
-                if T.self == SLJourneyPlanAPIResponse.self {
-                    print("Will save journey plan search response")
-                    let userDefaults = UserDefaults(suiteName: "group.container.kebne.slonetripsearch")!
-                    userDefaults.set(data, forKey: "Trips")
-                    userDefaults.synchronize()
+                if let persistKey = persistKey {
+                    self.userDefaults.set(data, forKey: persistKey)
                 }
                 let result = try JSONDecoder().decode(T.self, from: data)
                 callback(Result.success(result))

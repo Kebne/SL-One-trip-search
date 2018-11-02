@@ -17,7 +17,7 @@ struct Leg  {
     
 }
 
-extension Leg : Codable{
+extension Leg : Decodable {
     enum CodingKeys : String, CodingKey {
         case origin = "Origin"
         case destination = "Destination"

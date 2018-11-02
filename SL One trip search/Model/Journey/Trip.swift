@@ -43,7 +43,6 @@ extension Trip : Decodable {
     }
 }
 
-extension Trip : Encodable {}
 
 typealias SortedTripInfo = (sortedKeys: [ProductCategory], dictionary: [ProductCategory:[Trip]])
 

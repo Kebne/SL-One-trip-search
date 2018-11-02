@@ -100,5 +100,5 @@ extension ProductCategory : CustomStringConvertible {
     }
 }
 
-extension ProductCategory : Codable {}
+extension ProductCategory : Decodable {}
 

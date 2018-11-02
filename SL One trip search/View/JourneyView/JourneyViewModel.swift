@@ -103,9 +103,8 @@ class JourneyViewModel : JourneyPresentable {
     }
     
     func didPressSwapButton() {
-//        stateController.userJourneyController.swapStations()
-//        fetchJourneyData()
-        (stateController as! StateController).testLocalNotification()
+        stateController.userJourneyController.swapStations()
+        fetchJourneyData()
     }
     
     func viewWillAppear() {

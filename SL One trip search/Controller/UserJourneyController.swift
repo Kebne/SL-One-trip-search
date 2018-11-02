@@ -106,8 +106,8 @@ class UserJourneyController: UserJourneyControllerProtocol {
         guard let userJourney = userJourney else {
             return [CLCircularRegion]()
         }
-        return [locationService.createRegionWith(centerLat: userJourney.start.lat, centerLong: userJourney.start.long, radius: 200.0, identifier: userJourney.start.id),
-                locationService.createRegionWith(centerLat: userJourney.destination.lat, centerLong: userJourney.destination.long, radius: 200.0, identifier: userJourney.destination.id)]
+        return [locationService.createRegionWith(centerLat: userJourney.start.lat, centerLong: userJourney.start.long, radius: 400.0, identifier: userJourney.start.id),
+                locationService.createRegionWith(centerLat: userJourney.destination.lat, centerLong: userJourney.destination.long, radius: 400.0, identifier: userJourney.destination.id)]
     }
     
     //MARK: Public

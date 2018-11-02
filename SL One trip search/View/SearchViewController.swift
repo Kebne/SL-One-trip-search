@@ -84,7 +84,7 @@ extension SearchViewController: UISearchResultsUpdating {
             dataSource.stations = [Station]()
             searchTableView.reloadData()
             return}
-        searchService.searchWith(request: searchRequest) {[weak self] result in
+        searchService.searchWith(request: searchRequest, callback: {[weak self] result in
             guard let self = self else {return}
             switch result {
             case .success(let stationSearchResult):
@@ -95,7 +95,7 @@ extension SearchViewController: UISearchResultsUpdating {
             DispatchQueue.main.async {
                 self.searchTableView.reloadData()
             }
-        }
+        })
     }
     
     

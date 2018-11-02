@@ -58,6 +58,7 @@ class JourneyTableViewCell: UITableViewCell, ReusableTableViewClass {
     @IBOutlet weak var journeyStatsLabel: UILabel!
     
     static let reuseIdentifier = "JourneyTableViewCell"
+    static let nibName = "JourneyTableViewCellView"
     static let rowHeight: CGFloat = 60.0
 
     
