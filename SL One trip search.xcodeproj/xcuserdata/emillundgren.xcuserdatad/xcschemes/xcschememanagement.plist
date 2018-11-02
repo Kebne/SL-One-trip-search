@@ -12,7 +12,7 @@
 		<key>NextDeparture.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>1</integer>
+			<integer>0</integer>
 		</dict>
 		<key>SL One trip search.xcscheme</key>
 		<dict>
@@ -22,7 +22,40 @@
 		<key>SL One trip search.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>0</integer>
+			<integer>1</integer>
+		</dict>
+		<key>onetripnotification.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>3</integer>
+		</dict>
+	</dict>
+	<key>SuppressBuildableAutocreation</key>
+	<dict>
+		<key>5135EF4821776AB30016AAD6</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>5135EF5C21776AB50016AAD6</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>5135EF6721776AB60016AAD6</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>51AF079B218B53D2004A942F</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>51C86D242180A128000F5851</key>
+		<dict>
+			<key>primary</key>
+			<true/>
 		</dict>
 	</dict>
 </dict>

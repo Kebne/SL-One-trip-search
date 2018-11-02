@@ -21,6 +21,12 @@
 "product.tram.categoryName" = "Spårvagn/lokalbana";
 "product.unknown.categoryName" = "Annat färdsätt";
 
+"product.platformtype.bus" = "läge";
+"product.platformtype.metro" = "plattform";
+"product.platformtype.tram" = "plattform";
+"product.platformtype.train" = "spår";
+"product.platformtype.boat" = "läge";
+
 "journeyView.journeyStats.noChanges" = "inga byten";
 "journeyView.journeyStats.oneChange" = "1 byte";
 "journeyView.journeyStats.multipleChanges" = "%@ byten";

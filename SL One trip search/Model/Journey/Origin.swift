@@ -19,12 +19,12 @@ extension Date {
     }
 }
 
-protocol LegPoint : Decodable {
+protocol LegPoint : Codable {
     var name: String {get}
     var time: Date {get}
 }
 
-protocol LegStart : Decodable {
+protocol LegStart : Codable {
     var track: String {get}
 }
 
@@ -80,3 +80,4 @@ extension Origin {
     
     
 }
+

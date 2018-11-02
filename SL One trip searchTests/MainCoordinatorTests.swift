@@ -56,7 +56,6 @@ class MainCoordinatorTests: XCTestCase {
             return
         }
         
-        
         XCTAssertTrue(nextVC is SettingsViewController)
     }
     

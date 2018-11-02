@@ -86,7 +86,19 @@ extension ProductCategory : CustomStringConvertible {
         case .unknown: return NSLocalizedString("product.unknown.categoryName", comment: "")
         }
     }
+    
+    var platformTypeString : String {
+        switch self {
+        case .bus: return NSLocalizedString("product.platformtype.bus", comment: "")
+        case .metro: return NSLocalizedString("product.platformtype.metro", comment: "")
+        case .ferry: return NSLocalizedString("product.platformtype.boat", comment: "")
+        case .ship: return NSLocalizedString("product.platformtype.boat", comment: "")
+        case .train: return NSLocalizedString("product.platformtype.train", comment: "")
+        case .tram: return NSLocalizedString("product.platformtype.tram", comment: "")
+        case .unknown: return ""
+        }
+    }
 }
 
-extension ProductCategory : Decodable {}
+extension ProductCategory : Codable {}
 

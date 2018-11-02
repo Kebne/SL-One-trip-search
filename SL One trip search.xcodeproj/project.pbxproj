@@ -50,6 +50,26 @@
 		51AF0794218B0AA3004A942F /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51AF0793218B0AA3004A942F /* NotificationService.swift */; };
 		51AF0795218B0AA3004A942F /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51AF0793218B0AA3004A942F /* NotificationService.swift */; };
 		51AF0797218B0EAF004A942F /* NotificationServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51AF0796218B0EAF004A942F /* NotificationServiceTests.swift */; };
+		51AF07C8218C5A35004A942F /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 51AF079D218B53D2004A942F /* UserNotifications.framework */; };
+		51AF07C9218C5A35004A942F /* UserNotificationsUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 51AF079F218B53D2004A942F /* UserNotificationsUI.framework */; };
+		51AF07CC218C5A35004A942F /* NotificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51AF07CB218C5A35004A942F /* NotificationViewController.swift */; };
+		51AF07CF218C5A35004A942F /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 51AF07CD218C5A35004A942F /* MainInterface.storyboard */; };
+		51AF07D3218C5A35004A942F /* onetripnotification.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 51AF07C7218C5A35004A942F /* onetripnotification.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		51AF07D7218C6F96004A942F /* PersistService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5135EFA12179FC830016AAD6 /* PersistService.swift */; };
+		51AF07D8218C6F9A004A942F /* Leg.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51C86D01217DD3B3000F5851 /* Leg.swift */; };
+		51AF07D9218C6F9E004A942F /* Destination.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51C86D05217DD3C9000F5851 /* Destination.swift */; };
+		51AF07DA218C6FA2004A942F /* Origin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51C86D03217DD3BF000F5851 /* Origin.swift */; };
+		51AF07DB218C6FA6004A942F /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51C86D07217DD3D9000F5851 /* Product.swift */; };
+		51AF07DC218C6FA9004A942F /* SLJourneyPlanAPIResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51C86D09217DD543000F5851 /* SLJourneyPlanAPIResponse.swift */; };
+		51AF07DD218C6FAD004A942F /* Trip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51C86CFF217DD3A9000F5851 /* Trip.swift */; };
+		51AF07DE218C6FB0004A942F /* ProductCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51C86D0C217DD91F000F5851 /* ProductCategory.swift */; };
+		51AF07DF218C6FB4004A942F /* UserJourney.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5135EF8521777D420016AAD6 /* UserJourney.swift */; };
+		51AF07E0218C6FB8004A942F /* Station.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5135EF8721777D820016AAD6 /* Station.swift */; };
+		51AF07E2218C7987004A942F /* JourneyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51C86CFD217DC62F000F5851 /* JourneyTableViewCell.swift */; };
+		51AF07E3218C7BC2004A942F /* JourneyTableViewCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 51C86D3D2180A884000F5851 /* JourneyTableViewCellView.xib */; };
+		51AF07E4218C7BF0004A942F /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 51C86D1D21804CDB000F5851 /* Localizable.strings */; };
+		51AF07E5218C7D70004A942F /* TableViewHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 51583DD52187332600AFDE38 /* TableViewHeaderView.xib */; };
+		51AF07E6218C7D79004A942F /* TableViewHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51583DD22187331400AFDE38 /* TableViewHeaderView.swift */; };
 		51C86CFE217DC62F000F5851 /* JourneyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51C86CFD217DC62F000F5851 /* JourneyTableViewCell.swift */; };
 		51C86D00217DD3A9000F5851 /* Trip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51C86CFF217DD3A9000F5851 /* Trip.swift */; };
 		51C86D02217DD3B3000F5851 /* Leg.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51C86D01217DD3B3000F5851 /* Leg.swift */; };
@@ -106,6 +126,13 @@
 			remoteGlobalIDString = 5135EF4821776AB30016AAD6;
 			remoteInfo = "SL One trip search";
 		};
+		51AF07D1218C5A35004A942F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5135EF4121776AB30016AAD6 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 51AF07C6218C5A35004A942F;
+			remoteInfo = onetripnotification;
+		};
 		51C86D302180A128000F5851 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 5135EF4121776AB30016AAD6 /* Project object */;
@@ -123,6 +150,7 @@
 			dstSubfolderSpec = 13;
 			files = (
 				51C86D322180A128000F5851 /* NextDeparture.appex in Embed App Extensions */,
+				51AF07D3218C5A35004A942F /* onetripnotification.appex in Embed App Extensions */,
 			);
 			name = "Embed App Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -171,6 +199,13 @@
 		51AF0790218A0797004A942F /* StateControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateControllerTests.swift; sourceTree = "<group>"; };
 		51AF0793218B0AA3004A942F /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
 		51AF0796218B0EAF004A942F /* NotificationServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationServiceTests.swift; sourceTree = "<group>"; };
+		51AF079D218B53D2004A942F /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = System/Library/Frameworks/UserNotifications.framework; sourceTree = SDKROOT; };
+		51AF079F218B53D2004A942F /* UserNotificationsUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotificationsUI.framework; path = System/Library/Frameworks/UserNotificationsUI.framework; sourceTree = SDKROOT; };
+		51AF07C7218C5A35004A942F /* onetripnotification.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = onetripnotification.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		51AF07CB218C5A35004A942F /* NotificationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationViewController.swift; sourceTree = "<group>"; };
+		51AF07CE218C5A35004A942F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
+		51AF07D0218C5A35004A942F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		51AF07E1218C7092004A942F /* onetripnotification.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = onetripnotification.entitlements; sourceTree = "<group>"; };
 		51C86CFD217DC62F000F5851 /* JourneyTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JourneyTableViewCell.swift; sourceTree = "<group>"; };
 		51C86CFF217DD3A9000F5851 /* Trip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Trip.swift; sourceTree = "<group>"; };
 		51C86D01217DD3B3000F5851 /* Leg.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Leg.swift; sourceTree = "<group>"; };
@@ -220,6 +255,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		51AF07C4218C5A35004A942F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				51AF07C9218C5A35004A942F /* UserNotificationsUI.framework in Frameworks */,
+				51AF07C8218C5A35004A942F /* UserNotifications.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		51C86D222180A128000F5851 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -240,6 +284,7 @@
 				5135EF6021776AB50016AAD6 /* SL One trip searchTests */,
 				5135EF6B21776AB60016AAD6 /* SL One trip searchUITests */,
 				51C86D292180A128000F5851 /* NextDeparture */,
+				51AF07CA218C5A35004A942F /* onetripnotification */,
 				51C86D262180A128000F5851 /* Frameworks */,
 				5135EF4A21776AB30016AAD6 /* Products */,
 			);
@@ -252,6 +297,7 @@
 				5135EF5D21776AB50016AAD6 /* SL One trip searchTests.xctest */,
 				5135EF6821776AB60016AAD6 /* SL One trip searchUITests.xctest */,
 				51C86D252180A128000F5851 /* NextDeparture.appex */,
+				51AF07C7218C5A35004A942F /* onetripnotification.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -373,6 +419,17 @@
 			path = Notification;
 			sourceTree = "<group>";
 		};
+		51AF07CA218C5A35004A942F /* onetripnotification */ = {
+			isa = PBXGroup;
+			children = (
+				51AF07E1218C7092004A942F /* onetripnotification.entitlements */,
+				51AF07CB218C5A35004A942F /* NotificationViewController.swift */,
+				51AF07CD218C5A35004A942F /* MainInterface.storyboard */,
+				51AF07D0218C5A35004A942F /* Info.plist */,
+			);
+			path = onetripnotification;
+			sourceTree = "<group>";
+		};
 		51C86D0B217DD57F000F5851 /* Journey */ = {
 			isa = PBXGroup;
 			children = (
@@ -405,6 +462,8 @@
 			isa = PBXGroup;
 			children = (
 				51C86D272180A128000F5851 /* NotificationCenter.framework */,
+				51AF079D218B53D2004A942F /* UserNotifications.framework */,
+				51AF079F218B53D2004A942F /* UserNotificationsUI.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -436,6 +495,7 @@
 			);
 			dependencies = (
 				51C86D312180A128000F5851 /* PBXTargetDependency */,
+				51AF07D2218C5A35004A942F /* PBXTargetDependency */,
 			);
 			name = "SL One trip search";
 			productName = "SL One trip search";
@@ -478,6 +538,23 @@
 			productReference = 5135EF6821776AB60016AAD6 /* SL One trip searchUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
+		51AF07C6218C5A35004A942F /* onetripnotification */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 51AF07D4218C5A35004A942F /* Build configuration list for PBXNativeTarget "onetripnotification" */;
+			buildPhases = (
+				51AF07C3218C5A35004A942F /* Sources */,
+				51AF07C4218C5A35004A942F /* Frameworks */,
+				51AF07C5218C5A35004A942F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = onetripnotification;
+			productName = onetripnotification;
+			productReference = 51AF07C7218C5A35004A942F /* onetripnotification.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		51C86D242180A128000F5851 /* NextDeparture */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 51C86D352180A128000F5851 /* Build configuration list for PBXNativeTarget "NextDeparture" */;
@@ -501,7 +578,7 @@
 		5135EF4121776AB30016AAD6 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1000;
+				LastSwiftUpdateCheck = 1010;
 				LastUpgradeCheck = 1000;
 				ORGANIZATIONNAME = Kebne;
 				TargetAttributes = {
@@ -520,6 +597,14 @@
 					5135EF6721776AB60016AAD6 = {
 						CreatedOnToolsVersion = 10.0;
 						TestTargetID = 5135EF4821776AB30016AAD6;
+					};
+					51AF07C6218C5A35004A942F = {
+						CreatedOnToolsVersion = 10.1;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+						};
 					};
 					51C86D242180A128000F5851 = {
 						CreatedOnToolsVersion = 10.0;
@@ -548,6 +633,7 @@
 				5135EF5C21776AB50016AAD6 /* SL One trip searchTests */,
 				5135EF6721776AB60016AAD6 /* SL One trip searchUITests */,
 				51C86D242180A128000F5851 /* NextDeparture */,
+				51AF07C6218C5A35004A942F /* onetripnotification */,
 			);
 		};
 /* End PBXProject section */
@@ -579,6 +665,17 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		51AF07C5218C5A35004A942F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				51AF07CF218C5A35004A942F /* MainInterface.storyboard in Resources */,
+				51AF07E4218C7BF0004A942F /* Localizable.strings in Resources */,
+				51AF07E3218C7BC2004A942F /* JourneyTableViewCellView.xib in Resources */,
+				51AF07E5218C7D70004A942F /* TableViewHeaderView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -662,6 +759,26 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		51AF07C3218C5A35004A942F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				51AF07D8218C6F9A004A942F /* Leg.swift in Sources */,
+				51AF07DF218C6FB4004A942F /* UserJourney.swift in Sources */,
+				51AF07D7218C6F96004A942F /* PersistService.swift in Sources */,
+				51AF07DC218C6FA9004A942F /* SLJourneyPlanAPIResponse.swift in Sources */,
+				51AF07E2218C7987004A942F /* JourneyTableViewCell.swift in Sources */,
+				51AF07E6218C7D79004A942F /* TableViewHeaderView.swift in Sources */,
+				51AF07D9218C6F9E004A942F /* Destination.swift in Sources */,
+				51AF07DE218C6FB0004A942F /* ProductCategory.swift in Sources */,
+				51AF07DD218C6FAD004A942F /* Trip.swift in Sources */,
+				51AF07CC218C5A35004A942F /* NotificationViewController.swift in Sources */,
+				51AF07E0218C6FB8004A942F /* Station.swift in Sources */,
+				51AF07DA218C6FA2004A942F /* Origin.swift in Sources */,
+				51AF07DB218C6FA6004A942F /* Product.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		51C86D212180A128000F5851 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -705,6 +822,11 @@
 			target = 5135EF4821776AB30016AAD6 /* SL One trip search */;
 			targetProxy = 5135EF6921776AB60016AAD6 /* PBXContainerItemProxy */;
 		};
+		51AF07D2218C5A35004A942F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 51AF07C6218C5A35004A942F /* onetripnotification */;
+			targetProxy = 51AF07D1218C5A35004A942F /* PBXContainerItemProxy */;
+		};
 		51C86D312180A128000F5851 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 51C86D242180A128000F5851 /* NextDeparture */;
@@ -729,6 +851,14 @@
 				51C86D1821804C34000F5851 /* sv */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		51AF07CD218C5A35004A942F /* MainInterface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				51AF07CE218C5A35004A942F /* Base */,
+			);
+			name = MainInterface.storyboard;
 			sourceTree = "<group>";
 		};
 		51C86D1D21804CDB000F5851 /* Localizable.strings */ = {
@@ -991,6 +1121,48 @@
 			};
 			name = Release;
 		};
+		51AF07D5218C5A35004A942F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = onetripnotification/onetripnotification.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 2TLM57CUQ3;
+				INFOPLIST_FILE = onetripnotification/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.kebne.SL-One-trip-search.onetripnotification";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		51AF07D6218C5A35004A942F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = onetripnotification/onetripnotification.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 2TLM57CUQ3;
+				INFOPLIST_FILE = onetripnotification/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.kebne.SL-One-trip-search.onetripnotification";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 		51C86D332180A128000F5851 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1066,6 +1238,15 @@
 			buildConfigurations = (
 				5135EF7821776AB60016AAD6 /* Debug */,
 				5135EF7921776AB60016AAD6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		51AF07D4218C5A35004A942F /* Build configuration list for PBXNativeTarget "onetripnotification" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				51AF07D5218C5A35004A942F /* Debug */,
+				51AF07D6218C5A35004A942F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

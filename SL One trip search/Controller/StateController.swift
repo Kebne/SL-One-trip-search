@@ -15,20 +15,22 @@ protocol StateControllerProtocol {
     func monitorStations(enable: Bool, completion: @escaping (Bool)->Void)
     
     init(userController: UserJourneyControllerProtocol, journeyPlannerService: SearchService<SLJourneyPlanAPIResponse>, locationService: LocationService,
-         notificationService: NotificationService)
+         notificationService: NotificationService, persistService: PersistServiceProtocol)
 }
 
 class StateController: StateControllerProtocol {
     private let journeyPlannerService: SearchService<SLJourneyPlanAPIResponse>
     private let locationService: LocationService
     private let notificationService: NotificationService
+    private let persistService: PersistServiceProtocol
     
     required init(userController: UserJourneyControllerProtocol, journeyPlannerService: SearchService<SLJourneyPlanAPIResponse>, locationService: LocationService,
-                  notificationService: NotificationService) {
+                  notificationService: NotificationService, persistService: PersistServiceProtocol) {
         self.userJourneyController = userController
         self.journeyPlannerService = journeyPlannerService
         self.locationService = locationService
         self.notificationService = notificationService
+        self.persistService = persistService
         locationService.registerRegion(observer: self)
     }
     
@@ -73,7 +75,6 @@ class StateController: StateControllerProtocol {
                                                                 return
         }
         journeyPlannerService.searchWith(request: searchJourneyRequest, callback: completion)
-        
     }
     
     func monitorStations(enable: Bool, completion: @escaping (Bool) -> Void) {
@@ -92,6 +93,11 @@ class StateController: StateControllerProtocol {
             completion(success)
         })
     }
+    
+    func testLocalNotification() {
+        guard let journey = userJourneyController.userJourney else {return}
+        didEnter(region: CLCircularRegion(center: CLLocationCoordinate2D(latitude: journey.start.lat, longitude: journey.start.long), radius: 200.0, identifier: journey.start.id))
+    }
 
     var userJourneyController: UserJourneyControllerProtocol
 }
@@ -101,8 +107,11 @@ extension StateController : RegionObserver {
     func didEnter(region: CLCircularRegion) {
         guard let currentJourney = userJourneyController.userJourney else {return}
         let updatedUserJourney = updateUserJourneyStartNearest(position: region.center, currentJourney: currentJourney)
-        continueSearch(userJourney: updatedUserJourney) {result in
-            // TODO - send to local notification handler
+        continueSearch(userJourney: updatedUserJourney) {[weak self] result in
+            
+            if case .success(let response) = result {
+                self?.notificationService.notify(trips: response.trips, userJourney: updatedUserJourney)
+            }
         }
     }
 

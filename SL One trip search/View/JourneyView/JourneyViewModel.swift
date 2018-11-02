@@ -103,8 +103,9 @@ class JourneyViewModel : JourneyPresentable {
     }
     
     func didPressSwapButton() {
-        stateController.userJourneyController.swapStations()
-        fetchJourneyData()
+//        stateController.userJourneyController.swapStations()
+//        fetchJourneyData()
+        (stateController as! StateController).testLocalNotification()
     }
     
     func viewWillAppear() {
@@ -132,17 +133,11 @@ class JourneyViewModel : JourneyPresentable {
     }
     
     private func createTableViewDataFrom(response: SLJourneyPlanAPIResponse) {
-        let firstLegs = response.trips.sorted(by: {$0.arrivalDate < $1.arrivalDate}).reduce([Leg]()) {legs, nextTrip in
-            if let nextLeg = nextTrip.legList.first(where: {$0.id == 0}), nextLeg.direction.count > 0 && nextLeg.product.line.count > 0 {
-                return legs + [nextLeg]
-            }
-            return legs
-        }
-        categories = firstLegs.reduce([ProductCategory]()) {array, nextLeg ->[ProductCategory] in
-            array.contains(nextLeg.product.category) ? array : array + [nextLeg.product.category]
-        }
-        for category in categories {
-            journeyViewModels[category.rawValue] = response.trips.filter({$0.legList[0].product.category == category}).map({JourneyTableViewCell.ViewModel(trip: $0)})
+        let sortedResults = Trip.sortInCategories(trips: response.trips)
+        categories = sortedResults.sortedKeys
+        
+        for (category, trips) in sortedResults.dictionary {
+            journeyViewModels[category.rawValue] = trips.sorted(by: {$0.arrivalDate < $1.arrivalDate}).map({JourneyTableViewCell.ViewModel(trip: $0)})
         }
     }
     

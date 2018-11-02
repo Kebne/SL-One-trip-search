@@ -70,6 +70,12 @@ class SearchService<T: Decodable> : SLSearch {
             }
             
             do {
+                if T.self == SLJourneyPlanAPIResponse.self {
+                    print("Will save journey plan search response")
+                    let userDefaults = UserDefaults(suiteName: "group.container.kebne.slonetripsearch")!
+                    userDefaults.set(data, forKey: "Trips")
+                    userDefaults.synchronize()
+                }
                 let result = try JSONDecoder().decode(T.self, from: data)
                 callback(Result.success(result))
             } catch let e {

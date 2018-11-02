@@ -32,10 +32,19 @@ class PersistService : PersistServiceProtocol {
         if let encoded = try? JSONEncoder().encode(value) {
             userDefaults.set(encoded, forKey: key)
         }
+        
     }
     
     func retreive<T: Decodable>(_ type: T.Type, valueForKey key: String) ->T? {
-        guard let data = userDefaults.data(forKey: key) else {return nil}
-        return try? JSONDecoder().decode(type, from: data)
+        guard let data = userDefaults.data(forKey: key) else {
+            print("No data for the given key")
+            return nil}
+        do {
+            let value = try JSONDecoder().decode(type, from: data)
+            return value
+        } catch let e {
+            print("Error retreiving values: \(e)")
+            return nil
+        }
     }
 }
