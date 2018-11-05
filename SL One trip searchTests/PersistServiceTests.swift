@@ -26,7 +26,7 @@ class PersistServiceTests: XCTestCase {
 
     func test_callsSetValue_onPersist() {
         mockUserDefaults.didCallSet = false
-        sut.persist(value: PersistStubGenerator.userJourney, forKey: "key")
+        sut.persist(value: StubGenerator.userJourney, forKey: "key")
         XCTAssertTrue(mockUserDefaults.didCallSet)
     }
     
@@ -38,25 +38,5 @@ class PersistServiceTests: XCTestCase {
 }
 
 
-class PersistStubGenerator {
-    
-    static var userJourney : UserJourney {
-        return UserJourney(start: UserJourneyControllerTests.mockStart,
-                           destination: UserJourneyControllerTests.mockEnd,
-                           minutesUntilSearch: 5, monitorStationProximity: true)
-    }
-}
 
-class MockUserDefaults : UserDefaultProtocol {
-    
-    var didCallSet = false
-    
-    func data(forKey: String) -> Data? {
-        return try? JSONEncoder().encode(PersistStubGenerator.userJourney)
-    }
-    
-    func set(_ value: Any?, forKey: String) {
-        didCallSet = true
-    }
 
-}

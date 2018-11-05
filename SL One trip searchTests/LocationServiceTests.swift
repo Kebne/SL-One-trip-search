@@ -70,47 +70,6 @@ class TestRegionObserver : RegionObserver {
     func didEnter(region: CLCircularRegion) {
         enteredRegion = region
     }
-    
-    
 }
 
-class MockLocationManager : LocationManager {
-    
-    static var authStatus: CLAuthorizationStatus = .notDetermined
-    var authStatusToSet: CLAuthorizationStatus = .denied
-    
-    static func authorizationStatus() -> CLAuthorizationStatus {
-        return authStatus
-    }
-    
-    static func isMonitoringAvailable(for regionClass: AnyClass) -> Bool {
-        return true
-    }
-    
-    func startMonitoring(for region: CLRegion) {
-        monitoredRegions.insert(region)
-    }
-    
-    func stopMonitoring(for region: CLRegion) {
-        monitoredRegions.remove(region)
-    }
-    
-    func requestAlwaysAuthorization() {
-        guard let delegate = delegate else {return}
-        delegate.locationManager!(CLLocationManager(), didChangeAuthorization: authStatusToSet)
-    }
-    
-    func notifyDelegateDidEnter(region: CLCircularRegion) {
-        delegate?.locationManager!(CLLocationManager(), didEnterRegion: region)
-    }
-    
-    var monitoredRegions = Set<CLRegion>()
-    
-    var delegate: CLLocationManagerDelegate?
-    
-    func requestLocation() {
-        
-    }
-    
-    
-}
+

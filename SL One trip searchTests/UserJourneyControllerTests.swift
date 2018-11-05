@@ -41,7 +41,7 @@ class UserJourneyControllerTests: XCTestCase {
     func test_noUserCreated_withoutAllStations() {
         
         sut.userJourney = nil
-        sut.start = UserJourneyControllerTests.mockStart
+        sut.start = StubGenerator.startStation
         sut.destination = nil
         
         XCTAssertNil(sut.userJourney)
@@ -51,8 +51,8 @@ class UserJourneyControllerTests: XCTestCase {
     func test_userIsCreated_AllStationsAreSet() {
   
         sut.userJourney = nil
-        sut.start = UserJourneyControllerTests.mockStart
-        sut.destination = UserJourneyControllerTests.mockEnd
+        sut.start = StubGenerator.startStation
+        sut.destination = StubGenerator.destinationStation
         sut.destination = nil
         
         XCTAssertNotNil(sut.userJourney)
@@ -61,23 +61,23 @@ class UserJourneyControllerTests: XCTestCase {
     func test_startStopStationsAreCorrect() {
         
         sut.userJourney = nil
-        sut.start = UserJourneyControllerTests.mockStart
-        sut.destination = UserJourneyControllerTests.mockEnd
+        sut.start = StubGenerator.startStation
+        sut.destination = StubGenerator.destinationStation
         
         guard let journey = sut.userJourney else {
             XCTFail( "Journey shouldn't be nil here!")
             return
         }
         
-        XCTAssertEqual(journey.start.name, UserJourneyControllerTests.mockStart.name)
-        XCTAssertEqual(journey.destination.name, UserJourneyControllerTests.mockEnd.name)
+        XCTAssertEqual(journey.start.name, StubGenerator.startStation.name)
+        XCTAssertEqual(journey.destination.name, StubGenerator.destinationStation.name)
         
     }
     
     func test_Swap_StartAndDestination() {
         
-        let startUserJourney = UserJourney(start: UserJourneyControllerTests.mockStart,
-                                           destination: UserJourneyControllerTests.mockEnd, minutesUntilSearch: 0, monitorStationProximity: false)
+        let startUserJourney = UserJourney(start: StubGenerator.startStation,
+                                           destination: StubGenerator.destinationStation, minutesUntilSearch: 0, monitorStationProximity: false)
         sut.userJourney = startUserJourney
         sut.swapStations()
         
@@ -89,8 +89,8 @@ class UserJourneyControllerTests: XCTestCase {
     
     func test_TimeValue_isSet() {
         sut.userJourney = nil
-        sut.start = UserJourneyControllerTests.mockStart
-        sut.destination = UserJourneyControllerTests.mockEnd
+        sut.start = StubGenerator.startStation
+        sut.destination = StubGenerator.destinationStation
         let minutes = 5
         sut.timeFromNowUntilSearch = minutes
         
@@ -104,8 +104,8 @@ class UserJourneyControllerTests: XCTestCase {
     
     func test_MonitorValue_isSet() {
         sut.userJourney = nil
-        sut.start = UserJourneyControllerTests.mockStart
-        sut.destination = UserJourneyControllerTests.mockEnd
+        sut.start = StubGenerator.startStation
+        sut.destination = StubGenerator.destinationStation
         let monitor = false
         sut.monitorStationProximity = monitor
         
@@ -119,21 +119,21 @@ class UserJourneyControllerTests: XCTestCase {
     
     func test_regionMonitoringStarts_changingStation() {
         
-        let userJourney = UserJourney(start: UserJourneyControllerTests.mockStart, destination: UserJourneyControllerTests.mockEnd, minutesUntilSearch: 0, monitorStationProximity: true)
+        let userJourney = UserJourney(start: StubGenerator.startStation, destination: StubGenerator.destinationStation, minutesUntilSearch: 0, monitorStationProximity: true)
         MockLocationManager.authStatus = .authorizedAlways
         sut.userJourney = userJourney
         
         sut.timeFromNowUntilSearch = 1
         
         XCTAssertEqual(mockLocationManager.monitoredRegions.count, 2)
-        XCTAssertTrue(mockLocationManager.monitoredRegions.contains(where: {$0.identifier == UserJourneyControllerTests.mockStart.id}))
-        XCTAssertTrue(mockLocationManager.monitoredRegions.contains(where: {$0.identifier == UserJourneyControllerTests.mockEnd.id}))
+        XCTAssertTrue(mockLocationManager.monitoredRegions.contains(where: {$0.identifier == StubGenerator.startStation.id}))
+        XCTAssertTrue(mockLocationManager.monitoredRegions.contains(where: {$0.identifier == StubGenerator.destinationStation.id}))
         
     }
     
     func test_regionMonitoringCorrectRegions_changingStation() {
         
-        let userJourney = UserJourney(start: UserJourneyControllerTests.mockStart, destination: UserJourneyControllerTests.mockEnd, minutesUntilSearch: 0, monitorStationProximity: true)
+        let userJourney = UserJourney(start: StubGenerator.startStation, destination: StubGenerator.destinationStation, minutesUntilSearch: 0, monitorStationProximity: true)
         MockLocationManager.authStatus = .authorizedAlways
         sut.userJourney = userJourney
         
@@ -143,13 +143,13 @@ class UserJourneyControllerTests: XCTestCase {
         sut.destination = updatedStation
         
         XCTAssertEqual(mockLocationManager.monitoredRegions.count, 2)
-        XCTAssertTrue(mockLocationManager.monitoredRegions.contains(where: {$0.identifier == UserJourneyControllerTests.mockStart.id}))
+        XCTAssertTrue(mockLocationManager.monitoredRegions.contains(where: {$0.identifier == StubGenerator.startStation.id}))
         XCTAssertTrue(mockLocationManager.monitoredRegions.contains(where: {$0.identifier == updatedStation.id}))
         
     }
     
     func test_noRegionsAreMonitored_regionMonitoringDisabled() {
-        let userJourney = UserJourney(start: UserJourneyControllerTests.mockStart, destination: UserJourneyControllerTests.mockEnd, minutesUntilSearch: 0, monitorStationProximity: true)
+        let userJourney = UserJourney(start: StubGenerator.startStation, destination: StubGenerator.destinationStation, minutesUntilSearch: 0, monitorStationProximity: true)
         MockLocationManager.authStatus = .authorizedAlways
         sut.userJourney = userJourney
         
@@ -160,50 +160,12 @@ class UserJourneyControllerTests: XCTestCase {
         XCTAssertEqual(mockLocationManager.monitoredRegions.count, 0)
     }
     
-    static var mockStart : Station {
-        return Station(name: "Start",area: "area", id: "10", lat: 0.0, long: 0.0)
-    }
     
-    static var mockEnd : Station {
-        return Station(name: "Destination",area: "area", id: "11", lat: 0.0, long: 0.0)
-    }
 
 }
 
-class MockPersistService : PersistServiceProtocol {
-    
-    var didCallRetreive = false
-    
-    func persist<T>(value: T, forKey key: String) where T : Encodable {
-        
-    }
-    
-    func retreive<T>(_ type: T.Type, valueForKey key: String) -> T? where T : Decodable {
-        didCallRetreive = true
-        return nil
-    }
-    
-    required init(_ userDefaults: UserDefaultProtocol) {
-        
-    }
-    
-    
-}
 
-class PartialMockLocationService : LocationService {
-    var didRegisterRegionObserver = false
-    override func registerRegion(observer: RegionObserver) {
-        didRegisterRegionObserver = true
-        super.registerRegion(observer: observer)
-    }
-    
-    override func locationServicesIsAuthorized() -> Bool {
-        return MockLocationManager.authorizationStatus() == .authorizedAlways
-    }
-    
-    override func monitoringIsAvailable() -> Bool {
-        return MockLocationManager.isMonitoringAvailable(for: CLCircularRegion.classForCoder())
-    }
-}
+
+
 
 

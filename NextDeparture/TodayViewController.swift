@@ -39,7 +39,7 @@ class TodayViewController: UIViewController, NCWidgetProviding {
         userController.attemptToRetreiveStoredJourney()
         
         stateController = StateController(userController: userController, journeyPlannerService: SearchService<SLJourneyPlanAPIResponse>(), locationService: locationService,
-                                          notificationService: NotificationService(), persistService: persistService)
+                                          notificationService: NotificationService())
         viewModel = JourneyViewModel(stateController: stateController)
         
         journeyTableView.tableFooterView = UIView(frame: CGRect.zero)

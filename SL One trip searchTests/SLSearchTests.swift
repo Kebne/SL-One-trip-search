@@ -14,15 +14,18 @@ class SLSearchTests: XCTestCase {
     
     var sut: SearchService<StationSearchResult>!
     var mockURLSession: MockURLSession!
+    var mockUserDefaults: MockUserDefaults!
 
     override func setUp() {
         mockURLSession = MockURLSession()
-        sut = SearchService<StationSearchResult>(urlSession: mockURLSession)
+        mockUserDefaults = MockUserDefaults()
+        sut = SearchService<StationSearchResult>(urlSession: mockURLSession, userDefaults: mockUserDefaults)
     }
 
     override func tearDown() {
         sut = nil
         mockURLSession = nil
+        mockUserDefaults = nil
     }
     
     func test_handlesCorrectJSON_callbackWith_StationResult() {
@@ -37,7 +40,7 @@ class SLSearchTests: XCTestCase {
             XCTFail("Couldn't create search request.")
             return
         }
-        sut.searchWith(request: searchRequest) {result in
+        sut.searchWith(request: searchRequest, callback: {result in
             
             switch result {
             case .success(let stationRes): response = stationRes
@@ -45,9 +48,28 @@ class SLSearchTests: XCTestCase {
                 XCTFail("Failed to convert correct JSON to Station response.")
             }
             
-        }
+        })
         XCTAssertNotNil(response)
     }
+    
+    func test_callsUserDefaults_persistKeyNotNil() {
+        mockUserDefaults.didCallSet = false
+        mockURLSession.jsonString = StubGenerator.correctStationJSONString
+        mockURLSession.error = nil
+        mockURLSession.response200 = true
+        
+        guard let searchRequest = StationSearchRequest(searchString: "searchString") else {
+            XCTFail("Couldn't create search request.")
+            return
+        }
+        
+        sut.searchWith(request: searchRequest, callback: {(_) in }, persistDataWithKey: "test")
+        
+        XCTAssertTrue(mockUserDefaults.didCallSet)
+        
+        
+    }
+    
     
     func test_handlesCorruptJSON_callbackWith_StationResult() {
         
@@ -62,14 +84,14 @@ class SLSearchTests: XCTestCase {
             XCTFail("Couldn't create search request.")
             return
         }
-        sut.searchWith(request: searchRequest) {result in
+        sut.searchWith(request: searchRequest, callback:  {result in
             
             switch result {
             case .success(let stationRes): response = stationRes
             case.failure(let requestError): error = requestError
             }
             
-        }
+        })
         XCTAssertNotNil(error)
         XCTAssertNil(response)
     }
@@ -87,14 +109,14 @@ class SLSearchTests: XCTestCase {
             XCTFail("Couldn't create search request.")
             return
         }
-        sut.searchWith(request: searchRequest) {result in
+        sut.searchWith(request: searchRequest, callback: {result in
             
             switch result {
             case .success(let stationRes): response = stationRes
             case.failure(let requestError): error = requestError
             }
             
-        }
+        })
         XCTAssertNotNil(error)
         XCTAssertNil(response)
     }
@@ -112,63 +134,18 @@ class SLSearchTests: XCTestCase {
             XCTFail("Couldn't create search request.")
             return
         }
-        sut.searchWith(request: searchRequest) {result in
+        sut.searchWith(request: searchRequest, callback: {result in
             
             switch result {
             case .success(let stationRes): response = stationRes
             case.failure(let requestError): error = requestError
             }
             
-        }
+        })
         XCTAssertNotNil(error)
         XCTAssertNil(response)
     }
 
 }
 
-class MockURLSession : URLSessionProtocol {
 
-    var response200: Bool = true
-    var error: Error?
-    var jsonString: String?
-
-    func dataTask(with request: URLRequest, completion: @escaping (Data?, URLResponse?, Error?) -> Void) -> URLSessionDataTaskProtocol {
-        let statusCode = response200 ? 200 : 400
-        let urlResponse = HTTPURLResponse(url: request.url!, statusCode: statusCode, httpVersion: nil, headerFields: nil)
-        
-        var jsonData: Data? = nil
-        if let jsonString = jsonString {
-            jsonData = jsonString.data(using: .utf8)
-        }
-        completion(jsonData, urlResponse, error)
-        return MockURLSessionDataTask()
-    }
-}
-
-class MockURLSessionDataTask : URLSessionDataTaskProtocol {
-    
-    var didCallResume: Bool = false
-    func resume() {
-        didCallResume = true
-    }
-}
-
-class StubGenerator {
-    
-    static var correctStationJSONString : String {
-        return """
-        { "StatusCode": 0, "Message": null, "ExecutionTime": 0, "ResponseData": [
-        { "Name": "Slussen (Stockholm)", "SiteId": "9192", "Type": "Station", "X": "18071860", "Y": "59320284" },
-        { "Name": "Slumnäsvägen (Tyresö)", "SiteId": "8056", "Type": "Station", "X": "18273946", "Y": "59248604" } ]}
-"""
-    }
-    
-    static var brokenStationJSONString : String {
-        return """
-        { "StatusCode": 0, "Message": null, "ExecutionTime": 0, "ResponseData": [
-        { "Name": "Slussen (Stockholm)", "SiteId": "9192", "Type": "Station", "X": "18071860", "Y": "59320284" },
-        { "Name": "Slumnäsvägen (Tyresö)", "SiteId": "8056", "Type": "Station", "X": "18273946", "Y": "59248604" }
-        """
-    }
-    
-}

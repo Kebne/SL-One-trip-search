@@ -59,24 +59,23 @@ class NotificationServiceTests: XCTestCase {
         
         XCTAssertFalse(authSuccess)
     }
-
-}
-
-
-class MockUserNotificationCenter : UserNotificationCenter {
-    var mockNotificationSettings = MockUserNotificationSettings()
-    var authSuccess = true
-    var authError: Error?
-    func fetchNotificationSettings(completionHandler: @escaping (UserNotificationSettings) -> Void) {
-        completionHandler(mockNotificationSettings)
+    
+    func test_addsNotificationRequest_receivingTrips() {
+        
+        mockNotificationCenter.didCallAddRequest = false
+        mockNotificationCenter.mockNotificationSettings.authorizationStatus = .authorized
+        sut.notify(trips: [StubGenerator.trip], userJourney: StubGenerator.userJourney)
+        
+        XCTAssertTrue(mockNotificationCenter.didCallAddRequest)
+        
     }
     
-    func requestAuthorization(options: UNAuthorizationOptions, completionHandler: @escaping (Bool, Error?) -> Void) {
-        completionHandler(authSuccess, authError)
+    func test_addsCategoryWithCorrectIdentifier() {
+        
+        XCTAssertTrue(mockNotificationCenter.notificationCategories.contains(where: {$0.identifier == NotificationService.notificationCategoryIdentifier}))
     }
+
 }
 
 
-class MockUserNotificationSettings : UserNotificationSettings {
-    var authorizationStatus: UNAuthorizationStatus = .notDetermined
-}
+

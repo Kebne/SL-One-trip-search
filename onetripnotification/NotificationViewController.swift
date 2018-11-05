@@ -21,9 +21,9 @@ class NotificationViewController: UIViewController, UNNotificationContentExtensi
     }
     
     func didReceive(_ notification: UNNotification) {
-        let userDefaults = UserDefaults(suiteName: "group.container.kebne.slonetripsearch")!
+        guard let userDefaults = UserDefaults(suiteName: "group.container.kebne.slonetripsearch") else {return}
         let persistService = PersistService(userDefaults)
-        guard let trips = persistService.retreive(SLJourneyPlanAPIResponse.self, valueForKey: "Trips") else { return }
+        guard let trips = persistService.retreive(SLJourneyPlanAPIResponse.self, valueForKey: Trip.PersistKey.trip) else { return }
         viewModel = NotificationViewModel(apiResponse: trips)
         tableView.register(UINib.init(nibName: JourneyTableViewCell.nibName, bundle: nil), forCellReuseIdentifier: JourneyTableViewCell.reuseIdentifier)
         tableView.register(UINib.init(nibName: TableViewHeaderView.nibName, bundle: nil), forHeaderFooterViewReuseIdentifier: TableViewHeaderView.reuseId)
@@ -31,7 +31,7 @@ class NotificationViewController: UIViewController, UNNotificationContentExtensi
         tableView.delegate = self
         tableView.tableFooterView = UIView(frame: CGRect.zero)
         tableView.reloadData()
-        preferredContentSize = CGSize(width: view.frame.size.width, height: viewModel.preferedContentHeight + 40-0)
+        preferredContentSize = CGSize(width: view.frame.size.width, height: viewModel.preferedContentHeight + 40.0)
         titleLabel.text = notification.request.content.title
 
     }

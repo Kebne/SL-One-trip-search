@@ -60,7 +60,7 @@ class MainCoordinatorTests: XCTestCase {
     }
     
     func test_start_showsJourney_ifUserJourney() {
-        mockUserJourneyController.userJourney = mockUserJourney()
+        mockUserJourneyController.userJourney = StubGenerator.userJourney
         
         sut.start()
         
@@ -88,7 +88,7 @@ class MainCoordinatorTests: XCTestCase {
     }
     
     func test_receivesFromURL_opensSearchVC_fromStation_userJourneyExists() {
-        mockUserJourneyController.userJourney = mockUserJourney()
+        mockUserJourneyController.userJourney = StubGenerator.userJourney
         mockNavController.viewControllers.removeAll()
         let fromURL = URL.fromStation
         
@@ -121,7 +121,7 @@ class MainCoordinatorTests: XCTestCase {
     }
     
     func test_receivesFromURL_opensSearchVC_destStation_userJourneyExists() {
-        mockUserJourneyController.userJourney = mockUserJourney()
+        mockUserJourneyController.userJourney = StubGenerator.userJourney
         mockNavController.viewControllers.removeAll()
         let fromURL = URL.destStation
         
@@ -153,49 +153,9 @@ class MainCoordinatorTests: XCTestCase {
         XCTAssertTrue(topVC is SettingsViewController)
     }
     
-    //MARK: Utility
-    
-    func mockUserJourney() ->UserJourney {
-        return UserJourney(start: UserJourneyControllerTests.mockStart, destination: UserJourneyControllerTests.mockEnd, minutesUntilSearch: 0, monitorStationProximity: false)
-    }
-    
-
 
 }
 
-class MockWindow : OneTripWindow {
-    
-    var didSetRootVC = false
-    var didCallMakeKey = false
-    
-    var rootVC: OneTripNavigationController? {
-        didSet {
-            didSetRootVC = true
-        }
-    }
-    
-    func makeKeyAndVisible() {
-        didCallMakeKey = true
-    }
-    
-    
-}
 
-class MockNavigationController : OneTripNavigationController {
-    
-    var viewControllers = [UIViewController]()
-    var didCallPop = false
-    
-    func pushViewController(_ viewController: UIViewController, animated: Bool) {
-        viewControllers.append(viewController)
-    }
-    
-    var topViewController: UIViewController?
-    
-    func popViewController(animated: Bool) -> UIViewController? {
-        didCallPop = true
-        return nil
-    }
-    
-    
-}
+
+

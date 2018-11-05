@@ -73,10 +73,10 @@ class SearchService<T: Decodable> : SLSearch {
             }
             
             do {
+                let result = try JSONDecoder().decode(T.self, from: data)
                 if let persistKey = persistKey {
                     self.userDefaults.set(data, forKey: persistKey)
                 }
-                let result = try JSONDecoder().decode(T.self, from: data)
                 callback(Result.success(result))
             } catch let e {
                 callback(Result.failure(e))

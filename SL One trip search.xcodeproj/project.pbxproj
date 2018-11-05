@@ -13,7 +13,6 @@
 		5135EF5221776AB30016AAD6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5135EF5021776AB30016AAD6 /* Main.storyboard */; };
 		5135EF5421776AB50016AAD6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5135EF5321776AB50016AAD6 /* Assets.xcassets */; };
 		5135EF5721776AB50016AAD6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5135EF5521776AB50016AAD6 /* LaunchScreen.storyboard */; };
-		5135EF6221776AB50016AAD6 /* SL_One_trip_searchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5135EF6121776AB50016AAD6 /* SL_One_trip_searchTests.swift */; };
 		5135EF6D21776AB60016AAD6 /* SL_One_trip_searchUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5135EF6C21776AB60016AAD6 /* SL_One_trip_searchUITests.swift */; };
 		5135EF7B217774110016AAD6 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5135EF7A217774110016AAD6 /* SettingsViewController.swift */; };
 		5135EF7D217774200016AAD6 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5135EF7C217774200016AAD6 /* SearchViewController.swift */; };
@@ -79,6 +78,21 @@
 		51AF07ED218CA1D7004A942F /* UserJourneyController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5135EF8B21777E790016AAD6 /* UserJourneyController.swift */; };
 		51AF07EE218CA1E5004A942F /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5135EF972178CBBE0016AAD6 /* Environment.swift */; };
 		51AF07EF218CA1F4004A942F /* JourneyError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51C86D0E217DF0F7000F5851 /* JourneyError.swift */; };
+		51AF07F121904CD4004A942F /* StubGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51AF07F021904CD4004A942F /* StubGenerator.swift */; };
+		51AF07F421905EFD004A942F /* MockUserNotificationCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51AF07F321905EFD004A942F /* MockUserNotificationCenter.swift */; };
+		51AF07F621905F29004A942F /* MockJourneyPlanSearchService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51AF07F521905F29004A942F /* MockJourneyPlanSearchService.swift */; };
+		51AF07F821905F48004A942F /* MockNotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51AF07F721905F48004A942F /* MockNotificationService.swift */; };
+		51AF07FA21905F62004A942F /* MockLocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51AF07F921905F62004A942F /* MockLocationManager.swift */; };
+		51AF07FC21906064004A942F /* MockWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51AF07FB21906064004A942F /* MockWindow.swift */; };
+		51AF07FE2190607E004A942F /* MockNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51AF07FD2190607E004A942F /* MockNavigationController.swift */; };
+		51AF080021906150004A942F /* MockJourneyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51AF07FF21906150004A942F /* MockJourneyViewModel.swift */; };
+		51AF08022190619C004A942F /* MockNotificationCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51AF08012190619C004A942F /* MockNotificationCenter.swift */; };
+		51AF080421906616004A942F /* MockUserJourneyController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51AF080321906616004A942F /* MockUserJourneyController.swift */; };
+		51AF080621906623004A942F /* MockStateController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51AF080521906623004A942F /* MockStateController.swift */; };
+		51AF080821906C38004A942F /* MockUserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51AF080721906C38004A942F /* MockUserDefaults.swift */; };
+		51AF080A21906C9E004A942F /* MockURLSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51AF080921906C9E004A942F /* MockURLSession.swift */; };
+		51AF080C21906CE3004A942F /* MockPersistService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51AF080B21906CE3004A942F /* MockPersistService.swift */; };
+		51AF080E21906D2B004A942F /* MockLocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51AF080D21906D2B004A942F /* MockLocationService.swift */; };
 		51C86CFE217DC62F000F5851 /* JourneyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51C86CFD217DC62F000F5851 /* JourneyTableViewCell.swift */; };
 		51C86D00217DD3A9000F5851 /* Trip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51C86CFF217DD3A9000F5851 /* Trip.swift */; };
 		51C86D02217DD3B3000F5851 /* Leg.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51C86D01217DD3B3000F5851 /* Leg.swift */; };
@@ -175,7 +189,6 @@
 		5135EF5621776AB50016AAD6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5135EF5821776AB50016AAD6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5135EF5D21776AB50016AAD6 /* SL One trip searchTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "SL One trip searchTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		5135EF6121776AB50016AAD6 /* SL_One_trip_searchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SL_One_trip_searchTests.swift; sourceTree = "<group>"; };
 		5135EF6321776AB50016AAD6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5135EF6821776AB60016AAD6 /* SL One trip searchUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "SL One trip searchUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5135EF6C21776AB60016AAD6 /* SL_One_trip_searchUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SL_One_trip_searchUITests.swift; sourceTree = "<group>"; };
@@ -215,6 +228,21 @@
 		51AF07CE218C5A35004A942F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
 		51AF07D0218C5A35004A942F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		51AF07E1218C7092004A942F /* onetripnotification.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = onetripnotification.entitlements; sourceTree = "<group>"; };
+		51AF07F021904CD4004A942F /* StubGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubGenerator.swift; sourceTree = "<group>"; };
+		51AF07F321905EFD004A942F /* MockUserNotificationCenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockUserNotificationCenter.swift; sourceTree = "<group>"; };
+		51AF07F521905F29004A942F /* MockJourneyPlanSearchService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockJourneyPlanSearchService.swift; sourceTree = "<group>"; };
+		51AF07F721905F48004A942F /* MockNotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockNotificationService.swift; sourceTree = "<group>"; };
+		51AF07F921905F62004A942F /* MockLocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockLocationManager.swift; sourceTree = "<group>"; };
+		51AF07FB21906064004A942F /* MockWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockWindow.swift; sourceTree = "<group>"; };
+		51AF07FD2190607E004A942F /* MockNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockNavigationController.swift; sourceTree = "<group>"; };
+		51AF07FF21906150004A942F /* MockJourneyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockJourneyViewModel.swift; sourceTree = "<group>"; };
+		51AF08012190619C004A942F /* MockNotificationCenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockNotificationCenter.swift; sourceTree = "<group>"; };
+		51AF080321906616004A942F /* MockUserJourneyController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockUserJourneyController.swift; sourceTree = "<group>"; };
+		51AF080521906623004A942F /* MockStateController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockStateController.swift; sourceTree = "<group>"; };
+		51AF080721906C38004A942F /* MockUserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockUserDefaults.swift; sourceTree = "<group>"; };
+		51AF080921906C9E004A942F /* MockURLSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockURLSession.swift; sourceTree = "<group>"; };
+		51AF080B21906CE3004A942F /* MockPersistService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockPersistService.swift; sourceTree = "<group>"; };
+		51AF080D21906D2B004A942F /* MockLocationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockLocationService.swift; sourceTree = "<group>"; };
 		51C86CFD217DC62F000F5851 /* JourneyTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JourneyTableViewCell.swift; sourceTree = "<group>"; };
 		51C86CFF217DD3A9000F5851 /* Trip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Trip.swift; sourceTree = "<group>"; };
 		51C86D01217DD3B3000F5851 /* Leg.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Leg.swift; sourceTree = "<group>"; };
@@ -335,7 +363,7 @@
 		5135EF6021776AB50016AAD6 /* SL One trip searchTests */ = {
 			isa = PBXGroup;
 			children = (
-				5135EF6121776AB50016AAD6 /* SL_One_trip_searchTests.swift */,
+				51AF07F221905EE6004A942F /* Mocks */,
 				5135EF6321776AB50016AAD6 /* Info.plist */,
 				5135EF8F217887510016AAD6 /* UserJourneyControllerTests.swift */,
 				5135EF9B2178D5D20016AAD6 /* SettingsViewModelTests.swift */,
@@ -350,6 +378,7 @@
 				51761C192189AE00007ECC6E /* LocationServiceTests.swift */,
 				51AF0790218A0797004A942F /* StateControllerTests.swift */,
 				51AF0796218B0EAF004A942F /* NotificationServiceTests.swift */,
+				51AF07F021904CD4004A942F /* StubGenerator.swift */,
 			);
 			path = "SL One trip searchTests";
 			sourceTree = "<group>";
@@ -437,6 +466,27 @@
 				51AF07D0218C5A35004A942F /* Info.plist */,
 			);
 			path = onetripnotification;
+			sourceTree = "<group>";
+		};
+		51AF07F221905EE6004A942F /* Mocks */ = {
+			isa = PBXGroup;
+			children = (
+				51AF07F321905EFD004A942F /* MockUserNotificationCenter.swift */,
+				51AF07F521905F29004A942F /* MockJourneyPlanSearchService.swift */,
+				51AF07F721905F48004A942F /* MockNotificationService.swift */,
+				51AF07F921905F62004A942F /* MockLocationManager.swift */,
+				51AF07FB21906064004A942F /* MockWindow.swift */,
+				51AF07FD2190607E004A942F /* MockNavigationController.swift */,
+				51AF07FF21906150004A942F /* MockJourneyViewModel.swift */,
+				51AF08012190619C004A942F /* MockNotificationCenter.swift */,
+				51AF080321906616004A942F /* MockUserJourneyController.swift */,
+				51AF080521906623004A942F /* MockStateController.swift */,
+				51AF080721906C38004A942F /* MockUserDefaults.swift */,
+				51AF080921906C9E004A942F /* MockURLSession.swift */,
+				51AF080B21906CE3004A942F /* MockPersistService.swift */,
+				51AF080D21906D2B004A942F /* MockLocationService.swift */,
+			);
+			path = Mocks;
 			sourceTree = "<group>";
 		};
 		51C86D0B217DD57F000F5851 /* Journey */ = {
@@ -743,18 +793,32 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				51AF080E21906D2B004A942F /* MockLocationService.swift in Sources */,
 				51AF0797218B0EAF004A942F /* NotificationServiceTests.swift in Sources */,
+				51AF07FA21905F62004A942F /* MockLocationManager.swift in Sources */,
 				51C86D14217F52A0000F5851 /* JourneySearchTests.swift in Sources */,
+				51AF07F821905F48004A942F /* MockNotificationService.swift in Sources */,
 				518D465E2187680F00789960 /* MainCoordinatorTests.swift in Sources */,
+				51AF07FE2190607E004A942F /* MockNavigationController.swift in Sources */,
 				51761C1A2189AE00007ECC6E /* LocationServiceTests.swift in Sources */,
 				5135EFA02178E04F0016AAD6 /* SLSearchTests.swift in Sources */,
+				51AF07F621905F29004A942F /* MockJourneyPlanSearchService.swift in Sources */,
+				51AF080021906150004A942F /* MockJourneyViewModel.swift in Sources */,
 				5135EF90217887510016AAD6 /* UserJourneyControllerTests.swift in Sources */,
 				51AF0791218A0797004A942F /* StateControllerTests.swift in Sources */,
+				51AF080A21906C9E004A942F /* MockURLSession.swift in Sources */,
+				51AF08022190619C004A942F /* MockNotificationCenter.swift in Sources */,
+				51AF07F121904CD4004A942F /* StubGenerator.swift in Sources */,
+				51AF07F421905EFD004A942F /* MockUserNotificationCenter.swift in Sources */,
+				51AF080421906616004A942F /* MockUserJourneyController.swift in Sources */,
+				51AF080C21906CE3004A942F /* MockPersistService.swift in Sources */,
 				51C86D16217F6B9B000F5851 /* JourneyViewModelTests.swift in Sources */,
+				51AF07FC21906064004A942F /* MockWindow.swift in Sources */,
 				51C86D202180980E000F5851 /* JourneyViewControllerTests.swift in Sources */,
+				51AF080621906623004A942F /* MockStateController.swift in Sources */,
 				5135EF9E2178D9560016AAD6 /* SearchRequestTest.swift in Sources */,
+				51AF080821906C38004A942F /* MockUserDefaults.swift in Sources */,
 				5135EFA6217A19250016AAD6 /* PersistServiceTests.swift in Sources */,
-				5135EF6221776AB50016AAD6 /* SL_One_trip_searchTests.swift in Sources */,
 				5135EFA4217A166B0016AAD6 /* StationTests.swift in Sources */,
 				5135EF9C2178D5D20016AAD6 /* SettingsViewModelTests.swift in Sources */,
 			);

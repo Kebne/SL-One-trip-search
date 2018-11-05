@@ -89,7 +89,7 @@ class JourneyViewModelTests: XCTestCase {
     
     func test_createsCorrectSectionTitles_busAndMetroResponse() {
         sut.newJourneyClosure = nil
-        mockStateController.jsonString = JourneyStubGenerator.jsonStringMetroBusTrip
+        mockStateController.jsonString = StubGenerator.jsonStringMetroBusTrip
         
         sut.viewWillAppear()
         let expectedBusSectionTitle = NSLocalizedString("product.bus.categoryName", comment: "") + " " + NSLocalizedString("towards", comment: "")
@@ -110,7 +110,7 @@ class JourneyViewModelTests: XCTestCase {
     
     func test_createsJourneyViewModels_busAndMetroResponse() {
         sut.newJourneyClosure = nil
-        mockStateController.jsonString = JourneyStubGenerator.jsonStringMetroBusTrip
+        mockStateController.jsonString = StubGenerator.jsonStringMetroBusTrip
         sut.viewWillAppear()
     
         XCTAssertNotNil(sut.cellModelFor(indexPath: IndexPath(row: 0, section: 0)))
@@ -120,7 +120,7 @@ class JourneyViewModelTests: XCTestCase {
     
     func test_correctNrOfSections_busAndMetroResponse() {
         sut.newJourneyClosure = nil
-        mockStateController.jsonString = JourneyStubGenerator.jsonStringMetroBusTrip
+        mockStateController.jsonString = StubGenerator.jsonStringMetroBusTrip
         
         sut.viewWillAppear()
         XCTAssertTrue(sut.nrOfSections == 2)
@@ -129,7 +129,7 @@ class JourneyViewModelTests: XCTestCase {
     func test_nrOfRowsInSection_busAndMetroResponse() {
         let expectedNrOfRowsSection0 = 6
         let expectedNrOfRowsSection1 = 1
-        mockStateController.jsonString = JourneyStubGenerator.jsonStringMetroBusTrip
+        mockStateController.jsonString = StubGenerator.jsonStringMetroBusTrip
         
         sut.viewWillAppear()
         let nrOFRowsSection0 = sut.nrOfRowsIn(section: 0)
@@ -165,61 +165,10 @@ class JourneyViewModelTests: XCTestCase {
     
     
     func mockUserJourney(minutesUntilSearch: Int) ->UserJourney {
-        return UserJourney(start: UserJourneyControllerTests.mockStart, destination: UserJourneyControllerTests.mockEnd, minutesUntilSearch: minutesUntilSearch, monitorStationProximity: false)
+        return UserJourney(start: StubGenerator.startStation, destination: StubGenerator.destinationStation, minutesUntilSearch: minutesUntilSearch, monitorStationProximity: false)
     }
 }
 
-class MockStateController : StateControllerProtocol {
-    
-    func monitorStations(enable: Bool, completion: @escaping (Bool) -> Void) {
-        
-    }
-    
-    required init(userController: UserJourneyControllerProtocol, journeyPlannerService: SearchService<SLJourneyPlanAPIResponse>, locationService: LocationService, notificationService: NotificationService) {
-        userJourneyController = userController
-    }
-    
-    var userJourneyController: UserJourneyControllerProtocol
-    var jsonString: String?
-    
-    func fetchTrips(completion: @escaping (Result<SLJourneyPlanAPIResponse>) -> Void, usingLocation: Bool) {
-        if let string = jsonString,  let jsonData = string.data(using: .utf8) {
-            do {
-                let result = try JSONDecoder().decode(SLJourneyPlanAPIResponse.self, from: jsonData)
-                completion(Result.success(result))
-            } catch let e {
-                completion(Result.failure(e))
-            }
-        }
-        
-        completion(Result.failure(EndpointError.corruptData))
-    }    
-}
 
-class MockUserJourneyController : UserJourneyControllerProtocol {
-    func monitorStations(enable: Bool, completion: @escaping (Bool) -> Void) {
-        
-    }
-    
-    var monitorStationProximity: Bool = false
-    
-    var didCallSwapStations = false
-    
-    func attemptToRetreiveStoredJourney() {
-        
-    }
-    
-    var userJourney: UserJourney?
-    
-    var start: Station?
-    
-    var destination: Station?
-    
-    var timeFromNowUntilSearch: Int = 0
-    
-    func swapStations() {
-        didCallSwapStations = true
-    }
-    
-    
-}
+
+

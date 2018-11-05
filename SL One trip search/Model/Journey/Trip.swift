@@ -36,6 +36,10 @@ extension Trip : Decodable {
         case legList  = "LegList"
     }
     
+    enum PersistKey {
+        static let trip = "Trip"
+    }
+    
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: LegListKey.self)
         let list = try container.nestedContainer(keyedBy: LegKey.self, forKey:.legList)

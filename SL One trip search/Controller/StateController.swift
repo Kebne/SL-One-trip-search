@@ -15,22 +15,20 @@ protocol StateControllerProtocol {
     func monitorStations(enable: Bool, completion: @escaping (Bool)->Void)
     
     init(userController: UserJourneyControllerProtocol, journeyPlannerService: SearchService<SLJourneyPlanAPIResponse>, locationService: LocationService,
-         notificationService: NotificationService, persistService: PersistServiceProtocol)
+         notificationService: NotificationService)
 }
 
 class StateController: StateControllerProtocol {
     private let journeyPlannerService: SearchService<SLJourneyPlanAPIResponse>
     private let locationService: LocationService
     private let notificationService: NotificationService
-    private let persistService: PersistServiceProtocol
-    
+  
     required init(userController: UserJourneyControllerProtocol, journeyPlannerService: SearchService<SLJourneyPlanAPIResponse>, locationService: LocationService,
-                  notificationService: NotificationService, persistService: PersistServiceProtocol) {
+                  notificationService: NotificationService) {
         self.userJourneyController = userController
         self.journeyPlannerService = journeyPlannerService
         self.locationService = locationService
         self.notificationService = notificationService
-        self.persistService = persistService
         locationService.registerRegion(observer: self)
     }
     
@@ -112,7 +110,7 @@ extension StateController : RegionObserver {
             if case .success(let response) = result {
                 self?.notificationService.notify(trips: response.trips, userJourney: updatedUserJourney)
             }
-        }, persistKey: "Trips")
+        }, persistKey: Trip.PersistKey.trip)
     }
 
 }

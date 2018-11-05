@@ -60,60 +60,6 @@ class JourneyViewControllerTests: XCTestCase {
     }
 }
 
-class MockNotificationCenter : NotificationCenterProtocol {
-    var didCallAdd = false
-    var didCallRemove = false
-    func addObserver(_ observer: Any, selector aSelector: Selector, name aName: NSNotification.Name?, object anObject: Any?) {
-        didCallAdd = true
-    }
-    
-    func removeObserver(_ observer: Any, name aName: NSNotification.Name?, object anObject: Any?) {
-        didCallRemove = true
-    }
-    
-    
-}
 
-class MockJourneyViewModel : JourneyPresentable {
-    var latestSearchString: String = ""
-    
-    var didCallSwap = false
-    var didCallViewDidAppear = false
-    var start: String = ""
-    
-    var destination: String = ""
-    
-    var timeString: String = ""
-    
-    var showActivityIndicator: Bool = false
-    
-    var newJourneyClosure: (() -> Void)?
-    
-    var nrOfSections: Int = 0
-    
-    func cellModelFor(indexPath: IndexPath) -> JourneyTableViewCell.ViewModel {
-        return JourneyTableViewCell.ViewModel()
-    }
-    
-    func nrOfRowsIn(section: Int) -> Int {
-        return 0
-    }
-    
-    func titleFor(section: Int) -> String? {
-        return nil
-    }
-    
-    func refreshControlDidRefresh() {
-        
-    }
-    
-    func didPressSwapButton() {
-        didCallSwap = true
-    }
-    
-    func viewWillAppear() {
-        didCallViewDidAppear = true
-    }
-    
-    
-}
+
+

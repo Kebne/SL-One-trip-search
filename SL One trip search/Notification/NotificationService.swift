@@ -41,7 +41,7 @@ class NotificationService : NSObject{
         static let titleTripsInMinutes = NSLocalizedString("notification.title.tripsInMinutes", comment: "")
         static let title = NSLocalizedString("notification.title", comment: "")
     }
-    private let notificationCategoryIdentifier = "journeyNotification"
+    static let notificationCategoryIdentifier = "journeyNotification"
     typealias AuthorizationCallback = (Bool)->Void
     private var authCallback: AuthorizationCallback?
     private let notificationCenter: UserNotificationCenter
@@ -53,10 +53,8 @@ class NotificationService : NSObject{
     }
     
     private func registerNotificationCategory() {
-        let category = UNNotificationCategory(identifier: notificationCategoryIdentifier, actions: [], intentIdentifiers: [], hiddenPreviewsBodyPlaceholder: "", options: [])
-        var set = Set<UNNotificationCategory>()
-        set.insert(category)
-        notificationCenter.setNotificationCategories(set)
+        let category = UNNotificationCategory(identifier: NotificationService.notificationCategoryIdentifier, actions: [], intentIdentifiers: [], hiddenPreviewsBodyPlaceholder: "", options: [])
+        notificationCenter.setNotificationCategories([category])
     }
     
     //MARK: Authorization
@@ -72,7 +70,7 @@ class NotificationService : NSObject{
         })
     }
     
-    func getNotificationSettings(with completion: @escaping (UserNotificationSettings) -> Void) {
+    private func getNotificationSettings(with completion: @escaping (UserNotificationSettings) -> Void) {
         notificationCenter.fetchNotificationSettings(completionHandler: completion)
     }
     
@@ -89,16 +87,16 @@ class NotificationService : NSObject{
     func notify(trips: [Trip], userJourney: UserJourney) {
 
         let content = UNMutableNotificationContent()
-        content.categoryIdentifier = notificationCategoryIdentifier
-        if #available(iOS 12.1, *) {
-            content.body = Strings.defaultBody
-        } else if let bodyString = buildNotificationString(from: trips, userJourney: userJourney) {
-            content.body = bodyString
-        }
-        
+        content.categoryIdentifier = NotificationService.notificationCategoryIdentifier
         content.title = notificationTitle(from: userJourney)
         content.sound = UNNotificationSound.default
- 
+        
+        if #available(iOS 12.1, *) {
+            content.body = Strings.defaultBody
+        } else {
+            content.body = buildNotificationString(from: trips, userJourney: userJourney)
+        }
+        
         sendLocal(notification: content)
     }
     
@@ -115,11 +113,14 @@ class NotificationService : NSObject{
         })
     }
     
+    //MARK: Notification content
+    
     private func notificationTitle(from userJourney: UserJourney) ->String {
         let introString = userJourney.minutesUntilSearch == 0 ? Strings.titleTripsNow : String(format: Strings.titleTripsInMinutes, userJourney.minutesUntilSearch)
         return String(format: Strings.title, introString,userJourney.start.name,userJourney.destination.name)
     }
-    private func buildNotificationString(from trips: [Trip], userJourney: UserJourney) ->String? {
+    
+    private func buildNotificationString(from trips: [Trip], userJourney: UserJourney) ->String {
         let sortedTrips = Trip.sortInCategories(trips: trips)
         var string = ""
         
@@ -129,7 +130,7 @@ class NotificationService : NSObject{
             for trip in tripsForCategory {
                 guard let firstLeg = trip.legList.first else {continue}
                 let platformString = firstLeg.origin.track.count > 0 ? " \(firstLeg.product.category.platformTypeString) \(firstLeg.origin.track)" : ""
-                string = string + "\n" + firstLeg.product.line + " \(JourneyViewModel.Strings.towards) " + firstLeg.direction + platformString + firstLeg.origin.track + " - " + firstLeg.origin.time.presentableTimeString
+                string = string + "\n" + firstLeg.product.line + " " + JourneyViewModel.Strings.towards + firstLeg.direction + platformString + firstLeg.origin.track + " - " + firstLeg.origin.time.presentableTimeString
             }
             
             string = string + "\n"
