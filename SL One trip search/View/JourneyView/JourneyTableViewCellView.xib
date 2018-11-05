@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -18,13 +18,13 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="22:55" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="shB-c8-yIX" userLabel="Time label">
-                        <rect key="frame" x="315" y="19.5" width="45" height="20.5"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <rect key="frame" x="315" y="20" width="43" height="19.5"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="cit-Ys-z7Q">
-                        <rect key="frame" x="16" y="12.5" width="279" height="35"/>
+                        <rect key="frame" x="16" y="12.5" width="289" height="35"/>
                         <subviews>
                             <textView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="1000" horizontalCompressionResistancePriority="250" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" editable="NO" text="4" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lAS-JI-ne5">
                                 <rect key="frame" x="0.0" y="0.0" width="21" height="35"/>
@@ -39,16 +39,16 @@
                                 </userDefinedRuntimeAttributes>
                             </textView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="p9g-t8-a7q">
-                                <rect key="frame" x="29" y="0.0" width="222" height="35"/>
+                                <rect key="frame" x="29" y="0.0" width="232" height="35"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="1000" text="Jarlaberg via Nacka Strand" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qaU-dA-F3g">
-                                        <rect key="frame" x="0.0" y="0.0" width="222" height="22"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="232" height="22"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Restid 10 min, inga byten" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2ge-em-QgJ">
-                                        <rect key="frame" x="0.0" y="23" width="222" height="12"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Restid 10 min, inga byten" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.80000000000000004" translatesAutoresizingMaskIntoConstraints="NO" id="2ge-em-QgJ">
+                                        <rect key="frame" x="0.0" y="23" width="232" height="12"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                         <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
@@ -56,7 +56,7 @@
                                 </subviews>
                             </stackView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="751" verticalHuggingPriority="251" text="H" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vS3-g3-uMN">
-                                <rect key="frame" x="259" y="0.0" width="20" height="35"/>
+                                <rect key="frame" x="269" y="0.0" width="20" height="35"/>
                                 <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="20" id="uRF-wu-PaO"/>
@@ -78,9 +78,9 @@
                     </stackView>
                 </subviews>
                 <constraints>
-                    <constraint firstAttribute="trailing" secondItem="cit-Ys-z7Q" secondAttribute="trailing" constant="80" id="68w-B6-61w"/>
+                    <constraint firstAttribute="trailing" secondItem="cit-Ys-z7Q" secondAttribute="trailing" constant="70" id="68w-B6-61w"/>
                     <constraint firstItem="shB-c8-yIX" firstAttribute="centerY" secondItem="AkF-UY-fNa" secondAttribute="centerY" id="Enz-D2-p0o"/>
-                    <constraint firstItem="shB-c8-yIX" firstAttribute="leading" secondItem="cit-Ys-z7Q" secondAttribute="trailing" constant="20" id="FcQ-wA-lhT"/>
+                    <constraint firstItem="shB-c8-yIX" firstAttribute="leading" secondItem="cit-Ys-z7Q" secondAttribute="trailing" constant="10" id="FcQ-wA-lhT"/>
                     <constraint firstItem="cit-Ys-z7Q" firstAttribute="centerY" secondItem="AkF-UY-fNa" secondAttribute="centerY" id="OZo-iv-ueh"/>
                     <constraint firstItem="cit-Ys-z7Q" firstAttribute="leading" secondItem="AkF-UY-fNa" secondAttribute="leadingMargin" id="XP7-cv-Bfh"/>
                 </constraints>

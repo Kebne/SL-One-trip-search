@@ -459,8 +459,8 @@
 			children = (
 				51C86D10217F1319000F5851 /* JourneyViewModel.swift */,
 				51C86CFD217DC62F000F5851 /* JourneyTableViewCell.swift */,
-				5135EF4E21776AB30016AAD6 /* JourneyViewController.swift */,
 				51C86D3D2180A884000F5851 /* JourneyTableViewCellView.xib */,
+				5135EF4E21776AB30016AAD6 /* JourneyViewController.swift */,
 				51583DD22187331400AFDE38 /* TableViewHeaderView.swift */,
 				51583DD52187332600AFDE38 /* TableViewHeaderView.xib */,
 			);

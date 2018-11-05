@@ -30,6 +30,12 @@ extension Date {
     }
 }
 
+extension UIColor {
+    static var trackLabelGray : UIColor {
+        return UIColor(red: 154.0/255.0, green: 154.0/255.0, blue: 154.0/255.0, alpha: 1.0)
+    }
+}
+
 protocol ReusableTableViewClass : AnyObject {
     static var reuseId: String {get}
 }
@@ -60,6 +66,7 @@ class JourneyTableViewCell: UITableViewCell, ReusableTableViewClass {
     static let reuseIdentifier = "JourneyTableViewCell"
     static let nibName = "JourneyTableViewCellView"
     static let rowHeight: CGFloat = 60.0
+    
 
     
     var viewModel: ViewModel = ViewModel() {
@@ -69,6 +76,7 @@ class JourneyTableViewCell: UITableViewCell, ReusableTableViewClass {
             trackLabel.text = viewModel.track
             timeLabel.text = viewModel.time
             trackLabel.isHidden = !viewModel.showTrack
+            trackLabel.backgroundColor = viewModel.trackColor
             lineNumberText.backgroundColor = viewModel.categoryColor
             journeyStatsLabel.text = viewModel.journeyStats
            
@@ -87,6 +95,7 @@ extension JourneyTableViewCell {
         let category: String
         let showTrack: Bool
         let categoryColor: UIColor
+        let trackColor: UIColor
         var journeyStats: String
         
         init() {
@@ -96,6 +105,7 @@ extension JourneyTableViewCell {
             time = ""
             category = ""
             showTrack = false
+            trackColor = UIColor.clear
             categoryColor = UIColor.slLineColorBusRed
             journeyStats = ""
         }
@@ -107,6 +117,7 @@ extension JourneyTableViewCell {
             category = leg.product.category.rawValue
             destination = leg.direction
             showTrack = track.count > 0 ? true : false
+            trackColor = track.count > 0 ? UIColor.trackLabelGray : UIColor.clear
             categoryColor = UIColor.colorFor(productCategory: leg.product.category, line: leg.product.line)
             journeyStats = ""
         }

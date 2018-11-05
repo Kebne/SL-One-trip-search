@@ -117,7 +117,7 @@ class NotificationService : NSObject{
     
     private func notificationTitle(from userJourney: UserJourney) ->String {
         let introString = userJourney.minutesUntilSearch == 0 ? Strings.titleTripsNow : String(format: Strings.titleTripsInMinutes, userJourney.minutesUntilSearch)
-        return String(format: Strings.title, introString,userJourney.destination.name,userJourney.start.name)
+        return String(format: Strings.title, introString,userJourney.start.name,userJourney.destination.name)
     }
     private func buildNotificationString(from trips: [Trip], userJourney: UserJourney) ->String? {
         let sortedTrips = Trip.sortInCategories(trips: trips)

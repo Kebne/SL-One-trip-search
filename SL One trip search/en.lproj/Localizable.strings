@@ -35,7 +35,7 @@
 "notification.body.showInstructions" = "Dra ner / långtryck för att visa";
 "notification.title.tripsNow" = "Resor";
 "notification.title.tripsInMinutes" = "Resor om %@ min";
-"notification.title" = "%@ till %@ från %@";
+"notification.title" = "%@ från %@ till %@";
 
 "journeyView.latestSearch" = "Senaste sökning";
 "journeyView.latestSearch.searching" = "söker...";
