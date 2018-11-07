@@ -50,7 +50,6 @@ class StateControllerTests: XCTestCase {
         mockLocationManager.notifyDelegateDidEnter(region: CLCircularRegion(center: CLLocationCoordinate2D(latitude: 0.0, longitude: 0.0),
                                                                             radius: 400.0, identifier: "Test"))
         
-        
         XCTAssertTrue(mockSearchService.didCallSearch)
         XCTAssertNotNil(mockSearchService.persistDataKey)
         
@@ -65,8 +64,6 @@ class StateControllerTests: XCTestCase {
                                                                             radius: 400.0, identifier: "Test"))
         
         XCTAssertTrue(partialMockNotificationService.didCallNotifyTrips)
-        
-        
     }
     
     func test_doesNotCallNotificationService_receivesRegionEvent_unsuccessfulTripSearch() {
@@ -78,8 +75,6 @@ class StateControllerTests: XCTestCase {
                                                                             radius: 400.0, identifier: "Test"))
         
         XCTAssertFalse(partialMockNotificationService.didCallNotifyTrips)
-        
-        
     }
 
 

@@ -36,18 +36,18 @@ extension UIColor {
     }
 }
 
-protocol ReusableTableViewClass : AnyObject {
+protocol ReusableTableViewCell : AnyObject {
     static var reuseId: String {get}
 }
 
-extension ReusableTableViewClass {
+extension ReusableTableViewCell {
     static var reuseId: String {
         return String(describing: Self.self)
     }
 }
 
 extension UITableView {
-    func dequeueReusableCellAt<T: ReusableTableViewClass>(indexPath: IndexPath) ->T {
+    func dequeueReusableCellAt<T: ReusableTableViewCell>(indexPath: IndexPath) ->T {
         guard let cell = dequeueReusableCell(withIdentifier: T.reuseId, for: indexPath) as? T else {
             fatalError("Unable to dequeue or cast UITableViewCell to correct type: \(T.self). Make sure that the storyboard reuse identifier is the name of the class.")
         }
@@ -56,7 +56,7 @@ extension UITableView {
 }
 
 
-class JourneyTableViewCell: UITableViewCell, ReusableTableViewClass {
+class JourneyTableViewCell: UITableViewCell, ReusableTableViewCell {
     @IBOutlet weak var lineNumberText: UITextView!
     @IBOutlet weak var destinationLabel: UILabel!
     @IBOutlet weak var trackLabel: UILabel!

@@ -93,6 +93,9 @@
 		51AF080A21906C9E004A942F /* MockURLSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51AF080921906C9E004A942F /* MockURLSession.swift */; };
 		51AF080C21906CE3004A942F /* MockPersistService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51AF080B21906CE3004A942F /* MockPersistService.swift */; };
 		51AF080E21906D2B004A942F /* MockLocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51AF080D21906D2B004A942F /* MockLocationService.swift */; };
+		51AF081021907683004A942F /* JourneyDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51AF080F21907683004A942F /* JourneyDetailViewController.swift */; };
+		51AF0812219093EE004A942F /* JourneyDetailCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 51AF0811219093EE004A942F /* JourneyDetailCellView.xib */; };
+		51AF0817219183ED004A942F /* JourneyDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51AF0816219183ED004A942F /* JourneyDetailTableViewCell.swift */; };
 		51C86CFE217DC62F000F5851 /* JourneyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51C86CFD217DC62F000F5851 /* JourneyTableViewCell.swift */; };
 		51C86D00217DD3A9000F5851 /* Trip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51C86CFF217DD3A9000F5851 /* Trip.swift */; };
 		51C86D02217DD3B3000F5851 /* Leg.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51C86D01217DD3B3000F5851 /* Leg.swift */; };
@@ -243,6 +246,9 @@
 		51AF080921906C9E004A942F /* MockURLSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockURLSession.swift; sourceTree = "<group>"; };
 		51AF080B21906CE3004A942F /* MockPersistService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockPersistService.swift; sourceTree = "<group>"; };
 		51AF080D21906D2B004A942F /* MockLocationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockLocationService.swift; sourceTree = "<group>"; };
+		51AF080F21907683004A942F /* JourneyDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JourneyDetailViewController.swift; sourceTree = "<group>"; };
+		51AF0811219093EE004A942F /* JourneyDetailCellView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = JourneyDetailCellView.xib; sourceTree = "<group>"; };
+		51AF0816219183ED004A942F /* JourneyDetailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JourneyDetailTableViewCell.swift; sourceTree = "<group>"; };
 		51C86CFD217DC62F000F5851 /* JourneyTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JourneyTableViewCell.swift; sourceTree = "<group>"; };
 		51C86CFF217DD3A9000F5851 /* Trip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Trip.swift; sourceTree = "<group>"; };
 		51C86D01217DD3B3000F5851 /* Leg.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Leg.swift; sourceTree = "<group>"; };
@@ -396,9 +402,9 @@
 			isa = PBXGroup;
 			children = (
 				51C86D12217F1323000F5851 /* JourneyView */,
-				5135EF7C217774200016AAD6 /* SearchViewController.swift */,
-				5135EF7A217774110016AAD6 /* SettingsViewController.swift */,
-				5135EF912178BD8F0016AAD6 /* StationTableViewCell.swift */,
+				51AF0814219182FF004A942F /* Station search view */,
+				51AF08152191830F004A942F /* Settings view */,
+				51AF0813219182EB004A942F /* Journey detail view */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -487,6 +493,33 @@
 				51AF080D21906D2B004A942F /* MockLocationService.swift */,
 			);
 			path = Mocks;
+			sourceTree = "<group>";
+		};
+		51AF0813219182EB004A942F /* Journey detail view */ = {
+			isa = PBXGroup;
+			children = (
+				51AF080F21907683004A942F /* JourneyDetailViewController.swift */,
+				51AF0811219093EE004A942F /* JourneyDetailCellView.xib */,
+				51AF0816219183ED004A942F /* JourneyDetailTableViewCell.swift */,
+			);
+			path = "Journey detail view";
+			sourceTree = "<group>";
+		};
+		51AF0814219182FF004A942F /* Station search view */ = {
+			isa = PBXGroup;
+			children = (
+				5135EF7C217774200016AAD6 /* SearchViewController.swift */,
+				5135EF912178BD8F0016AAD6 /* StationTableViewCell.swift */,
+			);
+			path = "Station search view";
+			sourceTree = "<group>";
+		};
+		51AF08152191830F004A942F /* Settings view */ = {
+			isa = PBXGroup;
+			children = (
+				5135EF7A217774110016AAD6 /* SettingsViewController.swift */,
+			);
+			path = "Settings view";
 			sourceTree = "<group>";
 		};
 		51C86D0B217DD57F000F5851 /* Journey */ = {
@@ -706,6 +739,7 @@
 				51C86D542180B391000F5851 /* MainInterface.storyboard in Resources */,
 				51583DD62187332600AFDE38 /* TableViewHeaderView.xib in Resources */,
 				51C86D1B21804CDB000F5851 /* Localizable.strings in Resources */,
+				51AF0812219093EE004A942F /* JourneyDetailCellView.xib in Resources */,
 				51C86D3E2180A884000F5851 /* JourneyTableViewCellView.xib in Resources */,
 				5135EF5421776AB50016AAD6 /* Assets.xcassets in Resources */,
 				5135EF5221776AB30016AAD6 /* Main.storyboard in Resources */,
@@ -759,6 +793,7 @@
 			files = (
 				51C86D02217DD3B3000F5851 /* Leg.swift in Sources */,
 				5135EF8C21777E790016AAD6 /* UserJourneyController.swift in Sources */,
+				51AF081021907683004A942F /* JourneyDetailViewController.swift in Sources */,
 				51C86D06217DD3C9000F5851 /* Destination.swift in Sources */,
 				5135EF8E217780050016AAD6 /* ViewControllerFactory.swift in Sources */,
 				51C86D04217DD3BF000F5851 /* Origin.swift in Sources */,
@@ -786,6 +821,7 @@
 				51C86D00217DD3A9000F5851 /* Trip.swift in Sources */,
 				5135EF8821777D820016AAD6 /* Station.swift in Sources */,
 				51C86D08217DD3D9000F5851 /* Product.swift in Sources */,
+				51AF0817219183ED004A942F /* JourneyDetailTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

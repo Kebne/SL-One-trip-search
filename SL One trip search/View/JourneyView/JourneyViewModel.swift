@@ -8,6 +8,13 @@
 
 import Foundation
 
+protocol JourneyViewModelDelegate : AnyObject {
+    func didPressSettings()
+    func didPressStartStationButton()
+    func didPressEndStationButton()
+    func showDetailView(for trip: Trip)
+}
+
 protocol JourneyPresentable {
     var start: String {get}
     var destination: String {get}
@@ -22,6 +29,10 @@ protocol JourneyPresentable {
     func refreshControlDidRefresh()
     func didPressSwapButton()
     func viewWillAppear()
+    func didSelectTableViewCell(at indexPath: IndexPath)
+    func didPressSettings()
+    func didPressStartStationButton()
+    func didPressEndStationButton()
 }
 
 
@@ -35,6 +46,7 @@ class JourneyViewModel : JourneyPresentable {
 
     
     private var latestSearchDate: Date?
+    weak var delegate: JourneyViewModelDelegate?
     
     var timeString: String {
         guard let minutes = stateController.userJourneyController.userJourney?.minutesUntilSearch else {
@@ -65,7 +77,8 @@ class JourneyViewModel : JourneyPresentable {
     var newJourneyClosure: (()->Void)?
     
     private var categories = [ProductCategory]()
-    private var journeyViewModels = [String:[JourneyTableViewCell.ViewModel]]()
+    //private var journeyViewModels = [String:[JourneyTableViewCell.ViewModel]]()
+    private var tripSearchResult = [ProductCategory: [Trip]]()
     
     
     private let stateController: StateControllerProtocol
@@ -80,13 +93,13 @@ class JourneyViewModel : JourneyPresentable {
     }
     
     func cellModelFor(indexPath: IndexPath) ->JourneyTableViewCell.ViewModel {
-        
-        return journeyViewModels[categories[indexPath.section].rawValue]![indexPath.row]
+        let trip = tripSearchResult[categories[indexPath.section]]![indexPath.row]
+        return JourneyTableViewCell.ViewModel(trip: trip)
     }
     
     func nrOfRowsIn(section: Int) ->Int {
         guard section < categories.count else {return 0}
-        return journeyViewModels[categories[section].rawValue]?.count ?? 0
+        return tripSearchResult[categories[section]]?.count ?? 0
     }
     
     func titleFor(section: Int) ->String? {
@@ -97,6 +110,22 @@ class JourneyViewModel : JourneyPresentable {
     }
     
     //MARK: Action
+    
+    func didSelectTableViewCell(at indexPath: IndexPath) {
+        guard indexPath.section < categories.count,
+            let tripArray = tripSearchResult[categories[indexPath.section]], indexPath.row < tripArray.count else { return }
+        delegate?.showDetailView(for: tripArray[indexPath.row])
+    }
+    
+    func didPressSettings() {
+        delegate?.didPressSettings()
+    }
+    func didPressStartStationButton() {
+        delegate?.didPressStartStationButton()
+    }
+    func didPressEndStationButton() {
+        delegate?.didPressEndStationButton()
+    }
     
     func refreshControlDidRefresh() {
         fetchJourneyData()
@@ -115,7 +144,7 @@ class JourneyViewModel : JourneyPresentable {
 
     private func fetchJourneyData() {
         categories.removeAll()
-        journeyViewModels.removeAll()
+        tripSearchResult.removeAll()
         showActivityIndicator = true
         latestSearchDate = nil
         notifyCallback()
@@ -132,12 +161,9 @@ class JourneyViewModel : JourneyPresentable {
     }
     
     private func createTableViewDataFrom(response: SLJourneyPlanAPIResponse) {
-        let sortedResults = Trip.sortInCategories(trips: response.trips)
-        categories = sortedResults.sortedKeys
-        
-        for (category, trips) in sortedResults.dictionary {
-            journeyViewModels[category.rawValue] = trips.sorted(by: {$0.arrivalDate < $1.arrivalDate}).map({JourneyTableViewCell.ViewModel(trip: $0)})
-        }
+        let sortedResult = Trip.sortInCategories(trips: response.trips)
+        tripSearchResult = sortedResult.dictionary
+        categories = sortedResult.sortedKeys
     }
     
     private func notifyCallback() {
@@ -148,7 +174,6 @@ class JourneyViewModel : JourneyPresentable {
                 self?.newJourneyClosure?()
             }
         }
-        
     }
 }
 

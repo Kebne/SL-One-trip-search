@@ -27,6 +27,12 @@
 "product.platformtype.train" = "spår";
 "product.platformtype.boat" = "läge";
 
+"product.singleLetterDescription.bus" = "B";
+"product.singleLetterDescription.metro" = "T";
+"product.singleLetterDescription.tram" = "L";
+"product.singleLetterDescription.train" = "T";
+"product.singleLetterDescription.boat" = "B";
+
 "journeyView.journeyStats.noChanges" = "inga byten";
 "journeyView.journeyStats.oneChange" = "1 byte";
 "journeyView.journeyStats.multipleChanges" = "%@ byten";
@@ -44,3 +50,5 @@
 
 "now" = "nu";
 "minutes" = "min";
+
+"journeyDetail.title" = "Resebeskrivning";

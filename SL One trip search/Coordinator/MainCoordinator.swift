@@ -51,10 +51,10 @@ class MainCoordinator {
     func start() {
         
         let journeyViewController: JourneyViewController = viewControllerFactory.instantiateViewController()
-        journeyViewController.delegate = self
-        journeyViewController.viewModel = JourneyViewModel(stateController: stateController)
+        let journeyViewModel = JourneyViewModel(stateController: stateController)
+        journeyViewModel.delegate = self
+        journeyViewController.viewModel = journeyViewModel
         rootNavigationController.pushViewController(journeyViewController, animated: false)
-
 
         if stateController.userJourneyController.userJourney == nil {
             showSettings(animated: false)
@@ -82,6 +82,13 @@ class MainCoordinator {
         settingsViewController.viewModel = SettingsViewController.ViewModel(stateController: stateController)
         settingsViewController.delegate = self
         rootNavigationController.pushViewController(settingsViewController, animated: animated)
+    }
+    
+    fileprivate func showJourneyDetailView(with trip: Trip) {
+        let journeyDetailViewController: JourneyDetailViewController = viewControllerFactory.instantiateViewController()
+        let viewModel = JourneyDetailViewModel(trip)
+        journeyDetailViewController.viewModel = viewModel
+        rootNavigationController.pushViewController(journeyDetailViewController, animated: true)
     }
     
     //MARK: Handle URL
@@ -121,11 +128,16 @@ extension MainCoordinator : SettingsViewControllerDelegate {
 
 extension MainCoordinator : SearchViewControllerDelegate {
     func didSelectStation() {
-        rootNavigationController.popViewController(animated: true)
+        _ = rootNavigationController.popViewController(animated: true)
     }
 }
 
-extension MainCoordinator : JourneyViewControllerDelegate {
+extension MainCoordinator : JourneyViewModelDelegate {
+    func showDetailView(for trip: Trip) {
+        showJourneyDetailView(with: trip)
+    }
+    
+    
     func didPressSettings() {
         showSettings()
     }

@@ -11,7 +11,7 @@ import UIKit
 
 
 extension UITableView {
-    func dequeueReusableHeaderFooterView<T: ReusableTableViewClass>() ->T {
+    func dequeueReusableHeaderFooterView<T: ReusableTableViewCell>() ->T {
         guard let view = dequeueReusableHeaderFooterView(withIdentifier: T.reuseId) as? T else {
             fatalError("Unable to deque or cast header/footer view.")
         }
@@ -20,7 +20,7 @@ extension UITableView {
     }
 }
 
-class TableViewHeaderView: UITableViewHeaderFooterView, ReusableTableViewClass {
+class TableViewHeaderView: UITableViewHeaderFooterView, ReusableTableViewCell {
     static let height: CGFloat = 25.0
     static let nibName = "TableViewHeaderView"
     @IBOutlet weak var titleLabel: UILabel!

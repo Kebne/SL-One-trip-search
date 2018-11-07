@@ -26,6 +26,12 @@
 "product.platformtype.train" = "spår";
 "product.platformtype.boat" = "läge";
 
+"product.singleLetterDescription.bus" = "B";
+"product.singleLetterDescription.metro" = "T";
+"product.singleLetterDescription.tram" = "L";
+"product.singleLetterDescription.train" = "T";
+"product.singleLetterDescription.boat" = "B";
+
 "notification.body.showInstructions" = "Dra ner / långtryck för att visa";
 "notification.title.tripsNow" = "Resor";
 "notification.title.tripsInMinutes" = "Resor om %@ min";
@@ -43,3 +49,5 @@
 
 "now" = "nu";
 "minutes" = "min";
+
+"journeyDetail.title" = "Resebeskrivning";

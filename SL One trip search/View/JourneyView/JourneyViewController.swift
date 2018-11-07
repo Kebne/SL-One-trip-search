@@ -8,11 +8,7 @@
 
 import UIKit
 
-protocol JourneyViewControllerDelegate : AnyObject {
-    func didPressSettings()
-    func didPressStartStationButton()
-    func didPressEndStationButton()
-}
+
 
 protocol NotificationCenterProtocol {
     func addObserver(_ observer: Any, selector aSelector: Selector, name aName: NSNotification.Name?, object anObject: Any?)
@@ -24,7 +20,7 @@ extension NotificationCenter : NotificationCenterProtocol {}
 
 class JourneyViewController: UIViewController, StoryboardInstantiable {
     
-    weak var delegate: JourneyViewControllerDelegate?
+    weak var delegate: JourneyViewModelDelegate?
     
     @IBOutlet weak var startStationButton: UIButton!
     @IBOutlet weak var destinationStationButton: UIButton!
@@ -41,10 +37,7 @@ class JourneyViewController: UIViewController, StoryboardInstantiable {
     var stateController: StateControllerProtocol!
     var viewModel: JourneyPresentable!
     
-    @IBAction func didPressSettingsButton(_ sender: UIBarButtonItem) {
-        delegate?.didPressSettings()
-    }
-    
+    //MARK: Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         journeyTableView.dataSource = self
@@ -72,20 +65,10 @@ class JourneyViewController: UIViewController, StoryboardInstantiable {
         registerAppBecomeActiveObserver(on: false)
     }
     
-    func render() {
-        startStationButton.setTitle(viewModel.start, for: .normal)
-        destinationStationButton.setTitle(viewModel.destination, for: .normal)
-        timeInfoLabel.text = viewModel.timeString
-        latestSearchLabel.text = viewModel.latestSearchString
-        if !refreshControl.isRefreshing {
-            activityIndicator.isHidden = !viewModel.showActivityIndicator
-            viewModel.showActivityIndicator ? activityIndicator.startAnimating() : activityIndicator.stopAnimating()
-        }
-        if !viewModel.showActivityIndicator {
-            refreshControl.endRefreshing()
-        }
-  
-        journeyTableView.reloadData()
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        startStationButton.contentHorizontalAlignment = .left
+        destinationStationButton.contentHorizontalAlignment = .left
     }
     
     private func registerAppBecomeActiveObserver(on: Bool) {
@@ -102,9 +85,28 @@ class JourneyViewController: UIViewController, StoryboardInstantiable {
         }
     }
     
+    func render() {
+        startStationButton.setTitle(viewModel.start, for: .normal)
+        destinationStationButton.setTitle(viewModel.destination, for: .normal)
+        timeInfoLabel.text = viewModel.timeString
+        latestSearchLabel.text = viewModel.latestSearchString
+        if !refreshControl.isRefreshing {
+            activityIndicator.isHidden = !viewModel.showActivityIndicator
+            viewModel.showActivityIndicator ? activityIndicator.startAnimating() : activityIndicator.stopAnimating()
+        }
+        if !viewModel.showActivityIndicator {
+            refreshControl.endRefreshing()
+        }
+  
+        journeyTableView.reloadData()
+    }
     
-    
+
     //MARK: Action
+    
+    @IBAction func didPressSettingsButton(_ sender: UIBarButtonItem) {
+        viewModel.didPressSettings()
+    }
     
     @objc private func didReceiceAppBecomeActiveNotification() {
         viewModel.viewWillAppear()
@@ -115,11 +117,11 @@ class JourneyViewController: UIViewController, StoryboardInstantiable {
     }
     
     @IBAction func didTapStartStationButton() {
-        delegate?.didPressStartStationButton()
+        viewModel.didPressStartStationButton()
     }
     
     @IBAction func didTapEndStationButton(_ sender: Any) {
-        delegate?.didPressEndStationButton()
+        viewModel.didPressEndStationButton()
     }
     
     @IBAction func didPressSwapStationsButton() {
@@ -127,16 +129,16 @@ class JourneyViewController: UIViewController, StoryboardInstantiable {
     }
     
     
-    override func viewWillLayoutSubviews() {
-        super.viewWillLayoutSubviews()
-        startStationButton.contentHorizontalAlignment = .left
-        destinationStationButton.contentHorizontalAlignment = .left
-    }
+    
 }
 
 extension JourneyViewController : UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return JourneyTableViewCell.rowHeight
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        viewModel.didSelectTableViewCell(at: indexPath)
     }
 }
 
