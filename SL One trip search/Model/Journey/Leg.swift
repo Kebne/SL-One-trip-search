@@ -14,7 +14,6 @@ struct Leg  {
     let origin: Origin
     let destination: Destination
     let id: Int
-//    let product: Product
     let transportType: TransportType
     let hidden: Bool
     let direction: String

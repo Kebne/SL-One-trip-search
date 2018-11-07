@@ -36,6 +36,7 @@
 		5143191F2192D47800CBF55D /* TransportType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5143191E2192D47800CBF55D /* TransportType.swift */; };
 		514319202192D5E900CBF55D /* TransportType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5143191E2192D47800CBF55D /* TransportType.swift */; };
 		514319212192D5EA00CBF55D /* TransportType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5143191E2192D47800CBF55D /* TransportType.swift */; };
+		514319232193282700CBF55D /* TripTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 514319222193282700CBF55D /* TripTest.swift */; };
 		51583DC92187173A00AFDE38 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5135EF5321776AB50016AAD6 /* Assets.xcassets */; };
 		51583DD32187331400AFDE38 /* TableViewHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51583DD22187331400AFDE38 /* TableViewHeaderView.swift */; };
 		51583DD42187331400AFDE38 /* TableViewHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51583DD22187331400AFDE38 /* TableViewHeaderView.swift */; };
@@ -219,6 +220,7 @@
 		5135EFA3217A166B0016AAD6 /* StationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationTests.swift; sourceTree = "<group>"; };
 		5135EFA5217A19250016AAD6 /* PersistServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistServiceTests.swift; sourceTree = "<group>"; };
 		5143191E2192D47800CBF55D /* TransportType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransportType.swift; sourceTree = "<group>"; };
+		514319222193282700CBF55D /* TripTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripTest.swift; sourceTree = "<group>"; };
 		51583DD22187331400AFDE38 /* TableViewHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewHeaderView.swift; sourceTree = "<group>"; };
 		51583DD52187332600AFDE38 /* TableViewHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TableViewHeaderView.xib; sourceTree = "<group>"; };
 		51761C192189AE00007ECC6E /* LocationServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationServiceTests.swift; sourceTree = "<group>"; };
@@ -389,6 +391,7 @@
 				51AF0790218A0797004A942F /* StateControllerTests.swift */,
 				51AF0796218B0EAF004A942F /* NotificationServiceTests.swift */,
 				51AF07F021904CD4004A942F /* StubGenerator.swift */,
+				514319222193282700CBF55D /* TripTest.swift */,
 			);
 			path = "SL One trip searchTests";
 			sourceTree = "<group>";
@@ -838,6 +841,7 @@
 				51AF080E21906D2B004A942F /* MockLocationService.swift in Sources */,
 				51AF0797218B0EAF004A942F /* NotificationServiceTests.swift in Sources */,
 				51AF07FA21905F62004A942F /* MockLocationManager.swift in Sources */,
+				514319232193282700CBF55D /* TripTest.swift in Sources */,
 				51C86D14217F52A0000F5851 /* JourneySearchTests.swift in Sources */,
 				51AF07F821905F48004A942F /* MockNotificationService.swift in Sources */,
 				518D465E2187680F00789960 /* MainCoordinatorTests.swift in Sources */,

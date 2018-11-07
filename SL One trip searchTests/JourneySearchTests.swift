@@ -33,7 +33,11 @@ class JourneySearchTests: XCTestCase {
         
         sut.searchWith(request: request, callback:  {result in
             switch result {
-            case .success(let result): XCTAssertEqual(result.trips[0].legList[0].product.category, .bus)
+            case .success(let result):
+                switch result.trips[0].legList[0].transportType {
+                case .product(let product) : XCTAssertEqual(product.category, .bus)
+                default: XCTFail("Unable to decode trip correctly, travel type is not a product.")
+                }
             case .failure(_): XCTFail("Couldn't decode a trip from correct JSON.")
             }
         })
@@ -54,7 +58,10 @@ class JourneySearchTests: XCTestCase {
         sut.searchWith(request: request, callback: {result in
             switch result {
             case .success(let result):
-                guard let combinedTrip = result.trips.first(where: {$0.legList.contains(where: {$0.product.category == .metro})}) else {
+                guard let combinedTrip = result.trips.first(where: {$0.legList.contains(where: {(leg) in
+                    if case .product(let p) = leg.transportType { return p.category == .metro}
+                    return false
+                })}) else {
                     XCTFail("Couldn't find combined metro / bus trip")
                     return
                 }
@@ -64,5 +71,4 @@ class JourneySearchTests: XCTestCase {
             }
         })
     }
-
 }

@@ -50,7 +50,7 @@ class SearchService<T: Decodable> : SLSearch {
     }
     
     func searchWith(request: SearchRequest, callback: @escaping (Result<T>) -> Void, persistDataWithKey persistKey: String? = nil) {
-        
+ 
         var urlrequest = URLRequest(url: request.url)
         urlrequest.httpMethod = "GET"
         

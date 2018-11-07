@@ -10,6 +10,23 @@ import Foundation
 @testable import SL_One_trip_search
 
 class MockJourneyViewModel : JourneyPresentable {
+    
+    func didPressSettings() {
+        
+    }
+    
+    func didPressEndStationButton() {
+        
+    }
+    
+    func didPressStartStationButton() {
+        
+    }
+    
+    func didSelectTableViewCell(at indexPath: IndexPath) {
+        
+    }
+    
     var latestSearchString: String = ""
     
     var didCallSwap = false

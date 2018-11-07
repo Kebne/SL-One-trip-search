@@ -151,8 +151,8 @@ class JourneyViewModelTests: XCTestCase {
         let trackName = "A"
         let expectedTimeString = "nu"
         
-        let leg = Leg(origin: Origin(name: "A", time: Date(), track: trackName), destination: Destination(name: "B", time: Date().addingTimeInterval(61.0)), id: 0, product: Product(category: .bus, name: "Buss", line: "100"), direction: directionName)
-        let trip = Trip(legList: [leg])
+        
+        let trip = Trip(legList: [StubGenerator.leg])
         
         let journeyCellViewModelSUT = JourneyTableViewCell.ViewModel(trip: trip)
         

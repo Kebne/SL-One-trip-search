@@ -30,8 +30,15 @@ class StubGenerator {
         return Station(name: "Start",area: "area", id: "10", lat: 0.0, long: 0.0)
     }
     
+    static var leg: Leg {
+        return legWith(originTime: Date(), arrivalTime: Date().addingTimeInterval(1000.0), transportType: TransportType.product(Product(category: ProductCategory.bus, name: "100", line: "100")), hidden: false, id: 0)
+    }
+    
+    static func legWith(originTime: Date, arrivalTime: Date , transportType: TransportType, hidden: Bool, id: Int) ->Leg {
+        return Leg(origin: Origin(name: "Start", time: originTime, track: "A"), destination: Destination(name: "End", time: arrivalTime), id: id, transportType: transportType,hidden: hidden, direction: "Direction")
+    }
+    
     static var trip: Trip {
-        let leg = Leg(origin: Origin(name: "Start", time: Date(), track: "A"), destination: Destination(name: "End", time: Date().addingTimeInterval(1000.0)), id: 0, product: Product(category: ProductCategory.bus, name: "100", line: "100"), direction: "Direction")
         return Trip(legList: [leg])
     }
     

@@ -94,7 +94,7 @@ class NotificationService : NSObject{
         if #available(iOS 12.1, *) {
             content.body = Strings.defaultBody
         } else {
-            content.body = buildNotificationString(from: trips, userJourney: userJourney)
+            content.body = buildNotificationString(from: trips)
         }
         
         sendLocal(notification: content)
@@ -120,7 +120,7 @@ class NotificationService : NSObject{
         return String(format: Strings.title, introString,userJourney.start.name,userJourney.destination.name)
     }
     
-    private func buildNotificationString(from trips: [Trip], userJourney: UserJourney) ->String {
+    private func buildNotificationString(from trips: [Trip]) ->String {
         let sortedTrips = Trip.sortInCategories(trips: trips)
         var string = ""
         
