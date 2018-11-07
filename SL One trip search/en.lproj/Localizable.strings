@@ -42,6 +42,8 @@
 "notification.title.tripsNow" = "Resor";
 "notification.title.tripsInMinutes" = "Resor om %@ min";
 "notification.title" = "%@ från %@ till %@";
+"transporttype.walk" = "Gå";
+"transporttype.walk.singleLetter" = "G";
 
 "journeyView.latestSearch" = "Senaste sökning";
 "journeyView.latestSearch.searching" = "söker...";

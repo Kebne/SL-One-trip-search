@@ -19,6 +19,8 @@
 "product.train.categoryName" = "Pendeltåg";
 "product.tram.categoryName" = "Spårvagn/lokalbana";
 "product.unknown.categoryName" = "Annat färdsätt";
+"transporttype.walk" = "Gå";
+"transporttype.walk.singleLetter" = "G";
 
 "product.platformtype.bus" = "läge";
 "product.platformtype.metro" = "plattform";
@@ -51,3 +53,4 @@
 "minutes" = "min";
 
 "journeyDetail.title" = "Resebeskrivning";
+

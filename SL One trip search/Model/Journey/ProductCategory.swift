@@ -56,6 +56,14 @@ extension UIColor {
     static var boatBlack : UIColor {
         return UIColor.black
     }
+    
+    static func color(for transportType: TransportType) ->UIColor {
+        switch transportType {
+        case .product(let product):
+            return UIColor.colorFor(productCategory: product.category, line: product.line)
+        case .walk(_): return UIColor.black
+        }
+    }
 }
 
 enum ProductCategory : String {

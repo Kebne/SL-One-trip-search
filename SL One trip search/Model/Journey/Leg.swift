@@ -8,11 +8,15 @@
 
 import Foundation
 
+
+
 struct Leg  {
     let origin: Origin
     let destination: Destination
     let id: Int
-    let product: Product
+//    let product: Product
+    let transportType: TransportType
+    let hidden: Bool
     let direction: String
     
 }
@@ -24,6 +28,9 @@ extension Leg : Decodable {
         case id = "idx"
         case product = "Product"
         case direction
+        case type
+        case dist
+        case hide
     }
     
     init(from decoder: Decoder) throws {
@@ -32,10 +39,15 @@ extension Leg : Decodable {
         destination = try root.decode(Destination.self, forKey: .destination)
         let idString = try root.decode(String.self, forKey: .id)
         id = Int(idString) ?? -1
+        let type = try root.decode(String.self, forKey: .type)
+        let walkingDistance = (try? root.decode(Int.self, forKey: .dist)) ?? 0
+        hidden = (try? root.decode(Bool.self, forKey: .hide)) ?? false
         if let product = try? root.decode(Product.self, forKey: .product) {
-            self.product = product
+            transportType = TransportType.product(product)
+        } else if type == "WALK" {
+            transportType = TransportType.walk(walkingDistance)
         } else {
-            product = Product(category: .unknown, name: "", line: "")
+            transportType = TransportType.product(Product(category: .unknown, name: "", line: ""))
         }
         if let direction = try? root.decode(String.self, forKey: .direction) {
             self.direction = direction
@@ -43,5 +55,12 @@ extension Leg : Decodable {
             direction = ""
         }
         
+    }
+}
+
+extension Leg: CustomStringConvertible {
+    // Buss 300, mot, Nacka, hållplatsläge, -, 3 min
+    var description: String {
+        return direction.appendSpace() + transportType.platformTypeString.appendSpace() + origin.track + " - " + origin.time.presentableTimeString
     }
 }

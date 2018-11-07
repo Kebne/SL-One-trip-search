@@ -8,14 +8,7 @@
 
 import UIKit
 
-extension String {
-    func appendSpace() ->String {
-        guard self.count > 0 else {
-            return self
-        }
-        return self + " "
-    }
-}
+
 
 class JourneyDetailTableViewCell: UITableViewCell, ReusableTableViewCell {
 
@@ -81,11 +74,18 @@ extension JourneyDetailTableViewCell {
             topRightLabelText = leg.origin.name.separateParenthesisString().string
             bottomLeftLabelText = leg.destination.time.hourMinuteTimeString
             bottomRightLabelText = leg.destination.name.separateParenthesisString().string
-            topDetailLabelText = leg.origin.name.separateParenthesisString().inParentheses.appendSpace() + leg.product.category.platformTypeString + " " + leg.origin.track
-            bottomDetailLabelText = leg.product.category.description + " " + leg.product.line + " " + JourneyViewModel.Strings.towards + " " + leg.direction
-            dotsLineColor = UIColor.colorFor(productCategory: leg.product.category, line: leg.product.line)
-            singleLetter = leg.product.category.singleLetterDescription
-            topDetailIsHidden = leg.origin.track.count == 0
+            switch leg.transportType {
+            case .product(let product):
+                bottomDetailLabelText = product.category.description + " " + product.line + " " + JourneyViewModel.Strings.towards + " " + leg.direction
+                topDetailLabelText = leg.origin.track.count > 0 ?  leg.origin.name.separateParenthesisString().inParentheses.appendSpace() + product.category.platformTypeString + " " + leg.origin.track : ""
+            case .walk(let distance):
+                bottomDetailLabelText = leg.transportType.description + " " + "\(distance)" + " m"
+                topDetailLabelText = ""
+            }
+            dotsLineColor = UIColor.color(for: leg.transportType)
+            singleLetter = leg.transportType.singleLetterDescription
+            topDetailIsHidden = topDetailLabelText.count == 0
+
         }
     }
 }

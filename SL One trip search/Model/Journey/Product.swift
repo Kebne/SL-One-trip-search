@@ -18,8 +18,6 @@ struct Product : Decodable {
         case name
         case line
     }
-    
-    
 }
 
 

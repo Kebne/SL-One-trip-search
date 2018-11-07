@@ -56,19 +56,33 @@ extension Trip {
         var result = [ProductCategory:[Trip]]()
         // Extract first part of the trip, the first leg.
         let firstLegs = trips.reduce([Leg]()) {legs, nextTrip in
-            if let nextLeg = nextTrip.legList.first(where: {$0.id == 0}), nextLeg.direction.count > 0 && nextLeg.product.line.count > 0 {
-                return legs + [nextLeg]
+            if let nextLeg = nextTrip.legList.first(where: {$0.id == 0}), nextLeg.direction.count > 0  {
+                switch nextLeg.transportType {
+                case .product(_): return legs + [nextLeg]
+                default: return legs
+                }
+                
             }
             return legs
         }
         // For each first leg, get the category (bus, metro etc).
         var categories = firstLegs.reduce([ProductCategory]()) {array, nextLeg ->[ProductCategory] in
-            array.contains(nextLeg.product.category) ? array : array + [nextLeg.product.category]
+            switch nextLeg.transportType {
+            case .product(let product): return array.contains(product.category) ? array : array + [product.category]
+            default: return array
+            }
+            
         }
         
         // Get the trips for each category
         for category in categories {
-            result[category] = trips.filter({$0.legList[0].product.category == category && $0.legList[0].direction.count > 0}).sorted(by: {$0.arrivalDate < $1.arrivalDate})
+//            result[category] = trips.filter({$0.legList[0].product.category == category && $0.legList[0].direction.count > 0}).sorted(by: {$0.arrivalDate < $1.arrivalDate})
+            result[category] = trips.filter({(trip) in
+                if case .product(let p) = trip.legList[0].transportType {
+                    return p.category == category
+                }
+                return false
+            }).sorted(by: {$0.arrivalDate < $1.arrivalDate})
         }
         
         // Sort the categories so that the one with that contains the trip with the fastest arrival time is first...
@@ -82,3 +96,5 @@ extension Trip {
         return (sortedKeys: categories, dictionary: result)
     }
 }
+
+

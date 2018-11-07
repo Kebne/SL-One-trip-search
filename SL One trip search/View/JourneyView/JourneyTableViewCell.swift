@@ -111,14 +111,21 @@ extension JourneyTableViewCell {
         }
         
         init(leg: Leg) {
-            lineNumber = leg.product.line
+            switch leg.transportType {
+            case .product(let product):
+                lineNumber = product.line
+                
+            default:
+                lineNumber = ""
+            }
+            category = leg.transportType.description
             track = leg.origin.track
             time = leg.origin.time.presentableTimeString
-            category = leg.product.category.rawValue
+            
             destination = leg.direction
             showTrack = track.count > 0 ? true : false
             trackColor = track.count > 0 ? UIColor.trackLabelGray : UIColor.clear
-            categoryColor = UIColor.colorFor(productCategory: leg.product.category, line: leg.product.line)
+            categoryColor = UIColor.color(for: leg.transportType)
             journeyStats = ""
         }
         
@@ -128,7 +135,10 @@ extension JourneyTableViewCell {
                 return
             }
             self.init(leg: firstLeg)
-            let nrOfTripChanges = trip.legList.filter({$0.product.category != .unknown}).count - 1
+            let nrOfTripChanges = trip.legList.filter({(leg) in
+                if case .walk(_) = leg.transportType {return false}
+                return true
+            }).count - 1
             self.journeyStats = statsStringFrom(nrOfTripChanges: nrOfTripChanges, duration: trip.duration, arrivalDate: trip.arrivalDate)
         }
         

@@ -33,6 +33,9 @@
 		5135EFA22179FC830016AAD6 /* PersistService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5135EFA12179FC830016AAD6 /* PersistService.swift */; };
 		5135EFA4217A166B0016AAD6 /* StationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5135EFA3217A166B0016AAD6 /* StationTests.swift */; };
 		5135EFA6217A19250016AAD6 /* PersistServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5135EFA5217A19250016AAD6 /* PersistServiceTests.swift */; };
+		5143191F2192D47800CBF55D /* TransportType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5143191E2192D47800CBF55D /* TransportType.swift */; };
+		514319202192D5E900CBF55D /* TransportType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5143191E2192D47800CBF55D /* TransportType.swift */; };
+		514319212192D5EA00CBF55D /* TransportType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5143191E2192D47800CBF55D /* TransportType.swift */; };
 		51583DC92187173A00AFDE38 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5135EF5321776AB50016AAD6 /* Assets.xcassets */; };
 		51583DD32187331400AFDE38 /* TableViewHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51583DD22187331400AFDE38 /* TableViewHeaderView.swift */; };
 		51583DD42187331400AFDE38 /* TableViewHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51583DD22187331400AFDE38 /* TableViewHeaderView.swift */; };
@@ -215,6 +218,7 @@
 		5135EFA12179FC830016AAD6 /* PersistService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistService.swift; sourceTree = "<group>"; };
 		5135EFA3217A166B0016AAD6 /* StationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationTests.swift; sourceTree = "<group>"; };
 		5135EFA5217A19250016AAD6 /* PersistServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistServiceTests.swift; sourceTree = "<group>"; };
+		5143191E2192D47800CBF55D /* TransportType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransportType.swift; sourceTree = "<group>"; };
 		51583DD22187331400AFDE38 /* TableViewHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewHeaderView.swift; sourceTree = "<group>"; };
 		51583DD52187332600AFDE38 /* TableViewHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TableViewHeaderView.xib; sourceTree = "<group>"; };
 		51761C192189AE00007ECC6E /* LocationServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationServiceTests.swift; sourceTree = "<group>"; };
@@ -533,6 +537,7 @@
 				51C86CFF217DD3A9000F5851 /* Trip.swift */,
 				51C86D0C217DD91F000F5851 /* ProductCategory.swift */,
 				51C86D0E217DF0F7000F5851 /* JourneyError.swift */,
+				5143191E2192D47800CBF55D /* TransportType.swift */,
 			);
 			path = Journey;
 			sourceTree = "<group>";
@@ -820,6 +825,7 @@
 				51AF0794218B0AA3004A942F /* NotificationService.swift in Sources */,
 				51C86D00217DD3A9000F5851 /* Trip.swift in Sources */,
 				5135EF8821777D820016AAD6 /* Station.swift in Sources */,
+				5143191F2192D47800CBF55D /* TransportType.swift in Sources */,
 				51C86D08217DD3D9000F5851 /* Product.swift in Sources */,
 				51AF0817219183ED004A942F /* JourneyDetailTableViewCell.swift in Sources */,
 			);
@@ -875,6 +881,7 @@
 				51AF07D8218C6F9A004A942F /* Leg.swift in Sources */,
 				51AF07E7218C95EF004A942F /* JourneyViewModel.swift in Sources */,
 				51AF07EC218CA1CE004A942F /* SearchRequest.swift in Sources */,
+				514319212192D5EA00CBF55D /* TransportType.swift in Sources */,
 				51AF07DF218C6FB4004A942F /* UserJourney.swift in Sources */,
 				51AF07D7218C6F96004A942F /* PersistService.swift in Sources */,
 				51AF07E8218CA19D004A942F /* StateController.swift in Sources */,
@@ -922,6 +929,7 @@
 				51C86D4E2180AF05000F5851 /* SearchRequest.swift in Sources */,
 				51AF0795218B0AA3004A942F /* NotificationService.swift in Sources */,
 				518D465C21875D1A00789960 /* SharedAppConstant.swift in Sources */,
+				514319202192D5E900CBF55D /* TransportType.swift in Sources */,
 				51C86D452180AEDF000F5851 /* Origin.swift in Sources */,
 				51C86D4B2180AEF8000F5851 /* UserJourney.swift in Sources */,
 			);

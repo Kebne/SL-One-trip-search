@@ -59,11 +59,11 @@ class JourneyDetailViewModel {
     
     //MARK: table view
     func nrOfRowsIn(section: Int) ->Int {
-        return trip.legList.count
+        return trip.legList.filter({!$0.hidden}).count
     }
     
     func viewModelForCell(at indexPath: IndexPath) ->JourneyDetailTableViewCell.ViewModel {
-        return JourneyDetailTableViewCell.ViewModel(leg: trip.legList[indexPath.row])
+        return JourneyDetailTableViewCell.ViewModel(leg: trip.legList.filter({!$0.hidden})[indexPath.row])
     }
 }
 

@@ -129,8 +129,7 @@ class NotificationService : NSObject{
             let tripsForCategory = sortedTrips.dictionary[category]!
             for trip in tripsForCategory {
                 guard let firstLeg = trip.legList.first else {continue}
-                let platformString = firstLeg.origin.track.count > 0 ? " \(firstLeg.product.category.platformTypeString) \(firstLeg.origin.track)" : ""
-                string = string + "\n" + firstLeg.product.line + " " + JourneyViewModel.Strings.towards + firstLeg.direction + platformString + firstLeg.origin.track + " - " + firstLeg.origin.time.presentableTimeString
+                string = string + firstLeg.description
             }
             
             string = string + "\n"
