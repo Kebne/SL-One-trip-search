@@ -115,7 +115,6 @@ class JourneyViewModelTests: XCTestCase {
     
         XCTAssertNotNil(sut.cellModelFor(indexPath: IndexPath(row: 0, section: 0)))
         XCTAssertNotNil(sut.cellModelFor(indexPath: IndexPath(row: 0, section: 1)))
-        
     }
     
     func test_correctNrOfSections_busAndMetroResponse() {
@@ -151,7 +150,6 @@ class JourneyViewModelTests: XCTestCase {
         let trackName = "A"
         let expectedTimeString = "nu"
         
-        
         let trip = Trip(legList: [StubGenerator.leg])
         
         let journeyCellViewModelSUT = JourneyTableViewCell.ViewModel(trip: trip)
@@ -159,7 +157,6 @@ class JourneyViewModelTests: XCTestCase {
         XCTAssertEqual(directionName, journeyCellViewModelSUT.destination)
         XCTAssertEqual(trackName, journeyCellViewModelSUT.track)
         XCTAssertEqual(expectedTimeString, journeyCellViewModelSUT.time)
-        
     }
     
     

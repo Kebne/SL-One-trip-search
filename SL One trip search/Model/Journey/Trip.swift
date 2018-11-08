@@ -9,7 +9,6 @@
 import Foundation
 
 
-
 struct Trip  {
     let legList : [Leg]
     var duration : TimeInterval {

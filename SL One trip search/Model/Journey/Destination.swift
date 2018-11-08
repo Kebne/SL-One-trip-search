@@ -10,6 +10,10 @@ import Foundation
 
 
 struct Destination : LegPoint {
+    var longitude: Double
+    
+    var latitude: Double
+    
     var name: String
     
     var time: Date
@@ -21,5 +25,7 @@ extension Destination {
         let values = try Origin.create(from: decoder)
         name = values.name
         time = values.date
+        latitude = values.lat
+        longitude = values.lon
     }
 }

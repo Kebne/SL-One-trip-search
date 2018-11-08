@@ -75,7 +75,8 @@ struct JourneySearchRequest : SearchRequest {
         let date = Date().dateByAdding(minutesFromNow)
         let dateQueryItem = URLQueryItem(name: "date", value: date.slRequestDateString)
         let timeQueryItem = URLQueryItem(name: "time", value: date.slRequestTimeString)
-        urlComponents.queryItems = [keyQuery, originQueryItem, destinationQueryItem, dateQueryItem, timeQueryItem]
+        let stopsQueryItem = URLQueryItem(name: "passlist", value: "1")
+        urlComponents.queryItems = [keyQuery, originQueryItem, destinationQueryItem, dateQueryItem, timeQueryItem, stopsQueryItem]
         guard let url = urlComponents.url else {
             return nil
         }

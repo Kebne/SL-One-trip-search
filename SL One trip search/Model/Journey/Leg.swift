@@ -17,7 +17,7 @@ struct Leg  {
     let transportType: TransportType
     let hidden: Bool
     let direction: String
-    
+    let stops: [Stop]
 }
 
 extension Leg : Decodable {
@@ -30,7 +30,13 @@ extension Leg : Decodable {
         case type
         case dist
         case hide
+        case stops = "Stops"
     }
+    
+    enum StopKeys : String, CodingKey {
+        case stop = "Stop"
+    }
+
     
     init(from decoder: Decoder) throws {
         let root = try decoder.container(keyedBy: CodingKeys.self)
@@ -54,11 +60,16 @@ extension Leg : Decodable {
             direction = ""
         }
         
+        var allStops = [Stop]()
+        if let stopContainer = try? root.nestedContainer(keyedBy: StopKeys.self, forKey: .stops) {
+            allStops = try stopContainer.decode([Stop].self, forKey: .stop)
+        }
+        stops = allStops
+        
     }
 }
 
 extension Leg: CustomStringConvertible {
-    // Buss 300, mot, Nacka, hållplatsläge, -, 3 min
     var description: String {
         return direction.appendSpace() + transportType.platformTypeString.appendSpace() + origin.track + " - " + origin.time.presentableTimeString
     }

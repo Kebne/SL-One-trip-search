@@ -22,6 +22,8 @@ extension Date {
 protocol LegPoint : Decodable {
     var name: String {get}
     var time: Date {get}
+    var longitude: Double {get}
+    var latitude: Double {get}
 }
 
 protocol LegStart : Decodable {
@@ -29,17 +31,21 @@ protocol LegStart : Decodable {
 }
 
 enum LegPointCodingKey : String, CodingKey {
-    case time, date, rtTime, rtDate, name, track
+    case time, date, rtTime, rtDate, name, track, lat, lon
 }
 
 struct Origin: LegPoint, LegStart{
+    var longitude: Double
+    
+    var latitude: Double
+    
     let name: String
     
     let time: Date
     
     let track: String
     
-    static func create(from decoder: Decoder) throws ->(name: String, date: Date) {
+    static func create(from decoder: Decoder) throws ->(name: String, date: Date, lon: Double, lat: Double) {
         let root = try decoder.container(keyedBy: LegPointCodingKey.self)
         let name = try root.decode(String.self, forKey: .name)
         var dateString = ""
@@ -56,8 +62,12 @@ struct Origin: LegPoint, LegStart{
             timeString = ttTime
         }
         
+        let longitude = try root.decode(Double.self, forKey: .lon)
+        let latitude = try root.decode(Double.self, forKey: .lat)
+        
         let time = Date.dateFromSLJourneyPlan(timeString: timeString, dateString: dateString)
-        return (name: name,date: time)
+        
+        return (name: name,date: time, lon: longitude, lat: latitude)
     }
  
 }
@@ -69,6 +79,8 @@ extension Origin {
         let values = try Origin.create(from: decoder)
         name = values.name
         time = values.date
+        longitude = values.lon
+        latitude = values.lat
         if let trackString = try? root.decode(String.self, forKey: .track) {
             track = trackString
         } else {

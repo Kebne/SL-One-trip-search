@@ -37,6 +37,9 @@
 		514319202192D5E900CBF55D /* TransportType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5143191E2192D47800CBF55D /* TransportType.swift */; };
 		514319212192D5EA00CBF55D /* TransportType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5143191E2192D47800CBF55D /* TransportType.swift */; };
 		514319232193282700CBF55D /* TripTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 514319222193282700CBF55D /* TripTest.swift */; };
+		51431929219424F400CBF55D /* Stop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51431928219424F400CBF55D /* Stop.swift */; };
+		5143192A2194262500CBF55D /* Stop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51431928219424F400CBF55D /* Stop.swift */; };
+		5143192B2194262500CBF55D /* Stop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51431928219424F400CBF55D /* Stop.swift */; };
 		51583DC92187173A00AFDE38 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5135EF5321776AB50016AAD6 /* Assets.xcassets */; };
 		51583DD32187331400AFDE38 /* TableViewHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51583DD22187331400AFDE38 /* TableViewHeaderView.swift */; };
 		51583DD42187331400AFDE38 /* TableViewHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51583DD22187331400AFDE38 /* TableViewHeaderView.swift */; };
@@ -221,6 +224,7 @@
 		5135EFA5217A19250016AAD6 /* PersistServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistServiceTests.swift; sourceTree = "<group>"; };
 		5143191E2192D47800CBF55D /* TransportType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransportType.swift; sourceTree = "<group>"; };
 		514319222193282700CBF55D /* TripTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripTest.swift; sourceTree = "<group>"; };
+		51431928219424F400CBF55D /* Stop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stop.swift; sourceTree = "<group>"; };
 		51583DD22187331400AFDE38 /* TableViewHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewHeaderView.swift; sourceTree = "<group>"; };
 		51583DD52187332600AFDE38 /* TableViewHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TableViewHeaderView.xib; sourceTree = "<group>"; };
 		51761C192189AE00007ECC6E /* LocationServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationServiceTests.swift; sourceTree = "<group>"; };
@@ -535,6 +539,7 @@
 				51C86D01217DD3B3000F5851 /* Leg.swift */,
 				51C86D05217DD3C9000F5851 /* Destination.swift */,
 				51C86D03217DD3BF000F5851 /* Origin.swift */,
+				51431928219424F400CBF55D /* Stop.swift */,
 				51C86D07217DD3D9000F5851 /* Product.swift */,
 				51C86D09217DD543000F5851 /* SLJourneyPlanAPIResponse.swift */,
 				51C86CFF217DD3A9000F5851 /* Trip.swift */,
@@ -800,6 +805,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				51C86D02217DD3B3000F5851 /* Leg.swift in Sources */,
+				51431929219424F400CBF55D /* Stop.swift in Sources */,
 				5135EF8C21777E790016AAD6 /* UserJourneyController.swift in Sources */,
 				51AF081021907683004A942F /* JourneyDetailViewController.swift in Sources */,
 				51C86D06217DD3C9000F5851 /* Destination.swift in Sources */,
@@ -893,6 +899,7 @@
 				51AF07E2218C7987004A942F /* JourneyTableViewCell.swift in Sources */,
 				51AF07E6218C7D79004A942F /* TableViewHeaderView.swift in Sources */,
 				51AF07D9218C6F9E004A942F /* Destination.swift in Sources */,
+				5143192B2194262500CBF55D /* Stop.swift in Sources */,
 				51AF07EE218CA1E5004A942F /* Environment.swift in Sources */,
 				51AF07DE218C6FB0004A942F /* ProductCategory.swift in Sources */,
 				51AF07EB218CA1CC004A942F /* SLSearch.swift in Sources */,
@@ -919,6 +926,7 @@
 				51C86D422180AECD000F5851 /* UserJourneyController.swift in Sources */,
 				51C86D442180AED9000F5851 /* Destination.swift in Sources */,
 				51AF078F2189E28F004A942F /* LocationService.swift in Sources */,
+				5143192A2194262500CBF55D /* Stop.swift in Sources */,
 				51C86D412180AECA000F5851 /* StateController.swift in Sources */,
 				51C86D4C2180AEFC000F5851 /* Station.swift in Sources */,
 				51C86D432180AED4000F5851 /* Leg.swift in Sources */,
