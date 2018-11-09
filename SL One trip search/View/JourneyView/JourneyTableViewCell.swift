@@ -36,11 +36,15 @@ extension UIColor {
     }
 }
 
-protocol ReusableTableViewCell : AnyObject {
+protocol Reusable : AnyObject {
     static var reuseId: String {get}
 }
 
-extension ReusableTableViewCell {
+protocol ReusableTableViewCell : Reusable {    
+    var selectionStyle: UITableViewCell.SelectionStyle {get set}
+}
+
+extension Reusable {
     static var reuseId: String {
         return String(describing: Self.self)
     }
@@ -51,6 +55,7 @@ extension UITableView {
         guard let cell = dequeueReusableCell(withIdentifier: T.reuseId, for: indexPath) as? T else {
             fatalError("Unable to dequeue or cast UITableViewCell to correct type: \(T.self). Make sure that the storyboard reuse identifier is the name of the class.")
         }
+        cell.selectionStyle = .none
         return cell
     }
 }

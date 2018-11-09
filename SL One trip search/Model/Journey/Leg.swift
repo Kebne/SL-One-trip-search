@@ -125,4 +125,41 @@ extension Leg {
     var polyline: MKPolyline {
         return MKPolyline(coordinates: coordinates, count: coordinates.count)
     }
+    
+    var startStopAnnotations: [StopAnnotation] {
+        let start = StopAnnotation(UIColor.color(for: transportType), letter: transportType.singleLetterDescription, coordinate: origin.coordinate)
+        let end = StopAnnotation(UIColor.color(for: transportType), letter: transportType.singleLetterDescription, coordinate: destination.coordinate)
+        return [start,end]
+    }
+    
+    var stopAnnotations: [StopAnnotation] {
+        return stops.filter({$0.latitude != origin.latitude && $0.longitude != origin.longitude}).filter(({$0.latitude != destination.latitude && $0.longitude != destination.longitude})).map({StopAnnotation(UIColor.color(for: transportType), letter: "", coordinate: $0.coordinate)})
+    }
+    
+    
+    
+    var stopCircles: [MKCircle] {
+        return stops.map({MKCircle(center:$0.coordinate, radius: 50.0)})
+    }
+    
+    
+    func renderer(for overlay: MKOverlay) ->MKOverlayRenderer {
+        if overlay is MKPolyline { return lineRenderer(for:overlay)}
+        else if let circle = overlay as? MKCircle {return circleRenderer(for: circle)}
+        return MKOverlayRenderer()
+    }
+    
+    private func lineRenderer(for overlay: MKOverlay) ->MKOverlayRenderer {
+        let lineRenderer = MKPolylineRenderer(overlay: overlay)
+        lineRenderer.lineWidth = 2.0
+        lineRenderer.strokeColor = UIColor.color(for: transportType)
+        return lineRenderer
+    }
+    
+    private func circleRenderer(for circleOverlay: MKCircle) ->MKOverlayRenderer {
+        let circleRenderer = MKCircleRenderer(circle: circleOverlay)
+        circleRenderer.fillColor = UIColor.color(for: transportType)
+        return circleRenderer
+    }
 }
+

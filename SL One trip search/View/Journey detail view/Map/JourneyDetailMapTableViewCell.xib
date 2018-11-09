@@ -18,7 +18,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="307" height="144.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="eXG-KM-fvQ">
+                    <mapView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" ambiguous="YES" mapType="standard" zoomEnabled="NO" scrollEnabled="NO" rotateEnabled="NO" pitchEnabled="NO" showsCompass="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eXG-KM-fvQ">
                         <rect key="frame" x="10" y="13" width="287" height="119"/>
                         <color key="backgroundColor" red="1" green="0.0093617555430000002" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -30,13 +30,21 @@
                             </userDefinedRuntimeAttribute>
                         </userDefinedRuntimeAttributes>
                     </mapView>
+                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3kf-tY-oRT">
+                        <rect key="frame" x="0.0" y="8" width="307" height="128"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </view>
                 </subviews>
                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 <constraints>
+                    <constraint firstAttribute="trailing" secondItem="3kf-tY-oRT" secondAttribute="trailing" id="9S5-RL-x8n"/>
+                    <constraint firstItem="3kf-tY-oRT" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="Glm-r3-C7W"/>
                     <constraint firstItem="eXG-KM-fvQ" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="LJv-oh-CF4"/>
                     <constraint firstItem="eXG-KM-fvQ" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="P6L-V3-ygK"/>
                     <constraint firstAttribute="trailing" secondItem="eXG-KM-fvQ" secondAttribute="trailing" constant="10" id="Rbd-PJ-irt"/>
+                    <constraint firstItem="3kf-tY-oRT" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="gbO-eW-jmn"/>
                     <constraint firstAttribute="height" secondItem="eXG-KM-fvQ" secondAttribute="height" constant="20" id="rwR-H3-rQD"/>
+                    <constraint firstAttribute="bottom" secondItem="3kf-tY-oRT" secondAttribute="bottom" id="wGY-qt-RA6"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>

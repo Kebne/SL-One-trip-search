@@ -21,11 +21,12 @@ class JourneyDetailViewController: UIViewController, StoryboardInstantiable {
         tableView.delegate = self
         navigationItem.title = JourneyDetailViewModel.Strings.viewTitle
     }
-
 }
 
 extension JourneyDetailViewController : UITableViewDelegate {
-    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        viewModel.didSelectCell(at: indexPath)
+    }
 }
 
 extension JourneyDetailViewController : UITableViewDataSource {
@@ -54,34 +55,6 @@ extension JourneyDetailViewController : UITableViewDataSource {
     }
 }
 
-class JourneyDetailViewModel {
-    
-    enum Strings {
-        static let viewTitle = NSLocalizedString("journeyDetail.title", comment: "")
-    }
-    
-    var nrOfSections: Int = 2
-    
-    private let trip: Trip
-    
-    init(_ trip: Trip) {
-        self.trip = trip
-    }
-    
-    //MARK: table view
-    func nrOfRowsIn(section: Int) ->Int {
-        return trip.legList.filter({!$0.hidden}).count
-    }
-    
-    func journeyCellViewModel(at indexPath: IndexPath) ->JourneyDetailTableViewCell.ViewModel {
-        return JourneyDetailTableViewCell.ViewModel(leg: trip.legList.filter({!$0.hidden})[indexPath.row])
-    }
-    
-    func mapCellViewModel() ->JourneyDetailMapTableViewCell.ViewModel {
-        return JourneyDetailMapTableViewCell.ViewModel(trip: trip)
-    }
-    
- 
-}
+
 
 

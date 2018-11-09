@@ -87,8 +87,15 @@ class MainCoordinator {
     fileprivate func showJourneyDetailView(with trip: Trip) {
         let journeyDetailViewController: JourneyDetailViewController = viewControllerFactory.instantiateViewController()
         let viewModel = JourneyDetailViewModel(trip)
+        viewModel.delegate = self
         journeyDetailViewController.viewModel = viewModel
         rootNavigationController.pushViewController(journeyDetailViewController, animated: true)
+    }
+    
+    fileprivate func showMapView(with trip: Trip) {
+        let mapViewController: MapViewController = viewControllerFactory.instantiateViewController()
+        mapViewController.mapViewModel = MapViewModel(trip: trip)
+        rootNavigationController.pushViewController(mapViewController, animated: true)
     }
     
     //MARK: Handle URL
@@ -157,4 +164,12 @@ extension MainCoordinator : JourneyViewModelDelegate {
         }
         showSearchViewController(stationJourneyType: .start)
     }
+}
+
+extension MainCoordinator : JourneyDetailViewModelDelegate {
+    func showMapView(for trip: Trip) {
+        showMapView(with: trip)
+    }
+    
+    
 }

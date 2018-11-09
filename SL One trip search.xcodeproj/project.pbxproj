@@ -42,6 +42,22 @@
 		5143192B2194262500CBF55D /* Stop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51431928219424F400CBF55D /* Stop.swift */; };
 		5143192E219442EE00CBF55D /* JourneyDetailMapTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5143192C219442EE00CBF55D /* JourneyDetailMapTableViewCell.swift */; };
 		5143192F219442EE00CBF55D /* JourneyDetailMapTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5143192D219442EE00CBF55D /* JourneyDetailMapTableViewCell.xib */; };
+		5143193021958E5E00CBF55D /* JourneyDetailMapTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5143192C219442EE00CBF55D /* JourneyDetailMapTableViewCell.swift */; };
+		5143193121958E5E00CBF55D /* JourneyDetailMapTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5143192C219442EE00CBF55D /* JourneyDetailMapTableViewCell.swift */; };
+		514319332195918800CBF55D /* StartStopAnnotationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 514319322195918800CBF55D /* StartStopAnnotationView.xib */; };
+		51431935219591BD00CBF55D /* StartStopAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51431934219591BD00CBF55D /* StartStopAnnotationView.swift */; };
+		514319362195933400CBF55D /* StartStopAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51431934219591BD00CBF55D /* StartStopAnnotationView.swift */; };
+		514319372195933400CBF55D /* StartStopAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51431934219591BD00CBF55D /* StartStopAnnotationView.swift */; };
+		514319382195936400CBF55D /* StartStopAnnotationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 514319322195918800CBF55D /* StartStopAnnotationView.xib */; };
+		514319392195936400CBF55D /* StartStopAnnotationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 514319322195918800CBF55D /* StartStopAnnotationView.xib */; };
+		5143193B2195A82800CBF55D /* MapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5143193A2195A82800CBF55D /* MapViewModel.swift */; };
+		5143193D2195A88B00CBF55D /* JourneyDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5143193C2195A88B00CBF55D /* JourneyDetailViewModel.swift */; };
+		514319402195A96200CBF55D /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5143193F2195A96200CBF55D /* MapViewController.swift */; };
+		514319422195AA1800CBF55D /* MapDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 514319412195AA1800CBF55D /* MapDelegate.swift */; };
+		514319432195B11500CBF55D /* MapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5143193A2195A82800CBF55D /* MapViewModel.swift */; };
+		514319442195B11600CBF55D /* MapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5143193A2195A82800CBF55D /* MapViewModel.swift */; };
+		514319452195B12700CBF55D /* MapDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 514319412195AA1800CBF55D /* MapDelegate.swift */; };
+		514319462195B12700CBF55D /* MapDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 514319412195AA1800CBF55D /* MapDelegate.swift */; };
 		51583DC92187173A00AFDE38 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5135EF5321776AB50016AAD6 /* Assets.xcassets */; };
 		51583DD32187331400AFDE38 /* TableViewHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51583DD22187331400AFDE38 /* TableViewHeaderView.swift */; };
 		51583DD42187331400AFDE38 /* TableViewHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51583DD22187331400AFDE38 /* TableViewHeaderView.swift */; };
@@ -229,6 +245,12 @@
 		51431928219424F400CBF55D /* Stop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stop.swift; sourceTree = "<group>"; };
 		5143192C219442EE00CBF55D /* JourneyDetailMapTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JourneyDetailMapTableViewCell.swift; sourceTree = "<group>"; };
 		5143192D219442EE00CBF55D /* JourneyDetailMapTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = JourneyDetailMapTableViewCell.xib; sourceTree = "<group>"; };
+		514319322195918800CBF55D /* StartStopAnnotationView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StartStopAnnotationView.xib; sourceTree = "<group>"; };
+		51431934219591BD00CBF55D /* StartStopAnnotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartStopAnnotationView.swift; sourceTree = "<group>"; };
+		5143193A2195A82800CBF55D /* MapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewModel.swift; sourceTree = "<group>"; };
+		5143193C2195A88B00CBF55D /* JourneyDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JourneyDetailViewModel.swift; sourceTree = "<group>"; };
+		5143193F2195A96200CBF55D /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		514319412195AA1800CBF55D /* MapDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapDelegate.swift; sourceTree = "<group>"; };
 		51583DD22187331400AFDE38 /* TableViewHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewHeaderView.swift; sourceTree = "<group>"; };
 		51583DD52187332600AFDE38 /* TableViewHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TableViewHeaderView.xib; sourceTree = "<group>"; };
 		51761C192189AE00007ECC6E /* LocationServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationServiceTests.swift; sourceTree = "<group>"; };
@@ -461,6 +483,20 @@
 			path = Coordinator;
 			sourceTree = "<group>";
 		};
+		5143193E2195A90400CBF55D /* Map */ = {
+			isa = PBXGroup;
+			children = (
+				5143192C219442EE00CBF55D /* JourneyDetailMapTableViewCell.swift */,
+				5143192D219442EE00CBF55D /* JourneyDetailMapTableViewCell.xib */,
+				514319322195918800CBF55D /* StartStopAnnotationView.xib */,
+				51431934219591BD00CBF55D /* StartStopAnnotationView.swift */,
+				5143193A2195A82800CBF55D /* MapViewModel.swift */,
+				5143193F2195A96200CBF55D /* MapViewController.swift */,
+				514319412195AA1800CBF55D /* MapDelegate.swift */,
+			);
+			path = Map;
+			sourceTree = "<group>";
+		};
 		518D4660218898F400789960 /* Location */ = {
 			isa = PBXGroup;
 			children = (
@@ -516,8 +552,8 @@
 				51AF080F21907683004A942F /* JourneyDetailViewController.swift */,
 				51AF0811219093EE004A942F /* JourneyDetailCellView.xib */,
 				51AF0816219183ED004A942F /* JourneyDetailTableViewCell.swift */,
-				5143192C219442EE00CBF55D /* JourneyDetailMapTableViewCell.swift */,
-				5143192D219442EE00CBF55D /* JourneyDetailMapTableViewCell.xib */,
+				5143193C2195A88B00CBF55D /* JourneyDetailViewModel.swift */,
+				5143193E2195A90400CBF55D /* Map */,
 			);
 			path = "Journey detail view";
 			sourceTree = "<group>";
@@ -756,6 +792,7 @@
 			files = (
 				5135EF5721776AB50016AAD6 /* LaunchScreen.storyboard in Resources */,
 				51C86D542180B391000F5851 /* MainInterface.storyboard in Resources */,
+				514319332195918800CBF55D /* StartStopAnnotationView.xib in Resources */,
 				51583DD62187332600AFDE38 /* TableViewHeaderView.xib in Resources */,
 				51C86D1B21804CDB000F5851 /* Localizable.strings in Resources */,
 				51AF0812219093EE004A942F /* JourneyDetailCellView.xib in Resources */,
@@ -787,6 +824,7 @@
 			files = (
 				51AF07CF218C5A35004A942F /* MainInterface.storyboard in Resources */,
 				51AF07E4218C7BF0004A942F /* Localizable.strings in Resources */,
+				514319392195936400CBF55D /* StartStopAnnotationView.xib in Resources */,
 				51AF07E3218C7BC2004A942F /* JourneyTableViewCellView.xib in Resources */,
 				51AF07E5218C7D70004A942F /* TableViewHeaderView.xib in Resources */,
 			);
@@ -796,6 +834,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				514319382195936400CBF55D /* StartStopAnnotationView.xib in Resources */,
 				51C86D2E2180A128000F5851 /* MainInterface.storyboard in Resources */,
 				51104C5921833A6D0027C374 /* Localizable.strings in Resources */,
 				51583DC92187173A00AFDE38 /* Assets.xcassets in Resources */,
@@ -818,16 +857,20 @@
 				51C86D06217DD3C9000F5851 /* Destination.swift in Sources */,
 				5135EF8E217780050016AAD6 /* ViewControllerFactory.swift in Sources */,
 				51C86D04217DD3BF000F5851 /* Origin.swift in Sources */,
+				514319402195A96200CBF55D /* MapViewController.swift in Sources */,
 				51583DD32187331400AFDE38 /* TableViewHeaderView.swift in Sources */,
 				518D465B21875D1A00789960 /* SharedAppConstant.swift in Sources */,
 				5135EF4F21776AB30016AAD6 /* JourneyViewController.swift in Sources */,
 				5135EF982178CBBE0016AAD6 /* Environment.swift in Sources */,
+				514319422195AA1800CBF55D /* MapDelegate.swift in Sources */,
 				51C86D11217F1319000F5851 /* JourneyViewModel.swift in Sources */,
+				5143193D2195A88B00CBF55D /* JourneyDetailViewModel.swift in Sources */,
 				51C86CFE217DC62F000F5851 /* JourneyTableViewCell.swift in Sources */,
 				51C86D0A217DD543000F5851 /* SLJourneyPlanAPIResponse.swift in Sources */,
 				5135EF922178BD8F0016AAD6 /* StationTableViewCell.swift in Sources */,
 				5135EF962178C8840016AAD6 /* SearchRequest.swift in Sources */,
 				518D46622188C02F00789960 /* LocationService.swift in Sources */,
+				51431935219591BD00CBF55D /* StartStopAnnotationView.swift in Sources */,
 				5135EFA22179FC830016AAD6 /* PersistService.swift in Sources */,
 				5143192E219442EE00CBF55D /* JourneyDetailMapTableViewCell.swift in Sources */,
 				5135EF4D21776AB30016AAD6 /* AppDelegate.swift in Sources */,
@@ -845,6 +888,7 @@
 				5143191F2192D47800CBF55D /* TransportType.swift in Sources */,
 				51C86D08217DD3D9000F5851 /* Product.swift in Sources */,
 				51AF0817219183ED004A942F /* JourneyDetailTableViewCell.swift in Sources */,
+				5143193B2195A82800CBF55D /* MapViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -897,12 +941,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				51AF07D8218C6F9A004A942F /* Leg.swift in Sources */,
+				514319462195B12700CBF55D /* MapDelegate.swift in Sources */,
 				51AF07E7218C95EF004A942F /* JourneyViewModel.swift in Sources */,
 				51AF07EC218CA1CE004A942F /* SearchRequest.swift in Sources */,
 				514319212192D5EA00CBF55D /* TransportType.swift in Sources */,
 				51AF07DF218C6FB4004A942F /* UserJourney.swift in Sources */,
 				51AF07D7218C6F96004A942F /* PersistService.swift in Sources */,
 				51AF07E8218CA19D004A942F /* StateController.swift in Sources */,
+				5143193121958E5E00CBF55D /* JourneyDetailMapTableViewCell.swift in Sources */,
 				51AF07DC218C6FA9004A942F /* SLJourneyPlanAPIResponse.swift in Sources */,
 				51AF07E2218C7987004A942F /* JourneyTableViewCell.swift in Sources */,
 				51AF07E6218C7D79004A942F /* TableViewHeaderView.swift in Sources */,
@@ -913,6 +959,7 @@
 				51AF07EB218CA1CC004A942F /* SLSearch.swift in Sources */,
 				51AF07DD218C6FAD004A942F /* Trip.swift in Sources */,
 				51AF07ED218CA1D7004A942F /* UserJourneyController.swift in Sources */,
+				514319372195933400CBF55D /* StartStopAnnotationView.swift in Sources */,
 				51AF07CC218C5A35004A942F /* NotificationViewController.swift in Sources */,
 				51AF07E9218CA1C3004A942F /* NotificationService.swift in Sources */,
 				51AF07E0218C6FB8004A942F /* Station.swift in Sources */,
@@ -920,6 +967,7 @@
 				51AF07EF218CA1F4004A942F /* JourneyError.swift in Sources */,
 				51AF07EA218CA1C6004A942F /* LocationService.swift in Sources */,
 				51AF07DB218C6FA6004A942F /* Product.swift in Sources */,
+				514319442195B11600CBF55D /* MapViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -929,14 +977,17 @@
 			files = (
 				51C86D482180AEEC000F5851 /* Trip.swift in Sources */,
 				51C86D4D2180AF01000F5851 /* SLSearch.swift in Sources */,
+				514319452195B12700CBF55D /* MapDelegate.swift in Sources */,
 				51C86D402180AEC6000F5851 /* PersistService.swift in Sources */,
 				51C86D462180AEE2000F5851 /* Product.swift in Sources */,
+				5143193021958E5E00CBF55D /* JourneyDetailMapTableViewCell.swift in Sources */,
 				51C86D422180AECD000F5851 /* UserJourneyController.swift in Sources */,
 				51C86D442180AED9000F5851 /* Destination.swift in Sources */,
 				51AF078F2189E28F004A942F /* LocationService.swift in Sources */,
 				5143192A2194262500CBF55D /* Stop.swift in Sources */,
 				51C86D412180AECA000F5851 /* StateController.swift in Sources */,
 				51C86D4C2180AEFC000F5851 /* Station.swift in Sources */,
+				514319432195B11500CBF55D /* MapViewModel.swift in Sources */,
 				51C86D432180AED4000F5851 /* Leg.swift in Sources */,
 				51C86D4A2180AEF3000F5851 /* JourneyError.swift in Sources */,
 				51C86D2B2180A128000F5851 /* TodayViewController.swift in Sources */,
@@ -952,6 +1003,7 @@
 				514319202192D5E900CBF55D /* TransportType.swift in Sources */,
 				51C86D452180AEDF000F5851 /* Origin.swift in Sources */,
 				51C86D4B2180AEF8000F5851 /* UserJourney.swift in Sources */,
+				514319362195933400CBF55D /* StartStopAnnotationView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

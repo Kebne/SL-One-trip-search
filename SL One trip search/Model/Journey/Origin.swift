@@ -7,7 +7,7 @@
 //
 
 import Foundation
-
+import CoreLocation
 extension Date {
     static func dateFromSLJourneyPlan(timeString: String, dateString: String) ->Date {
         let dateFormatter = DateFormatter()
@@ -24,7 +24,17 @@ protocol LegPoint : Decodable {
     var time: Date {get}
     var longitude: Double {get}
     var latitude: Double {get}
+    var coordinate: CLLocationCoordinate2D {get}
 }
+
+extension LegPoint {
+    var coordinate: CLLocationCoordinate2D {
+        return CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
+    }
+}
+
+
+
 
 protocol LegStart : Decodable {
     var track: String {get}

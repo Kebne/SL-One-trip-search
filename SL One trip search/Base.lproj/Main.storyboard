@@ -170,7 +170,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="115" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="amY-FU-5gC">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="115" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="amY-FU-5gC">
                                 <rect key="frame" x="0.0" y="44" width="375" height="734"/>
                                 <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="separatorColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -374,6 +374,35 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0IQ-Rr-Ypa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2092" y="70.935960591133011"/>
+        </scene>
+        <!--Map View Controller-->
+        <scene sceneID="Tqz-cE-6Bf">
+            <objects>
+                <viewController storyboardIdentifier="MapViewController" id="fBA-Of-MOd" customClass="MapViewController" customModule="SL_One_trip_search" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="WL4-DH-21E">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="Gbg-iA-TFr">
+                                <rect key="frame" x="0.0" y="44" width="375" height="734"/>
+                            </mapView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Kav-yG-8wN" firstAttribute="bottom" secondItem="Gbg-iA-TFr" secondAttribute="bottom" id="GUl-RO-ejy"/>
+                            <constraint firstItem="Kav-yG-8wN" firstAttribute="trailing" secondItem="Gbg-iA-TFr" secondAttribute="trailing" id="ddi-LE-Egj"/>
+                            <constraint firstItem="Gbg-iA-TFr" firstAttribute="top" secondItem="Kav-yG-8wN" secondAttribute="top" id="fUr-Wv-mFx"/>
+                            <constraint firstItem="Gbg-iA-TFr" firstAttribute="leading" secondItem="Kav-yG-8wN" secondAttribute="leading" id="gfn-Xc-7ue"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Kav-yG-8wN"/>
+                    </view>
+                    <connections>
+                        <outlet property="map" destination="Gbg-iA-TFr" id="YIb-U6-iiN"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="y6O-Xn-Ckn" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1244" y="754"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="X9n-Ec-KvZ">
