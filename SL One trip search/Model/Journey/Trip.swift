@@ -7,7 +7,7 @@
 //
 
 import Foundation
-
+import MapKit
 
 struct Trip  {
     let legList : [Leg]
@@ -97,3 +97,45 @@ extension Trip {
 }
 
 
+extension Trip {
+    private struct Region {
+        let minLat: Double
+        let maxLat: Double
+        let minLong: Double
+        let maxLong: Double
+    }
+    var mkRegion: MKCoordinateRegion {
+            let sortedLegs = legList.sorted(by: {$0.id < $1.id})
+            guard let start = sortedLegs.first, let end = sortedLegs.last else {
+                return MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: 59.332790, longitude: 18.064490), latitudinalMeters: 10000.0, longitudinalMeters: 10000.0)
+        }
+        
+        
+        let region = sortedLegs.reduce(Region(minLat: start.origin.latitude, maxLat: end.destination.latitude, minLong: start.origin.longitude, maxLong: end.destination.longitude), {(result, nextLeg) in
+            return nextLeg.coordinates.reduce(result, {(innerResult, nextCoordinate) in
+                return updatedRegionFrom(coordinate: nextCoordinate, current: innerResult)
+            })
+        })
+        
+        let latitudeDelta = (region.maxLat - region.minLat)
+        let longitudeDelta = (region.maxLong - region.minLong)
+        let centerCoordinate = CLLocationCoordinate2D(latitude: region.minLat + (latitudeDelta / 2.0), longitude: region.minLong + (longitudeDelta / 2.0))
+        let span = MKCoordinateSpan(latitudeDelta: latitudeDelta * 1.3, longitudeDelta: longitudeDelta * 1.3)
+        
+        return MKCoordinateRegion(center: centerCoordinate, span: span)
+    }
+    
+    private func updatedRegionFrom(coordinate: CLLocationCoordinate2D, current: Region) ->Region {
+        
+        return Region(minLat: min(current.minLat, coordinate.latitude),
+                      maxLat: max(current.maxLat, coordinate.latitude),
+                      minLong: min(current.minLong, coordinate.longitude),
+                      maxLong: max(current.maxLong, coordinate.longitude))
+        
+        
+    }
+    
+
+    
+    
+}

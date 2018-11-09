@@ -16,6 +16,7 @@ class JourneyDetailViewController: UIViewController, StoryboardInstantiable {
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.register(UINib.init(nibName: "JourneyDetailCellView", bundle: nil), forCellReuseIdentifier: JourneyDetailTableViewCell.reuseId)
+        tableView.register(UINib.init(nibName: "JourneyDetailMapTableViewCell", bundle: nil), forCellReuseIdentifier: JourneyDetailMapTableViewCell.reuseId)
         tableView.dataSource = self
         tableView.delegate = self
         navigationItem.title = JourneyDetailViewModel.Strings.viewTitle
@@ -29,6 +30,9 @@ extension JourneyDetailViewController : UITableViewDelegate {
 
 extension JourneyDetailViewController : UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if section == 1 {
+            return 1
+        }
         return viewModel.nrOfRowsIn(section: section)
     }
     
@@ -37,9 +41,16 @@ extension JourneyDetailViewController : UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if indexPath.section == 1 {
+            let cell: JourneyDetailMapTableViewCell = tableView.dequeueReusableCellAt(indexPath: indexPath)
+            cell.viewModel = viewModel.mapCellViewModel()
+            return cell
+        }
+        
         let cell: JourneyDetailTableViewCell = tableView.dequeueReusableCellAt(indexPath: indexPath)
-        cell.viewModel = viewModel.viewModelForCell(at: indexPath)
+        cell.viewModel = viewModel.journeyCellViewModel(at: indexPath)
         return cell
+        
     }
 }
 
@@ -49,7 +60,7 @@ class JourneyDetailViewModel {
         static let viewTitle = NSLocalizedString("journeyDetail.title", comment: "")
     }
     
-    var nrOfSections: Int = 1
+    var nrOfSections: Int = 2
     
     private let trip: Trip
     
@@ -62,9 +73,15 @@ class JourneyDetailViewModel {
         return trip.legList.filter({!$0.hidden}).count
     }
     
-    func viewModelForCell(at indexPath: IndexPath) ->JourneyDetailTableViewCell.ViewModel {
+    func journeyCellViewModel(at indexPath: IndexPath) ->JourneyDetailTableViewCell.ViewModel {
         return JourneyDetailTableViewCell.ViewModel(leg: trip.legList.filter({!$0.hidden})[indexPath.row])
     }
+    
+    func mapCellViewModel() ->JourneyDetailMapTableViewCell.ViewModel {
+        return JourneyDetailMapTableViewCell.ViewModel(trip: trip)
+    }
+    
+ 
 }
 
 

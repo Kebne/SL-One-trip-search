@@ -40,6 +40,8 @@
 		51431929219424F400CBF55D /* Stop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51431928219424F400CBF55D /* Stop.swift */; };
 		5143192A2194262500CBF55D /* Stop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51431928219424F400CBF55D /* Stop.swift */; };
 		5143192B2194262500CBF55D /* Stop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51431928219424F400CBF55D /* Stop.swift */; };
+		5143192E219442EE00CBF55D /* JourneyDetailMapTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5143192C219442EE00CBF55D /* JourneyDetailMapTableViewCell.swift */; };
+		5143192F219442EE00CBF55D /* JourneyDetailMapTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5143192D219442EE00CBF55D /* JourneyDetailMapTableViewCell.xib */; };
 		51583DC92187173A00AFDE38 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5135EF5321776AB50016AAD6 /* Assets.xcassets */; };
 		51583DD32187331400AFDE38 /* TableViewHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51583DD22187331400AFDE38 /* TableViewHeaderView.swift */; };
 		51583DD42187331400AFDE38 /* TableViewHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51583DD22187331400AFDE38 /* TableViewHeaderView.swift */; };
@@ -225,6 +227,8 @@
 		5143191E2192D47800CBF55D /* TransportType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransportType.swift; sourceTree = "<group>"; };
 		514319222193282700CBF55D /* TripTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripTest.swift; sourceTree = "<group>"; };
 		51431928219424F400CBF55D /* Stop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stop.swift; sourceTree = "<group>"; };
+		5143192C219442EE00CBF55D /* JourneyDetailMapTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JourneyDetailMapTableViewCell.swift; sourceTree = "<group>"; };
+		5143192D219442EE00CBF55D /* JourneyDetailMapTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = JourneyDetailMapTableViewCell.xib; sourceTree = "<group>"; };
 		51583DD22187331400AFDE38 /* TableViewHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewHeaderView.swift; sourceTree = "<group>"; };
 		51583DD52187332600AFDE38 /* TableViewHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TableViewHeaderView.xib; sourceTree = "<group>"; };
 		51761C192189AE00007ECC6E /* LocationServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationServiceTests.swift; sourceTree = "<group>"; };
@@ -358,7 +362,6 @@
 		5135EF4B21776AB30016AAD6 /* SL One trip search */ = {
 			isa = PBXGroup;
 			children = (
-				51AF0792218B0A82004A942F /* Notification */,
 				518D4660218898F400789960 /* Location */,
 				51C86D522180B083000F5851 /* SL One trip search.entitlements */,
 				5135EF82217774610016AAD6 /* Coordinator */,
@@ -461,6 +464,7 @@
 		518D4660218898F400789960 /* Location */ = {
 			isa = PBXGroup;
 			children = (
+				51AF0792218B0A82004A942F /* Notification */,
 				518D46612188C02F00789960 /* LocationService.swift */,
 			);
 			path = Location;
@@ -512,6 +516,8 @@
 				51AF080F21907683004A942F /* JourneyDetailViewController.swift */,
 				51AF0811219093EE004A942F /* JourneyDetailCellView.xib */,
 				51AF0816219183ED004A942F /* JourneyDetailTableViewCell.swift */,
+				5143192C219442EE00CBF55D /* JourneyDetailMapTableViewCell.swift */,
+				5143192D219442EE00CBF55D /* JourneyDetailMapTableViewCell.xib */,
 			);
 			path = "Journey detail view";
 			sourceTree = "<group>";
@@ -754,6 +760,7 @@
 				51C86D1B21804CDB000F5851 /* Localizable.strings in Resources */,
 				51AF0812219093EE004A942F /* JourneyDetailCellView.xib in Resources */,
 				51C86D3E2180A884000F5851 /* JourneyTableViewCellView.xib in Resources */,
+				5143192F219442EE00CBF55D /* JourneyDetailMapTableViewCell.xib in Resources */,
 				5135EF5421776AB50016AAD6 /* Assets.xcassets in Resources */,
 				5135EF5221776AB30016AAD6 /* Main.storyboard in Resources */,
 			);
@@ -822,6 +829,7 @@
 				5135EF962178C8840016AAD6 /* SearchRequest.swift in Sources */,
 				518D46622188C02F00789960 /* LocationService.swift in Sources */,
 				5135EFA22179FC830016AAD6 /* PersistService.swift in Sources */,
+				5143192E219442EE00CBF55D /* JourneyDetailMapTableViewCell.swift in Sources */,
 				5135EF4D21776AB30016AAD6 /* AppDelegate.swift in Sources */,
 				5135EF8621777D420016AAD6 /* UserJourney.swift in Sources */,
 				5135EF7D217774200016AAD6 /* SearchViewController.swift in Sources */,
