@@ -47,6 +47,7 @@ struct MapViewModel {
         guard let point = annotation as? StopAnnotation else {
             return nil
         }
+    
         return StartStopAnnotationView(point)
     }
     

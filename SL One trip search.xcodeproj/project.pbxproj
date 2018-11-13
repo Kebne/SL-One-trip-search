@@ -160,6 +160,24 @@
 		51C86D502180AF64000F5851 /* JourneyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51C86D10217F1319000F5851 /* JourneyViewModel.swift */; };
 		51C86D512180B018000F5851 /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5135EF972178CBBE0016AAD6 /* Environment.swift */; };
 		51C86D542180B391000F5851 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 51C86D2C2180A128000F5851 /* MainInterface.storyboard */; };
+		51E76241219AC79700CBB1A7 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51E76240219AC79700CBB1A7 /* SettingsViewModel.swift */; };
+		51E76242219AC79700CBB1A7 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51E76240219AC79700CBB1A7 /* SettingsViewModel.swift */; };
+		51E76243219AC79700CBB1A7 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51E76240219AC79700CBB1A7 /* SettingsViewModel.swift */; };
+		51E76245219AF7FA00CBB1A7 /* StationSearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51E76244219AF7FA00CBB1A7 /* StationSearchViewModel.swift */; };
+		51E76246219AF7FA00CBB1A7 /* StationSearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51E76244219AF7FA00CBB1A7 /* StationSearchViewModel.swift */; };
+		51E76247219AF7FA00CBB1A7 /* StationSearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51E76244219AF7FA00CBB1A7 /* StationSearchViewModel.swift */; };
+		51E76248219B0F3500CBB1A7 /* StationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5135EF912178BD8F0016AAD6 /* StationTableViewCell.swift */; };
+		51E76249219B0F3500CBB1A7 /* StationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5135EF912178BD8F0016AAD6 /* StationTableViewCell.swift */; };
+		51E7624A219B0F3D00CBB1A7 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5135EF7C217774200016AAD6 /* SearchViewController.swift */; };
+		51E7624B219B0F3E00CBB1A7 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5135EF7C217774200016AAD6 /* SearchViewController.swift */; };
+		51E7624C219B0F5100CBB1A7 /* ViewControllerFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5135EF8D217780050016AAD6 /* ViewControllerFactory.swift */; };
+		51E7624D219B0F5100CBB1A7 /* ViewControllerFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5135EF8D217780050016AAD6 /* ViewControllerFactory.swift */; };
+		51E76252219B15E000CBB1A7 /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51E76251219B15E000CBB1A7 /* DateExtension.swift */; };
+		51E76253219B15E000CBB1A7 /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51E76251219B15E000CBB1A7 /* DateExtension.swift */; };
+		51E76254219B15E000CBB1A7 /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51E76251219B15E000CBB1A7 /* DateExtension.swift */; };
+		51E76256219B174F00CBB1A7 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51E76255219B174F00CBB1A7 /* String.swift */; };
+		51E76257219B174F00CBB1A7 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51E76255219B174F00CBB1A7 /* String.swift */; };
+		51E76258219B174F00CBB1A7 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51E76255219B174F00CBB1A7 /* String.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -310,6 +328,10 @@
 		51C86D3D2180A884000F5851 /* JourneyTableViewCellView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = JourneyTableViewCellView.xib; sourceTree = "<group>"; };
 		51C86D522180B083000F5851 /* SL One trip search.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "SL One trip search.entitlements"; sourceTree = "<group>"; };
 		51C86D532180B0CA000F5851 /* NextDeparture.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = NextDeparture.entitlements; sourceTree = "<group>"; };
+		51E76240219AC79700CBB1A7 /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
+		51E76244219AF7FA00CBB1A7 /* StationSearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationSearchViewModel.swift; sourceTree = "<group>"; };
+		51E76251219B15E000CBB1A7 /* DateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
+		51E76255219B174F00CBB1A7 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -384,10 +406,13 @@
 		5135EF4B21776AB30016AAD6 /* SL One trip search */ = {
 			isa = PBXGroup;
 			children = (
+				51E76259219B1F7300CBB1A7 /* Persist */,
+				51E76250219B15C600CBB1A7 /* Extensions */,
+				51AF0792218B0A82004A942F /* Notification */,
 				518D4660218898F400789960 /* Location */,
 				51C86D522180B083000F5851 /* SL One trip search.entitlements */,
 				5135EF82217774610016AAD6 /* Coordinator */,
-				5135EF81217774540016AAD6 /* Service */,
+				5135EF81217774540016AAD6 /* API client */,
 				5135EF802177744D0016AAD6 /* Controller */,
 				5135EF7F2177743B0016AAD6 /* Model */,
 				5135EF4C21776AB30016AAD6 /* AppDelegate.swift */,
@@ -464,14 +489,13 @@
 			path = Controller;
 			sourceTree = "<group>";
 		};
-		5135EF81217774540016AAD6 /* Service */ = {
+		5135EF81217774540016AAD6 /* API client */ = {
 			isa = PBXGroup;
 			children = (
 				5135EF932178C8440016AAD6 /* SLSearch.swift */,
 				5135EF952178C8830016AAD6 /* SearchRequest.swift */,
-				5135EFA12179FC830016AAD6 /* PersistService.swift */,
 			);
-			path = Service;
+			path = "API client";
 			sourceTree = "<group>";
 		};
 		5135EF82217774610016AAD6 /* Coordinator */ = {
@@ -500,7 +524,6 @@
 		518D4660218898F400789960 /* Location */ = {
 			isa = PBXGroup;
 			children = (
-				51AF0792218B0A82004A942F /* Notification */,
 				518D46612188C02F00789960 /* LocationService.swift */,
 			);
 			path = Location;
@@ -562,6 +585,7 @@
 			isa = PBXGroup;
 			children = (
 				5135EF7C217774200016AAD6 /* SearchViewController.swift */,
+				51E76244219AF7FA00CBB1A7 /* StationSearchViewModel.swift */,
 				5135EF912178BD8F0016AAD6 /* StationTableViewCell.swift */,
 			);
 			path = "Station search view";
@@ -571,6 +595,7 @@
 			isa = PBXGroup;
 			children = (
 				5135EF7A217774110016AAD6 /* SettingsViewController.swift */,
+				51E76240219AC79700CBB1A7 /* SettingsViewModel.swift */,
 			);
 			path = "Settings view";
 			sourceTree = "<group>";
@@ -624,6 +649,23 @@
 				51C86D2F2180A128000F5851 /* Info.plist */,
 			);
 			path = NextDeparture;
+			sourceTree = "<group>";
+		};
+		51E76250219B15C600CBB1A7 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				51E76251219B15E000CBB1A7 /* DateExtension.swift */,
+				51E76255219B174F00CBB1A7 /* String.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		51E76259219B1F7300CBB1A7 /* Persist */ = {
+			isa = PBXGroup;
+			children = (
+				5135EFA12179FC830016AAD6 /* PersistService.swift */,
+			);
+			path = Persist;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -850,6 +892,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				51E76245219AF7FA00CBB1A7 /* StationSearchViewModel.swift in Sources */,
+				51E76252219B15E000CBB1A7 /* DateExtension.swift in Sources */,
+				51E76256219B174F00CBB1A7 /* String.swift in Sources */,
 				51C86D02217DD3B3000F5851 /* Leg.swift in Sources */,
 				51431929219424F400CBF55D /* Stop.swift in Sources */,
 				5135EF8C21777E790016AAD6 /* UserJourneyController.swift in Sources */,
@@ -865,6 +910,7 @@
 				514319422195AA1800CBF55D /* MapDelegate.swift in Sources */,
 				51C86D11217F1319000F5851 /* JourneyViewModel.swift in Sources */,
 				5143193D2195A88B00CBF55D /* JourneyDetailViewModel.swift in Sources */,
+				51E76241219AC79700CBB1A7 /* SettingsViewModel.swift in Sources */,
 				51C86CFE217DC62F000F5851 /* JourneyTableViewCell.swift in Sources */,
 				51C86D0A217DD543000F5851 /* SLJourneyPlanAPIResponse.swift in Sources */,
 				5135EF922178BD8F0016AAD6 /* StationTableViewCell.swift in Sources */,
@@ -941,14 +987,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				51AF07D8218C6F9A004A942F /* Leg.swift in Sources */,
+				51E76254219B15E000CBB1A7 /* DateExtension.swift in Sources */,
 				514319462195B12700CBF55D /* MapDelegate.swift in Sources */,
 				51AF07E7218C95EF004A942F /* JourneyViewModel.swift in Sources */,
 				51AF07EC218CA1CE004A942F /* SearchRequest.swift in Sources */,
 				514319212192D5EA00CBF55D /* TransportType.swift in Sources */,
+				51E76247219AF7FA00CBB1A7 /* StationSearchViewModel.swift in Sources */,
 				51AF07DF218C6FB4004A942F /* UserJourney.swift in Sources */,
 				51AF07D7218C6F96004A942F /* PersistService.swift in Sources */,
 				51AF07E8218CA19D004A942F /* StateController.swift in Sources */,
 				5143193121958E5E00CBF55D /* JourneyDetailMapTableViewCell.swift in Sources */,
+				51E7624B219B0F3E00CBB1A7 /* SearchViewController.swift in Sources */,
 				51AF07DC218C6FA9004A942F /* SLJourneyPlanAPIResponse.swift in Sources */,
 				51AF07E2218C7987004A942F /* JourneyTableViewCell.swift in Sources */,
 				51AF07E6218C7D79004A942F /* TableViewHeaderView.swift in Sources */,
@@ -956,8 +1005,10 @@
 				5143192B2194262500CBF55D /* Stop.swift in Sources */,
 				51AF07EE218CA1E5004A942F /* Environment.swift in Sources */,
 				51AF07DE218C6FB0004A942F /* ProductCategory.swift in Sources */,
+				51E76243219AC79700CBB1A7 /* SettingsViewModel.swift in Sources */,
 				51AF07EB218CA1CC004A942F /* SLSearch.swift in Sources */,
 				51AF07DD218C6FAD004A942F /* Trip.swift in Sources */,
+				51E7624D219B0F5100CBB1A7 /* ViewControllerFactory.swift in Sources */,
 				51AF07ED218CA1D7004A942F /* UserJourneyController.swift in Sources */,
 				514319372195933400CBF55D /* StartStopAnnotationView.swift in Sources */,
 				51AF07CC218C5A35004A942F /* NotificationViewController.swift in Sources */,
@@ -967,7 +1018,9 @@
 				51AF07EF218CA1F4004A942F /* JourneyError.swift in Sources */,
 				51AF07EA218CA1C6004A942F /* LocationService.swift in Sources */,
 				51AF07DB218C6FA6004A942F /* Product.swift in Sources */,
+				51E76258219B174F00CBB1A7 /* String.swift in Sources */,
 				514319442195B11600CBF55D /* MapViewModel.swift in Sources */,
+				51E76248219B0F3500CBB1A7 /* StationTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -976,16 +1029,20 @@
 			buildActionMask = 2147483647;
 			files = (
 				51C86D482180AEEC000F5851 /* Trip.swift in Sources */,
+				51E76253219B15E000CBB1A7 /* DateExtension.swift in Sources */,
 				51C86D4D2180AF01000F5851 /* SLSearch.swift in Sources */,
 				514319452195B12700CBF55D /* MapDelegate.swift in Sources */,
 				51C86D402180AEC6000F5851 /* PersistService.swift in Sources */,
 				51C86D462180AEE2000F5851 /* Product.swift in Sources */,
+				51E76242219AC79700CBB1A7 /* SettingsViewModel.swift in Sources */,
 				5143193021958E5E00CBF55D /* JourneyDetailMapTableViewCell.swift in Sources */,
+				51E7624C219B0F5100CBB1A7 /* ViewControllerFactory.swift in Sources */,
 				51C86D422180AECD000F5851 /* UserJourneyController.swift in Sources */,
 				51C86D442180AED9000F5851 /* Destination.swift in Sources */,
 				51AF078F2189E28F004A942F /* LocationService.swift in Sources */,
 				5143192A2194262500CBF55D /* Stop.swift in Sources */,
 				51C86D412180AECA000F5851 /* StateController.swift in Sources */,
+				51E7624A219B0F3D00CBB1A7 /* SearchViewController.swift in Sources */,
 				51C86D4C2180AEFC000F5851 /* Station.swift in Sources */,
 				514319432195B11500CBF55D /* MapViewModel.swift in Sources */,
 				51C86D432180AED4000F5851 /* Leg.swift in Sources */,
@@ -1000,7 +1057,10 @@
 				51C86D4E2180AF05000F5851 /* SearchRequest.swift in Sources */,
 				51AF0795218B0AA3004A942F /* NotificationService.swift in Sources */,
 				518D465C21875D1A00789960 /* SharedAppConstant.swift in Sources */,
+				51E76249219B0F3500CBB1A7 /* StationTableViewCell.swift in Sources */,
+				51E76257219B174F00CBB1A7 /* String.swift in Sources */,
 				514319202192D5E900CBF55D /* TransportType.swift in Sources */,
+				51E76246219AF7FA00CBB1A7 /* StationSearchViewModel.swift in Sources */,
 				51C86D452180AEDF000F5851 /* Origin.swift in Sources */,
 				51C86D4B2180AEF8000F5851 /* UserJourney.swift in Sources */,
 				514319362195933400CBF55D /* StartStopAnnotationView.swift in Sources */,

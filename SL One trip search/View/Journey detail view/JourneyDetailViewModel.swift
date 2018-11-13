@@ -22,6 +22,7 @@ class JourneyDetailViewModel {
     weak var delegate: JourneyDetailViewModelDelegate?
     
     private let trip: Trip
+  
     
     init(_ trip: Trip) {
         self.trip = trip
@@ -31,6 +32,8 @@ class JourneyDetailViewModel {
     func nrOfRowsIn(section: Int) ->Int {
         return trip.legList.filter({!$0.hidden}).count
     }
+    
+
     
     func journeyCellViewModel(at indexPath: IndexPath) ->JourneyDetailTableViewCell.ViewModel {
         return JourneyDetailTableViewCell.ViewModel(leg: trip.legList.filter({!$0.hidden})[indexPath.row])

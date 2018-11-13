@@ -94,13 +94,11 @@ class MainCoordinatorTests: XCTestCase {
         
         let handleResponse = sut.handle(url: fromURL)
         
-        guard let lastVC = mockNavController.viewControllers.last as? SearchViewController else {
-            XCTFail("Test fail since no view controller was pushed")
-            return
-        }
+        let lastVC = mockNavController.viewControllers.last as? SearchViewController
         
+        XCTAssertNotNil(lastVC)
         XCTAssertTrue(handleResponse)
-        XCTAssertTrue(lastVC.stationJourneyType! == .start)
+      
     }
     
     func test_receivesFromURL_pushesSettingsVCOnce_fromStation_NOuserJourneyExists() {
@@ -127,13 +125,11 @@ class MainCoordinatorTests: XCTestCase {
         
         let handleResponse = sut.handle(url: fromURL)
         
-        guard let lastVC = mockNavController.viewControllers.last as? SearchViewController else {
-            XCTFail("Test fail since no view controller was pushed")
-            return
-        }
+        let lastVC = mockNavController.viewControllers.last as? SearchViewController
         
+        XCTAssertNotNil(lastVC)
         XCTAssertTrue(handleResponse)
-        XCTAssertTrue(lastVC.stationJourneyType! == .destination)
+        
     }
     
     func test_receivesFromURL_pushesSettingsVCOnce_destStation_NOuserJourneyExists() {

@@ -51,6 +51,9 @@
 
 "now" = "nu";
 "minutes" = "min";
+"from" = "Från";
+"to" = "Till";
+
 
 "journeyDetail.title" = "Resebeskrivning";
 

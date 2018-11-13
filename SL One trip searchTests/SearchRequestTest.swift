@@ -31,7 +31,7 @@ class SearchRequestTest: XCTestCase {
         let expectedDate = Date().dateByAdding(minutesFromNow)
         let expectedDateString = expectedDate.slRequestDateString
         let expectedTimeString = expectedDate.slRequestTimeString
-        let expectedResultURLString = "http://api.sl.se/api2/TravelplannerV3/trip.json?key=" + Environment.journeyPlanAPIKey + "&originId=" + originId + "&destId=" + destinationId + "&date=" + expectedDateString + "&time=" + expectedTimeString
+        let expectedResultURLString = "http://api.sl.se/api2/TravelplannerV3/trip.json?key=" + Environment.journeyPlanAPIKey + "&originId=" + originId + "&destId=" + destinationId + "&date=" + expectedDateString + "&time=" + expectedTimeString + "&passlist=1&poly=1"
         
         guard let request = JourneySearchRequest(originId: originId, destinationId: destinationId, minutesFromNow: minutesFromNow) else {
             XCTFail("Unable to construct journey search request")

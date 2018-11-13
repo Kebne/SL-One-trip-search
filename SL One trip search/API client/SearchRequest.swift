@@ -12,23 +12,7 @@ protocol SearchRequest {
     var url: URL {get}
 }
 
-extension Date {
-    func dateByAdding(_ minutes: Int) ->Date {
-        return self.addingTimeInterval(Double(minutes * 60))
-    }
-    
-    var slRequestTimeString: String {
-        let timeFormatter = DateFormatter()
-        timeFormatter.dateFormat = "HH:mm"
-        return timeFormatter.string(from: self)
-    }
-    
-    var slRequestDateString: String {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd"
-        return dateFormatter.string(from: self)
-    }
-}
+
 
 enum SLAPIURLComponentKeys {
     static let httpScheme  = "http"

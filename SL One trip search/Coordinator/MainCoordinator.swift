@@ -28,8 +28,6 @@ extension UIWindow : OneTripWindow {
             self.rootViewController = newValue as? UIViewController
         }
     }
-    
-    
 }
 
 extension UINavigationController : OneTripNavigationController {}
@@ -68,9 +66,10 @@ class MainCoordinator {
     fileprivate func showSearchViewController(stationJourneyType: StationJourneyType) {
         
         let stationSearchVC: SearchViewController = viewControllerFactory.instantiateViewController()
-        stationSearchVC.stationJourneyType = stationJourneyType
-        stationSearchVC.stateController = stateController
-        stationSearchVC.delegate = self
+        let stationSearchViewModel = StationSearchViewModel(stateController: stateController,
+                                                            searchService: SearchService<StationSearchResult>(), stationJourneyType: stationJourneyType)
+        stationSearchViewModel.delegate = self
+        stationSearchVC.viewModel = stationSearchViewModel
         rootNavigationController.pushViewController(stationSearchVC, animated: true)
     }
     
@@ -79,8 +78,9 @@ class MainCoordinator {
             return
         }
         let settingsViewController: SettingsViewController = viewControllerFactory.instantiateViewController()
-        settingsViewController.viewModel = SettingsViewController.ViewModel(stateController: stateController)
-        settingsViewController.delegate = self
+        let viewModel = SettingsViewModel(stateController: stateController)
+        viewModel.delegate = self
+        settingsViewController.viewModel = viewModel
         rootNavigationController.pushViewController(settingsViewController, animated: animated)
     }
     
@@ -123,7 +123,7 @@ class MainCoordinator {
 
 }
 
-extension MainCoordinator : SettingsViewControllerDelegate {
+extension MainCoordinator : SettingsViewModelDelegate {
     func didTapStartTextField() {
         showSearchViewController(stationJourneyType: .start)
     }
@@ -133,7 +133,7 @@ extension MainCoordinator : SettingsViewControllerDelegate {
     }
 }
 
-extension MainCoordinator : SearchViewControllerDelegate {
+extension MainCoordinator : SearchViewModelDelegate {
     func didSelectStation() {
         _ = rootNavigationController.popViewController(animated: true)
     }

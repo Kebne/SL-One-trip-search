@@ -50,7 +50,6 @@ class SearchService<T: Decodable> : SLSearch {
     }
     
     func searchWith(request: SearchRequest, callback: @escaping (Result<T>) -> Void, persistDataWithKey persistKey: String? = nil) {
-        print("URL: \(request.url.absoluteString)")
         var urlrequest = URLRequest(url: request.url)
         urlrequest.httpMethod = "GET"
         
@@ -72,9 +71,6 @@ class SearchService<T: Decodable> : SLSearch {
             }
             
             do {
-                if let string = String(data: data, encoding: .utf8) {
-                    print(string)
-                }
                 let result = try JSONDecoder().decode(T.self, from: data)
                 if let persistKey = persistKey {
                     self.userDefaults.set(data, forKey: persistKey)

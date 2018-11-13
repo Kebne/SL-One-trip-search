@@ -131,8 +131,6 @@ extension Trip {
                       maxLat: max(current.maxLat, coordinate.latitude),
                       minLong: min(current.minLong, coordinate.longitude),
                       maxLong: max(current.maxLong, coordinate.longitude))
-        
-        
     }
     
 

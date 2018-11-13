@@ -25,6 +25,14 @@ struct Stop {
     let longitude: Double
     let latitude: Double
     
+    var timeString: String {
+        switch type {
+        case .stop(_, let departureTime):
+            return departureTime.hourMinuteTimeString
+        case .start(let departureTime): return departureTime.hourMinuteTimeString
+        case .end(let arrivalTime): return arrivalTime.hourMinuteTimeString
+        }
+    }
 }
 
 extension Stop : Decodable {
@@ -52,6 +60,7 @@ extension Stop : Decodable {
         if arrivalTimeString == nil {
             guard let depTime = departureTimeString, let depDate = departureDateString else {throw EndpointError.corruptData}
             stopType = StopType.end(Date.dateFromSLJourneyPlan(timeString: depTime, dateString: depDate))
+           
             
         } else if departureTimeString == nil {
             guard let arrTime = arrivalTimeString, let arrDate = arrivalDateString else {throw EndpointError.corruptData}
@@ -64,8 +73,7 @@ extension Stop : Decodable {
         
         guard let sType = stopType else {throw EndpointError.corruptData}
         type = sType
-        
-        
+
         name = try container.decode(String.self, forKey: .name)
         longitude = try container.decode(Double.self, forKey: .lon)
         latitude = try container.decode(Double.self, forKey: .lat)

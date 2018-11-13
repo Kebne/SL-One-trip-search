@@ -8,16 +8,7 @@
 
 import Foundation
 import CoreLocation
-extension Date {
-    static func dateFromSLJourneyPlan(timeString: String, dateString: String) ->Date {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
-        if let date = dateFormatter.date(from: dateString + " " + timeString) {
-            return date
-        }
-        return Date()
-    }
-}
+
 
 protocol LegPoint : Decodable {
     var name: String {get}
@@ -33,9 +24,6 @@ extension LegPoint {
     }
 }
 
-
-
-
 protocol LegStart : Decodable {
     var track: String {get}
 }
@@ -46,13 +34,9 @@ enum LegPointCodingKey : String, CodingKey {
 
 struct Origin: LegPoint, LegStart{
     var longitude: Double
-    
     var latitude: Double
-    
     let name: String
-    
     let time: Date
-    
     let track: String
     
     static func create(from decoder: Decoder) throws ->(name: String, date: Date, lon: Double, lat: Double) {
@@ -96,10 +80,6 @@ extension Origin {
         } else {
             track = ""
         }
-        
-        
     }
-    
-    
 }
 

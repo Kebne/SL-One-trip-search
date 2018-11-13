@@ -40,8 +40,10 @@ protocol Reusable : AnyObject {
     static var reuseId: String {get}
 }
 
-protocol ReusableTableViewCell : Reusable {    
+protocol ReusableTableViewCell : Reusable {
+    associatedtype ViewModel
     var selectionStyle: UITableViewCell.SelectionStyle {get set}
+    var viewModel: ViewModel {get set}
 }
 
 extension Reusable {

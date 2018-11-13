@@ -128,10 +128,7 @@ class UserJourneyController: UserJourneyControllerProtocol {
             stationMonitoringFinishedEnabling(with: false, completion: completion)
         }
     }
-    
-    
-    
-    
+
     func swapStations() {
         if let current = userJourney {
             createUserJourney(start: current.destination, destination: current.start, timeUntilSearch: current.minutesUntilSearch, monitorStationProximity: current.monitorStationProximity)

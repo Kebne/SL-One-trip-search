@@ -8,12 +8,12 @@
 
 import UIKit
 
-class StationTableViewCell: UITableViewCell {
+class StationTableViewCell: UITableViewCell, ReusableTableViewCell {
     
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var additionalNameLabel: UILabel!
     static let height = 65
-    static let reuseIdentifier = "StationTableViewCell"
+
     
     var viewModel: ViewModel = ViewModel() {
         didSet {

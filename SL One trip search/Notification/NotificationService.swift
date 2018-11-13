@@ -35,14 +35,7 @@ extension UNUserNotificationCenter : UserNotificationCenter {
 }
 
 class NotificationService : NSObject{
-    enum Strings {
-        static let defaultBody = NSLocalizedString("notification.body.showInstructions", comment: "")
-        static let titleTripsNow = NSLocalizedString("notification.title.tripsNow", comment: "")
-        static let titleTripsInMinutes = NSLocalizedString("notification.title.tripsInMinutes", comment: "")
-        static let title = NSLocalizedString("notification.title", comment: "")
-    }
-    static let notificationCategoryIdentifier = "journeyNotification"
-    typealias AuthorizationCallback = (Bool)->Void
+    
     private var authCallback: AuthorizationCallback?
     private let notificationCenter: UserNotificationCenter
     
@@ -57,7 +50,7 @@ class NotificationService : NSObject{
         notificationCenter.setNotificationCategories([category])
     }
     
-    //MARK: Authorization
+    // MARK: Authorization
     func requestAuthForNotifications(completion: @escaping AuthorizationCallback) {
         getNotificationSettings(with: {[weak self](settings) in
             if settings.authorizationStatus == .notDetermined {
@@ -82,7 +75,7 @@ class NotificationService : NSObject{
         })
     }
     
-    //    MARK: Send notification
+    // MARK: Send notification
     
     func notify(trips: [Trip], userJourney: UserJourney) {
 
@@ -139,3 +132,13 @@ class NotificationService : NSObject{
     }
 }
 
+extension NotificationService {
+    enum Strings {
+        static let defaultBody = NSLocalizedString("notification.body.showInstructions", comment: "")
+        static let titleTripsNow = NSLocalizedString("notification.title.tripsNow", comment: "")
+        static let titleTripsInMinutes = NSLocalizedString("notification.title.tripsInMinutes", comment: "")
+        static let title = NSLocalizedString("notification.title", comment: "")
+    }
+    static let notificationCategoryIdentifier = "journeyNotification"
+    typealias AuthorizationCallback = (Bool)->Void
+}

@@ -23,6 +23,7 @@ class StartStopAnnotationView : MKAnnotationView {
         Bundle.main.loadNibNamed("StartStopAnnotationView", owner: self, options: nil)
         contentView.frame = self.bounds
         addSubview(contentView)
+        canShowCallout = true
         draw(bgColor: annotation.color, letter: annotation.letter)
     }
     
@@ -49,9 +50,14 @@ class StopAnnotation: NSObject, MKAnnotation {
     
     var color: UIColor
     var letter: String
-    init(_ color: UIColor, letter: String, coordinate: CLLocationCoordinate2D) {
+    var title: String?
+    var subtitle: String?
+    
+    init(_ color: UIColor, letter: String, coordinate: CLLocationCoordinate2D, title: String, subtitle: String) {
         self.coordinate = coordinate
         self.color = color
         self.letter = letter
+        self.title = title
+        self.subtitle = subtitle
     }
 }

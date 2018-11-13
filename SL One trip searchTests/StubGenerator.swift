@@ -6,7 +6,7 @@
 //  Copyright © 2018 Kebne. All rights reserved.
 //
 
-import Foundation
+import CoreLocation
 @testable import SL_One_trip_search
 
 class StubGenerator {
@@ -35,7 +35,7 @@ class StubGenerator {
     }
     
     static func legWith(originTime: Date, arrivalTime: Date , transportType: TransportType, hidden: Bool, id: Int) ->Leg {
-        return Leg(origin: Origin(name: "Start", time: originTime, track: "A"), destination: Destination(name: "End", time: arrivalTime), id: id, transportType: transportType,hidden: hidden, direction: "Direction")
+        return Leg(origin: Origin(longitude: 0.0, latitude: 0.0, name: "Start", time: originTime, track: "A"), destination: Destination(longitude: 1.0, latitude: 1.0, name: "End", time: arrivalTime), id: id, transportType: transportType,hidden: hidden, direction: "Direction", stops: [Stop](), coordinates: [CLLocationCoordinate2D]())
     }
     
     static var trip: Trip {

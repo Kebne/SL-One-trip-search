@@ -8,7 +8,7 @@
 
 import Foundation
 import CoreLocation
-protocol LocationManager : class {
+protocol LocationManager : AnyObject {
     static func authorizationStatus() -> CLAuthorizationStatus
     static func isMonitoringAvailable(for regionClass: AnyClass) -> Bool
     func startMonitoring(for region: CLRegion)
@@ -33,6 +33,7 @@ extension CLLocationManager : LocationManager {}
 class LocationService: NSObject {
     typealias StartRegionMonitorCallback = (Bool)->()
     typealias LocateUserCallback = (Result<CLLocationCoordinate2D>)->()
+    
     private var locationManager: LocationManager
     fileprivate var startMonitoringCallback: StartRegionMonitorCallback?
     fileprivate var locateUserCallback: LocateUserCallback?
@@ -43,8 +44,8 @@ class LocationService: NSObject {
         super.init()
         self.locationManager.delegate = self
     }
-
     
+    //MARK: Observer
     func registerRegion(observer: RegionObserver) {
         regionObserver = observer
     }
@@ -53,6 +54,7 @@ class LocationService: NSObject {
         regionObserver = nil
     }
     
+    //MARK: Auth
     func requestAuthForLocationServices(callback: @escaping (Bool) -> (), alocationManager: LocationManager.Type = CLLocationManager.self) {
         switch alocationManager.authorizationStatus() {
         case .authorizedAlways:
@@ -69,13 +71,10 @@ class LocationService: NSObject {
         }
     }
     
+    //MARK: Monitor
     func monitor(regions: [CLCircularRegion]) {
         guard monitoringIsAvailable() else {return}
         regions.forEach({locationManager.startMonitoring(for: $0)})
-    }
-    
-    func distanceBetween(firstLocation: CLLocationCoordinate2D, secondLocation: CLLocationCoordinate2D) ->Double {
-        return CLLocation(latitude: firstLocation.latitude, longitude: firstLocation.longitude).distance(from: CLLocation(latitude: secondLocation.latitude, longitude: secondLocation.longitude))
     }
     
     func stopMonitoring(regions: [CLCircularRegion]) {
@@ -94,9 +93,8 @@ class LocationService: NSObject {
         return locationManager.monitoredRegions.contains(region)
     }
     
-    func createRegionWith(centerLat: Double, centerLong: Double, radius: Double, identifier: String) ->CLCircularRegion {
-        return CLCircularRegion(center: CLLocationCoordinate2D(latitude: centerLat, longitude: centerLong), radius: radius, identifier: identifier)
-    }
+    
+    //MARK: User position
     
     func locateUserPosition(callback:@escaping LocateUserCallback) {
         guard monitoringIsAvailable() else {
@@ -106,6 +104,18 @@ class LocationService: NSObject {
         locateUserCallback = callback
         locationManager.requestLocation()
     }
+    
+    //MARK: Utility
+    
+    func distanceBetween(firstLocation: CLLocationCoordinate2D, secondLocation: CLLocationCoordinate2D) ->Double {
+        return CLLocation(latitude: firstLocation.latitude, longitude: firstLocation.longitude).distance(from: CLLocation(latitude: secondLocation.latitude, longitude: secondLocation.longitude))
+    }
+    
+    func createRegionWith(centerLat: Double, centerLong: Double, radius: Double, identifier: String) ->CLCircularRegion {
+        return CLCircularRegion(center: CLLocationCoordinate2D(latitude: centerLat, longitude: centerLong), radius: radius, identifier: identifier)
+    }
+    
+    
 }
 
 extension LocationService : CLLocationManagerDelegate {

@@ -60,6 +60,7 @@ extension Leg : Decodable {
         } else {
             transportType = TransportType.product(Product(category: .unknown, name: "", line: ""))
         }
+        
         if let direction = try? root.decode(String.self, forKey: .direction) {
             self.direction = direction
         } else {
@@ -127,22 +128,19 @@ extension Leg {
     }
     
     var startStopAnnotations: [StopAnnotation] {
-        let start = StopAnnotation(UIColor.color(for: transportType), letter: transportType.singleLetterDescription, coordinate: origin.coordinate)
-        let end = StopAnnotation(UIColor.color(for: transportType), letter: transportType.singleLetterDescription, coordinate: destination.coordinate)
+        let start = StopAnnotation(UIColor.color(for: transportType), letter: transportType.singleLetterDescription, coordinate: origin.coordinate, title: origin.name, subtitle: origin.time.hourMinuteTimeString)
+        let end = StopAnnotation(UIColor.color(for: transportType), letter: transportType.singleLetterDescription, coordinate: destination.coordinate, title: destination.name, subtitle: destination.time.hourMinuteTimeString)
         return [start,end]
     }
     
     var stopAnnotations: [StopAnnotation] {
-        return stops.filter({$0.latitude != origin.latitude && $0.longitude != origin.longitude}).filter(({$0.latitude != destination.latitude && $0.longitude != destination.longitude})).map({StopAnnotation(UIColor.color(for: transportType), letter: "", coordinate: $0.coordinate)})
+        return stops.filter({$0.latitude != origin.latitude && $0.longitude != origin.longitude}).filter(({$0.latitude != destination.latitude && $0.longitude != destination.longitude})).map({StopAnnotation(UIColor.color(for: transportType), letter: "", coordinate: $0.coordinate, title: $0.name, subtitle: $0.timeString)})
     }
-    
-    
     
     var stopCircles: [MKCircle] {
         return stops.map({MKCircle(center:$0.coordinate, radius: 50.0)})
     }
-    
-    
+
     func renderer(for overlay: MKOverlay) ->MKOverlayRenderer {
         if overlay is MKPolyline { return lineRenderer(for:overlay)}
         else if let circle = overlay as? MKCircle {return circleRenderer(for: circle)}
