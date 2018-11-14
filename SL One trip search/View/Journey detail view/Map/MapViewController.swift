@@ -11,7 +11,7 @@ import MapKit
 class MapViewController: UIViewController, StoryboardInstantiable {
     
     @IBOutlet weak var map: MKMapView!
-    var mapViewModel: MapViewModel!
+    var mapViewModel: MapViewModelType!
     private var mapViewDelegate: MapDelegate!
 
     override func viewDidLoad() {

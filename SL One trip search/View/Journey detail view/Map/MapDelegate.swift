@@ -10,9 +10,9 @@ import MapKit
 
 class MapDelegate: NSObject {
     
-    private let viewModel: MapViewModel
+    private let viewModel: MapViewModelType
     
-    init(_ viewModel: MapViewModel) {
+    init(_ viewModel: MapViewModelType) {
         self.viewModel = viewModel
         super.init()
     }

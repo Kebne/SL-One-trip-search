@@ -406,11 +406,11 @@
 		5135EF4B21776AB30016AAD6 /* SL One trip search */ = {
 			isa = PBXGroup;
 			children = (
-				51E76259219B1F7300CBB1A7 /* Persist */,
+				51C86D522180B083000F5851 /* SL One trip search.entitlements */,
 				51E76250219B15C600CBB1A7 /* Extensions */,
+				51E76259219B1F7300CBB1A7 /* Persist */,
 				51AF0792218B0A82004A942F /* Notification */,
 				518D4660218898F400789960 /* Location */,
-				51C86D522180B083000F5851 /* SL One trip search.entitlements */,
 				5135EF82217774610016AAD6 /* Coordinator */,
 				5135EF81217774540016AAD6 /* API client */,
 				5135EF802177744D0016AAD6 /* Controller */,
@@ -429,23 +429,13 @@
 		5135EF6021776AB50016AAD6 /* SL One trip searchTests */ = {
 			isa = PBXGroup;
 			children = (
-				51AF07F221905EE6004A942F /* Mocks */,
+				51E7625E219B289800CBB1A7 /* Coordinator */,
+				51E7625D219B286700CBB1A7 /* Model */,
+				51E7625C219B284600CBB1A7 /* Controller */,
+				51E7625B219B283E00CBB1A7 /* View */,
+				51E7625A219B283500CBB1A7 /* Service */,
+				51AF07F221905EE6004A942F /* Mocks and stub */,
 				5135EF6321776AB50016AAD6 /* Info.plist */,
-				5135EF8F217887510016AAD6 /* UserJourneyControllerTests.swift */,
-				5135EF9B2178D5D20016AAD6 /* SettingsViewModelTests.swift */,
-				5135EF9D2178D9560016AAD6 /* SearchRequestTest.swift */,
-				5135EF9F2178E04F0016AAD6 /* SLSearchTests.swift */,
-				5135EFA3217A166B0016AAD6 /* StationTests.swift */,
-				5135EFA5217A19250016AAD6 /* PersistServiceTests.swift */,
-				51C86D13217F52A0000F5851 /* JourneySearchTests.swift */,
-				51C86D15217F6B9B000F5851 /* JourneyViewModelTests.swift */,
-				51C86D1F2180980E000F5851 /* JourneyViewControllerTests.swift */,
-				518D465D2187680F00789960 /* MainCoordinatorTests.swift */,
-				51761C192189AE00007ECC6E /* LocationServiceTests.swift */,
-				51AF0790218A0797004A942F /* StateControllerTests.swift */,
-				51AF0796218B0EAF004A942F /* NotificationServiceTests.swift */,
-				51AF07F021904CD4004A942F /* StubGenerator.swift */,
-				514319222193282700CBF55D /* TripTest.swift */,
 			);
 			path = "SL One trip searchTests";
 			sourceTree = "<group>";
@@ -548,9 +538,10 @@
 			path = onetripnotification;
 			sourceTree = "<group>";
 		};
-		51AF07F221905EE6004A942F /* Mocks */ = {
+		51AF07F221905EE6004A942F /* Mocks and stub */ = {
 			isa = PBXGroup;
 			children = (
+				51AF07F021904CD4004A942F /* StubGenerator.swift */,
 				51AF07F321905EFD004A942F /* MockUserNotificationCenter.swift */,
 				51AF07F521905F29004A942F /* MockJourneyPlanSearchService.swift */,
 				51AF07F721905F48004A942F /* MockNotificationService.swift */,
@@ -566,7 +557,7 @@
 				51AF080B21906CE3004A942F /* MockPersistService.swift */,
 				51AF080D21906D2B004A942F /* MockLocationService.swift */,
 			);
-			path = Mocks;
+			path = "Mocks and stub";
 			sourceTree = "<group>";
 		};
 		51AF0813219182EB004A942F /* Journey detail view */ = {
@@ -666,6 +657,55 @@
 				5135EFA12179FC830016AAD6 /* PersistService.swift */,
 			);
 			path = Persist;
+			sourceTree = "<group>";
+		};
+		51E7625A219B283500CBB1A7 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				51AF0796218B0EAF004A942F /* NotificationServiceTests.swift */,
+				51761C192189AE00007ECC6E /* LocationServiceTests.swift */,
+				5135EFA5217A19250016AAD6 /* PersistServiceTests.swift */,
+				5135EF9F2178E04F0016AAD6 /* SLSearchTests.swift */,
+				5135EF9D2178D9560016AAD6 /* SearchRequestTest.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		51E7625B219B283E00CBB1A7 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				51C86D1F2180980E000F5851 /* JourneyViewControllerTests.swift */,
+				51C86D15217F6B9B000F5851 /* JourneyViewModelTests.swift */,
+				5135EF9B2178D5D20016AAD6 /* SettingsViewModelTests.swift */,
+				51C86D13217F52A0000F5851 /* JourneySearchTests.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		51E7625C219B284600CBB1A7 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				51AF0790218A0797004A942F /* StateControllerTests.swift */,
+				5135EF8F217887510016AAD6 /* UserJourneyControllerTests.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		51E7625D219B286700CBB1A7 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				514319222193282700CBF55D /* TripTest.swift */,
+				5135EFA3217A166B0016AAD6 /* StationTests.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		51E7625E219B289800CBB1A7 /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				518D465D2187680F00789960 /* MainCoordinatorTests.swift */,
+			);
+			path = Coordinator;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

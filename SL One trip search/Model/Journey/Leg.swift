@@ -7,8 +7,7 @@
 //
 
 import Foundation
-import MapKit
-
+import CoreLocation
 
 struct Leg  {
     let origin: Origin
@@ -122,42 +121,21 @@ extension Leg: CustomStringConvertible {
 }
 
 extension Leg {
-    
-    var polyline: MKPolyline {
-        return MKPolyline(coordinates: coordinates, count: coordinates.count)
+    var minLatitude: Double {
+        return coordinates.sorted(by: {$0.latitude < $1.latitude}).first?.latitude ?? 0.0
     }
     
-    var startStopAnnotations: [StopAnnotation] {
-        let start = StopAnnotation(UIColor.color(for: transportType), letter: transportType.singleLetterDescription, coordinate: origin.coordinate, title: origin.name, subtitle: origin.time.hourMinuteTimeString)
-        let end = StopAnnotation(UIColor.color(for: transportType), letter: transportType.singleLetterDescription, coordinate: destination.coordinate, title: destination.name, subtitle: destination.time.hourMinuteTimeString)
-        return [start,end]
+    var maxLatitude: Double {
+        return coordinates.sorted(by: {$0.latitude > $1.latitude}).first?.latitude ?? 0.0
     }
     
-    var stopAnnotations: [StopAnnotation] {
-        return stops.filter({$0.latitude != origin.latitude && $0.longitude != origin.longitude}).filter(({$0.latitude != destination.latitude && $0.longitude != destination.longitude})).map({StopAnnotation(UIColor.color(for: transportType), letter: "", coordinate: $0.coordinate, title: $0.name, subtitle: $0.timeString)})
+    var minLongitude: Double {
+        return coordinates.sorted(by: {$0.longitude < $1.longitude}).first?.longitude ?? 0.0
     }
     
-    var stopCircles: [MKCircle] {
-        return stops.map({MKCircle(center:$0.coordinate, radius: 50.0)})
-    }
-
-    func renderer(for overlay: MKOverlay) ->MKOverlayRenderer {
-        if overlay is MKPolyline { return lineRenderer(for:overlay)}
-        else if let circle = overlay as? MKCircle {return circleRenderer(for: circle)}
-        return MKOverlayRenderer()
-    }
-    
-    private func lineRenderer(for overlay: MKOverlay) ->MKOverlayRenderer {
-        let lineRenderer = MKPolylineRenderer(overlay: overlay)
-        lineRenderer.lineWidth = 2.0
-        lineRenderer.strokeColor = UIColor.color(for: transportType)
-        return lineRenderer
-    }
-    
-    private func circleRenderer(for circleOverlay: MKCircle) ->MKOverlayRenderer {
-        let circleRenderer = MKCircleRenderer(circle: circleOverlay)
-        circleRenderer.fillColor = UIColor.color(for: transportType)
-        return circleRenderer
+    var maxLongitude: Double {
+        return coordinates.sorted(by: {$0.longitude > $1.longitude}).first?.longitude ?? 0.0
     }
 }
+
 

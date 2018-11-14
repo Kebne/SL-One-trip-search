@@ -45,9 +45,9 @@ class StationSearchViewModel : StationSearchViewModelType {
     var searchBarText: String {
         switch stationJourneyType {
         case .destination:
-            return stateController.userJourneyController.userJourney?.destination.name ?? stateController.userJourneyController.destination?.name ?? NSLocalizedString("to", comment: "")
+            return stateController.userJourneyController.userJourney?.destination.name ?? stateController.userJourneyController.destination?.name ?? ""
         case .start:
-            return stateController.userJourneyController.userJourney?.start.name ?? stateController.userJourneyController.start?.name ?? NSLocalizedString("from", comment: "")
+            return stateController.userJourneyController.userJourney?.start.name ?? stateController.userJourneyController.start?.name ?? ""
         }
     }
     
